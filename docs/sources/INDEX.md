@@ -10,7 +10,7 @@ Add a row here whenever a new source file is populated.
 | [03](source_03.md) | FunFuzz: LLM-Powered Evolutionary Fuzzing Framework | arXiv | 2026-05 | agent-runtime, platform-architecture, llm-infra, observability | eco, .eco, agent-matrix, governance-commons |
 | [04](source_04.md) | Walrus Memory: Portable, Encrypted, Cross-Provider Agent Memory | TBD | TBD | agent-runtime, platform-architecture, identity-trust, llm-infra | eco, .eco, agent-dossier, agent-matrix, governance-commons, ons |
 | [05](source_05.md) | The Future Belongs to Embedded, Autonomous, Tool-Connected Agents | TBD | TBD | agent-runtime, platform-architecture, devex, ux-design | eco, .eco, cockpit, agent-matrix, governance-commons, ons |
-| [06](source_06.md) | — | — | — | — | — |
+| [06](source_06.md) | Microsoft Build 2026: Agent-First Computing, Execution Containers, and Offline Autonomy | Microsoft Build | 2026-05 | agent-runtime, platform-architecture, identity-trust, ux-design | eco, .eco, cockpit, governance-commons, agent-matrix, ons |
 | [07](source_07.md) | — | — | — | — | — |
 | [08](source_08.md) | — | — | — | — | — |
 | [09](source_09.md) | — | — | — | — | — |
