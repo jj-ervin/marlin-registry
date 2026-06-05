@@ -1,0 +1,238 @@
+version: "1.0"
+updated: "2026-06-05"
+root: "c:/dev"
+
+# Status values: active | stable | wip | scaffold | archive
+# Relationship keys: runtime_of | site_for | governance_package | depends_on | publishes_to
+
+projects:
+
+  # ─── ECO ECOSYSTEM ───────────────────────────────────────────────────────────
+
+  - name: eco
+    path: eco
+    group: eco-ecosystem
+    description: "Governed execution platform for operational and AI-assisted workflows"
+    status: active
+    branch: main
+
+  - name: eco-edge
+    path: eco-edge
+    group: eco-ecosystem
+    description: "Edge runtime layer for eco"
+    status: active
+    branch: master
+    runtime_of: eco
+
+  - name: eco-slate
+    path: eco-slate
+    group: eco-ecosystem
+    description: "Governance companion for eco OS — docs, registry rules, roadmap stewardship"
+    status: active
+    branch: main
+    governance_package: eco
+
+  - name: eco-slate-www
+    path: eco-slate-www
+    group: eco-ecosystem
+    description: "Public web presence for eco-slate"
+    status: active
+    branch: main
+    site_for: eco-slate
+
+  - name: eco.vs
+    path: eco.vs
+    group: eco-ecosystem
+    description: "VS Code extension layer for eco"
+    status: wip
+    branch: ~
+    runtime_of: eco
+
+  - name: .eco
+    path: .eco
+    group: eco-ecosystem
+    description: "eco governance kernel — runtime config, models, and enforcement rules"
+    status: active
+    branch: main
+    governance_package: eco
+
+  - name: eos
+    path: eos
+    group: eco-ecosystem
+    description: "eOS — bootable front door for the .eco governance kernel and eco environment"
+    status: active
+    branch: main
+    runtime_of: eco
+
+  - name: ons
+    path: governance-commons/ons
+    group: eco-ecosystem
+    description: "Ontic Namespace Structure — canonical naming and validation rule IDs"
+    status: stable
+    branch: main
+    governance_package: eco
+
+  # ─── COCKPIT ─────────────────────────────────────────────────────────────────
+  # UI/UX layer for eco — portable across apps, mods, platforms, and devices
+
+  - name: cockpit
+    path: cockpit
+    group: cockpit
+    description: "Portable UI/UX shell for eco and other apps, mods, and platforms/devices"
+    status: scaffold
+    branch: main
+    runtime_of: eco
+
+  # ─── GOVERNANCE COMMONS ──────────────────────────────────────────────────────
+  # Open standards for agent governance, orchestration, and runtime contracts
+
+  - name: agent-dossier
+    path: governance-commons/agent-dossier
+    group: governance-commons
+    description: "Per-agent contract spec — what an orchestrator reads before assigning work"
+    status: active
+    branch: main
+
+  - name: agent-dossier-www
+    path: governance-commons/agent-dossier-www
+    group: governance-commons
+    description: "Public web presence for Agent Dossier"
+    status: active
+    branch: main
+    site_for: agent-dossier
+
+  - name: agent-matrix
+    path: governance-commons/agent-matrix
+    group: governance-commons
+    description: "Capability, routing, trust, and safety model for agent orchestration"
+    status: active
+    branch: main
+
+  - name: governance-commons-www
+    path: governance-commons/governance-commons-www
+    group: governance-commons
+    description: "Public web presence for Governance Commons"
+    status: active
+    branch: main
+
+  - name: governance-commons-code
+    path: governance-commons/governance-commons-code
+    group: governance-commons
+    description: "Code-level implementation of Governance Commons standards"
+    status: wip
+    branch: ~
+
+  - name: project-orchestrator-agent
+    path: governance-commons/project-orchestrator-agent
+    group: governance-commons
+    description: "Runtime orchestration contract — task graph, dispatch, handoff, audit"
+    status: active
+    branch: main
+
+  # ─── DEV TOOLS ───────────────────────────────────────────────────────────────
+
+  - name: devtoolkit
+    path: devtoolkit
+    group: dev-tools
+    description: "Modular developer OS — environment scaffolding, diagnostics, cleanup"
+    status: active
+    branch: main
+
+  - name: devxtoolkit
+    path: devxtoolkit
+    group: dev-tools
+    description: "TypeScript CLI integration layer for eco governance"
+    status: active
+    branch: ~
+    depends_on: eco
+
+  - name: powershell
+    path: powershell
+    group: dev-tools
+    description: "PowerShell scripts and shell utilities"
+    status: active
+    branch: main
+
+  - name: tools
+    path: tools
+    group: dev-tools
+    description: "General-purpose tooling and scripts"
+    status: wip
+    branch: ~
+
+  # ─── APPS & PRODUCTS ─────────────────────────────────────────────────────────
+
+  - name: kinjuu
+    path: kinjuu
+    group: apps
+    description: "Flutter app for obligation tracking — bills, subscriptions, reminders"
+    status: active
+    branch: main
+
+  - name: niji
+    path: niji
+    group: apps
+    description: "Deterministic color palette module for eco"
+    status: active
+    branch: master
+    publishes_to: eco
+
+  - name: elan
+    path: elan
+    group: apps
+    description: "TBD"
+    status: scaffold
+    branch: main
+
+  - name: arche
+    path: arche
+    group: apps
+    description: "TBD"
+    status: scaffold
+    branch: main
+
+  # ─── DOCS ────────────────────────────────────────────────────────────────────
+
+  - name: docs
+    path: docs
+    group: docs
+    description: "Cross-project documentation"
+    status: wip
+    branch: ~
+
+  # ─── ARCHIVES ────────────────────────────────────────────────────────────────
+
+  - name: lasso
+    path: lasso
+    group: archive
+    description: "Lasso (current archived iteration)"
+    status: archive
+    branch: main
+
+  - name: lasso_archive
+    path: lasso_archive
+    group: archive
+    description: "Lasso archive"
+    status: archive
+    branch: main
+
+  - name: lasso-mvp_archive
+    path: lasso-mvp_archive
+    group: archive
+    description: "Lasso MVP archive"
+    status: archive
+    branch: master
+
+  - name: devtoolkit-v1.x
+    path: devtoolkit-v1.x
+    group: archive
+    description: "DevToolkit v1.x legacy"
+    status: archive
+    branch: main
+
+  - name: devtoolkit-v2.x
+    path: devtoolkit-v2.x
+    group: archive
+    description: "DevToolkit v2.x legacy"
+    status: archive
+    branch: main

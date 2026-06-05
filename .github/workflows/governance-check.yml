@@ -1,0 +1,38 @@
+name: Dev Folder Manager Check
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  manager-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate project registry shape
+        shell: pwsh
+        run: |
+          $content = Get-Content projects.yaml -Raw
+          if ($content -notmatch '(?m)^projects:\s*$') {
+            throw 'projects.yaml must contain a top-level projects: list'
+          }
+          $names = Select-String -Path projects.yaml -Pattern '^\s+- name:\s+(.+)$'
+          $paths = Select-String -Path projects.yaml -Pattern '^\s+path:\s+(.+)$'
+          if ($names.Count -eq 0) { throw 'No projects found in projects.yaml' }
+          if ($names.Count -ne $paths.Count) {
+            throw "Project name/path count mismatch: $($names.Count) names, $($paths.Count) paths"
+          }
+
+      - name: Validate status script syntax
+        shell: pwsh
+        run: |
+          $null = [System.Management.Automation.PSParser]::Tokenize((Get-Content dev-status.ps1 -Raw), [ref]$null)
+
+      - name: Run status script
+        shell: pwsh
+        run: ./dev-status.ps1

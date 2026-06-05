@@ -1,0 +1,214 @@
+{
+  "folders": [
+    // ── Root ────────────────────────────────────────────────────────────────
+    {
+      "name": "⬛ c:/dev (root)",
+      "path": "."
+    },
+
+    // ── Eco Ecosystem ────────────────────────────────────────────────────────
+    {
+      "name": "🌿 eco",
+      "path": "eco"
+    },
+    {
+      "name": "🌿 eco-edge",
+      "path": "eco-edge"
+    },
+    {
+      "name": "🌿 eco-slate",
+      "path": "eco-slate"
+    },
+    {
+      "name": "🌿 eco-slate-www",
+      "path": "eco-slate-www"
+    },
+    {
+      "name": "🌿 eco.vs",
+      "path": "eco.vs"
+    },
+    {
+      "name": "🌿 .eco (config)",
+      "path": ".eco"
+    },
+    {
+      "name": "🌿 eos",
+      "path": "eos"
+    },
+    {
+      "name": "🌿 ons",
+      "path": "governance-commons/ons"
+    },
+
+    // ── Governance Commons ───────────────────────────────────────────────────
+    {
+      "name": "⚖️ governance-commons",
+      "path": "governance-commons"
+    },
+    {
+      "name": "⚖️ governance-commons-code",
+      "path": "governance-commons/governance-commons-code"
+    },
+    {
+      "name": "⚖️ governance-commons-www",
+      "path": "governance-commons/governance-commons-www"
+    },
+    {
+      "name": "⚖️ project-orchestrator-agent",
+      "path": "governance-commons/project-orchestrator-agent"
+    },
+    {
+      "name": "⚖️ agent-dossier",
+      "path": "governance-commons/agent-dossier"
+    },
+    {
+      "name": "⚖️ agent-dossier-www",
+      "path": "governance-commons/agent-dossier-www"
+    },
+    {
+      "name": "⚖️ agent-matrix",
+      "path": "governance-commons/agent-matrix"
+    },
+
+    // ── Cockpit & UI ─────────────────────────────────────────────────────────
+    {
+      "name": "🖥️ cockpit",
+      "path": "cockpit"
+    },
+    {
+      "name": "🖥️ kinjuu",
+      "path": "kinjuu"
+    },
+    {
+      "name": "🖥️ niji",
+      "path": "niji"
+    },
+    {
+      "name": "🖥️ elan",
+      "path": "elan"
+    },
+    {
+      "name": "🖥️ arche",
+      "path": "arche"
+    },
+
+    // ── Dev Tools ─────────────────────────────────────────────────────────────
+    {
+      "name": "🔧 devtoolkit",
+      "path": "devtoolkit"
+    },
+    {
+      "name": "🔧 devxtoolkit",
+      "path": "devxtoolkit"
+    },
+    {
+      "name": "🔧 tools",
+      "path": "tools"
+    },
+    {
+      "name": "🔧 powershell",
+      "path": "powershell"
+    },
+
+    // ── Docs ─────────────────────────────────────────────────────────────────
+    {
+      "name": "📄 docs",
+      "path": "docs"
+    },
+
+    // ── Archives ─────────────────────────────────────────────────────────────
+    {
+      "name": "📦 lasso",
+      "path": "lasso"
+    },
+    {
+      "name": "📦 devtoolkit-v1.x",
+      "path": "devtoolkit-v1.x"
+    },
+    {
+      "name": "📦 devtoolkit-v2.x",
+      "path": "devtoolkit-v2.x"
+    },
+    {
+      "name": "📦 lasso_archive",
+      "path": "lasso_archive"
+    },
+    {
+      "name": "📦 lasso-mvp_archive",
+      "path": "lasso-mvp_archive"
+    }
+  ],
+
+  "settings": {
+    "workbench.colorCustomizations": {
+      "activityBar.background": "#223204",
+      "titleBar.activeBackground": "#2F4706",
+      "titleBar.activeForeground": "#F5FDE5",
+      "titleBar.inactiveBackground": "#223204",
+      "titleBar.inactiveForeground": "#F5FDE5",
+      "statusBar.background": "#223204",
+      "statusBar.foreground": "#F5FDE5",
+      "statusBar.debuggingBackground": "#223204",
+      "statusBar.debuggingForeground": "#F5FDE5",
+      "statusBar.noFolderBackground": "#223204",
+      "statusBar.noFolderForeground": "#F5FDE5"
+    },
+    "explorer.sortOrder": "default",
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/.venv": true,
+      "**/__pycache__": true,
+      "**/lasso_archive/**": true,
+      "**/lasso-mvp_archive/**": true,
+      "**/devtoolkit-v1.x/**": true,
+      "**/devtoolkit-v2.x/**": true
+    },
+    "files.exclude": {
+      "**/.pytest_cache": true,
+      "**/__pycache__": true
+    }
+  },
+
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "git: status all projects",
+        "type": "shell",
+        "command": ".\\dev-status.ps1",
+        "options": { "shell": { "executable": "pwsh", "args": ["-Command"] } },
+        "group": "none",
+        "presentation": { "reveal": "always", "panel": "shared" },
+        "problemMatcher": []
+      },
+      {
+        "label": "git: fetch all projects",
+        "type": "shell",
+        "command": "$items = Select-String -Path .\\projects.yaml -Pattern '^\\s+path:\\s+(.+)$' | ForEach-Object { $_.Matches[0].Groups[1].Value.Trim().Trim('\"').Trim(\"'\") } | Where-Object { $_ -and $_ -ne '~' }; foreach ($path in $items) { if (Test-Path (Join-Path $path '.git')) { Write-Host \"`n=== $path ===\" -ForegroundColor Cyan; git -C $path fetch --prune 2>&1 } }",
+        "options": { "shell": { "executable": "pwsh", "args": ["-Command"] } },
+        "group": "none",
+        "presentation": { "reveal": "always", "panel": "shared" },
+        "problemMatcher": []
+      },
+      {
+        "label": "git: log recent (all projects)",
+        "type": "shell",
+        "command": "$items = Select-String -Path .\\projects.yaml -Pattern '^\\s+path:\\s+(.+)$' | ForEach-Object { $_.Matches[0].Groups[1].Value.Trim().Trim('\"').Trim(\"'\") } | Where-Object { $_ -and $_ -ne '~' }; foreach ($path in $items) { if (Test-Path (Join-Path $path '.git')) { $log = git -C $path log --oneline -3 2>$null; if ($log) { Write-Host \"`n=== $path ===\" -ForegroundColor Cyan; $log } } }",
+        "options": { "shell": { "executable": "pwsh", "args": ["-Command"] } },
+        "group": "none",
+        "presentation": { "reveal": "always", "panel": "shared" },
+        "problemMatcher": []
+      }
+    ]
+  },
+
+  "extensions": {
+    "recommendations": [
+      "eamodio.gitlens",
+      "mhutchie.git-graph",
+      "ms-vscode.vscode-json",
+      "redhat.vscode-yaml",
+      "esbenp.prettier-vscode"
+    ]
+  }
+}

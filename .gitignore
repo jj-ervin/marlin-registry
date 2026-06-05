@@ -1,0 +1,43 @@
+# ── Project repos (tracked separately, not as submodules) ──
+.eco/
+arche/
+cockpit/
+devtoolkit/
+devtoolkit-v1.x/
+devtoolkit-v2.x/
+devxtoolkit/
+eco/
+eco-edge/
+eco-slate/
+eco-slate-www/
+eco.vs/
+elan/
+eos/
+governance-commons/
+kinjuu/
+lasso/
+lasso_archive/
+lasso-mvp_archive/
+niji/
+powershell/
+tools/
+
+# ── Generated / debug artifacts ──
+__pycache__/
+*.pyc
+*.pyo
+parser_debug*.txt
+enforcement_debug.yaml
+null
+
+# ── Editor ──
+.claude/
+.vscode/
+.vscode/settings.json
+
+# ── Keep ──
+# projects.yaml
+# dev-status.ps1
+# c-dev.code-workspace
+# .github/
+# docs/
