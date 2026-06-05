@@ -5,7 +5,7 @@ Add a row here whenever a new source file is populated.
 
 | # | Title | Publication | Date | Topics | Relevance |
 |---|---|---|---|---|---|
-| [01](source_01.md) | — | — | — | — | — |
+| [01](source_01.md) | AI Cyber Governance Framework Implementation Guide | HSCC | 2026-05 | ai-governance, agent-runtime, identity-trust, observability | eco, .eco, governance-commons, agent-dossier, agent-matrix |
 | [02](source_02.md) | — | — | — | — | — |
 | [03](source_03.md) | — | — | — | — | — |
 | [04](source_04.md) | — | — | — | — | — |
