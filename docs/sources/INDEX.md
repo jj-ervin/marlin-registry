@@ -11,7 +11,7 @@ Add a row here whenever a new source file is populated.
 | [04](source_04.md) | Walrus Memory: Portable, Encrypted, Cross-Provider Agent Memory | TBD | TBD | agent-runtime, platform-architecture, identity-trust, llm-infra | eco, .eco, agent-dossier, agent-matrix, governance-commons, ons |
 | [05](source_05.md) | The Future Belongs to Embedded, Autonomous, Tool-Connected Agents | TBD | TBD | agent-runtime, platform-architecture, devex, ux-design | eco, .eco, cockpit, agent-matrix, governance-commons, ons |
 | [06](source_06.md) | Microsoft Build 2026: Agent-First Computing, Execution Containers, and Offline Autonomy | Microsoft Build | 2026-05 | agent-runtime, platform-architecture, identity-trust, ux-design | eco, .eco, cockpit, governance-commons, agent-matrix, ons |
-| [07](source_07.md) | — | — | — | — | — |
+| [07](source_07.md) | Asana Unveils Operating System for Human-Agent Teams | Asana / Business Wire | 2026-06 | platform-architecture, agent-runtime, open-source, devex | eco, governance-commons, agent-matrix, cockpit, agent-dossier |
 | [08](source_08.md) | — | — | — | — | — |
 | [09](source_09.md) | — | — | — | — | — |
 | [10](source_10.md) | — | — | — | — | — |
