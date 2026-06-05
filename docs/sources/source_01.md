@@ -1,60 +1,115 @@
----
-title: "AI Cyber Governance Framework Implementation Guide"
-publication: "Health Sector Coordinating Council (HSCC)"
-url: "https://healthsectorcouncil.org/wp-content/uploads/2026/05/AI-Cyber-Governance-Framework-Implementation-Guide.pdf"
-date: "2026-05"
-topics: [ai-governance, agent-runtime, identity-trust, observability]
-relevance: [eco, .eco, governance-commons, agent-dossier, agent-matrix]
----
+# Source 01
 
-## Summary
+# === BEGIN SUMMARY BLOCK ===
 
-The HSCC AI Cybersecurity Governance Framework establishes a healthcare-sector blueprint
-for treating AI as a distinct risk class — not an extension of traditional IT security.
-It covers lifecycle governance, AI Bill of Materials (AIBOM), agentic autonomy levels,
-AI-specific incident response, and vendor/supply-chain risk. While scoped to healthcare,
-the framework transfers cleanly to any agentic ecosystem including eco.
+## Links
+- `https://www.globenewswire.com/news-release/2026/03/18/XXXXX/0/en/From-Governance-to-Growth-Pacific-AI-and-Blue-Marlin-AI-Advisors-Introduce-a-Unified-Framework-for-Enterprise-AI.html`
+- `https://markets.businessinsider.com/news/stocks/from-governance-to-growth-pacific-ai-and-blue-marlin-ai-advisors-introduce-a-unified-framework-for-enterprise-ai-103XXXXXXX`
+- `https://www.itnewsonline.com/PR/From-Governance-to-Growth-Pacific-AI-and-Blue-Marlin-AI-Advisors-Introduce-a-Unified-Framework-for-Enterprise-AI/XXXXX`
+- `https://finance.yahoo.com/news/from-governance-to-growth-pacific-ai-blue-marlin-ai-advisors-introduce-unified-framework-enterprise-ai-XXXXXX.html`
+- https://www.pacificai.com/
+- https://www.bluemarlinai.com/
+- https://www.pacificai.com/policy-suite
+- https://www.pacificai.com/governor
+- https://www.pacificai.com/guardian
 
-## Key Points
+## Article Details
 
-- **AI-specific threat modeling**: data poisoning, model drift, and adversarial attacks
-  require dedicated governance separate from general cybersecurity
-- **Lifecycle governance**: every AI asset needs a record spanning discovery → procurement
-  → development → deployment → monitoring → decommissioning
-- **AI Bill of Materials (AIBOM)**: tracks model lineage, training data, dependencies,
-  and third-party components — supply-chain transparency as a trust layer
-- **Agentic autonomy levels**: defines autonomy tiers, per-level guardrails, oversight
-  triggers, and non-human identity (NHI) management
-- **AI-specific incident response**: distinct incident categories, detection, triage,
-  containment, rollback, and red-teaming hooks (model extraction, jailbreak attempts)
-- **Vendor and fourth-party risk**: contract language, SLAs, continuous monitoring signals
-- **Transparency and disclosure**: standardized disclosure formats, explainability hooks,
-  user-rights APIs
+### GlobeNewswire (Original Press Release)
+- **Title:** From Governance to Growth: Pacific AI and Blue Marlin AI Advisors Introduce a Unified Framework for Enterprise AI  
+- **Source:** GlobeNewswire  
+- **Summary:** Announces a joint white paper positioning governance as a growth enabler. Introduces the AI Adoption Stack Framework™, a six‑layer model integrating governance, workflows, leadership, and workforce enablement. Emphasizes embedding governance directly into AI systems while accelerating adoption. Highlights pitfalls of compliance‑only strategies and stresses aligning AI initiatives with regulatory expectations and business impact.  
+- **Conceptual Signals:** unified governance model; embedded oversight; AI Adoption Stack Framework™; governance as growth; compliance‑by‑design; continuous monitoring; policy enforcement; leadership alignment; risk mitigation vs ROI; governance–adoption interdependence.
 
-## Relevance to Eco
+### Markets Insider (Syndicated)
+- **Title:** Same as GlobeNewswire  
+- **Source:** Markets Insider  
+- **Summary:** Full reproduction of the GlobeNewswire release.  
+- **Conceptual Signals:** identical to GlobeNewswire.
 
-- **eco runtime**: embed drift-detection, dataset integrity checks, and adversarial-input
-  hardening into the core runtime; add drift-triggered safe-mode and automated rollback
-- **governance-commons**: AIBOM generation should be a native governance artifact for
-  models, tools, agent chains, and external APIs
-- **agent-dossier / agent-matrix**: autonomy levels, per-level guardrails, and NHI
-  management align directly with eco's agent-handoff and autonomy-scoping protocols
-- **ons**: AI-specific incident types and model lifecycle events should be registered
-  as first-class namespace entries
-- **eco ecosystem registry**: vendor risk scoring, contractual requirement templates,
-  and continuous monitoring signals as first-class portfolio metadata
+### IT News Online (Syndicated)
+- **Title:** Same as GlobeNewswire  
+- **Source:** IT News Online  
+- **Summary:** Full reproduction of the GlobeNewswire release.  
+- **Conceptual Signals:** identical to GlobeNewswire.
 
-**Big takeaway**: eco should adopt AI-specific security governance as a first-class
-requirement — model drift, data poisoning, adversarial attacks, and supply-chain
-transparency behave differently from traditional cybersecurity and need distinct treatment.
+### Yahoo Finance (Syndicated)
+- **Title:** Same as GlobeNewswire  
+- **Source:** Yahoo Finance  
+- **Summary:** Full reproduction of the GlobeNewswire release.  
+- **Conceptual Signals:** identical to GlobeNewswire.
 
-## Excerpts
+### Pacific AI (Reference)
+- **Title:** Pacific AI (company site)  
+- **Source:** pacificai.com  
+- **Summary:** Provides product pages for Policy Suite, Governor, and Guardian—components of the governance platform referenced in the article.  
+- **Conceptual Signals:** governance platform; policy automation; monitoring; guardrails; enterprise controls.
 
-> "Data poisoning — malicious manipulation of training or fine-tuning data."
-> "Model drift — degradation of model accuracy or alignment over time."
-> "Adversarial attacks — crafted inputs that cause misclassification or harmful behavior."
+### Blue Marlin AI Advisors (Reference)
+- **Title:** Blue Marlin AI Advisors (company site)  
+- **Source:** bluemarlinai.com  
+- **Summary:** Strategic consulting firm referenced as co‑author of the white paper.  
+- **Conceptual Signals:** leadership alignment; workflow redesign; strategic enablement.
 
-## Secondary Sources
+### Pacific AI Product Pages (Reference)
+- **Policy Suite:** governance policy management  
+- **Governor:** enforcement and monitoring  
+- **Guardian:** oversight and protection  
+- **Conceptual Signals:** embedded governance; automated controls; lifecycle oversight.
 
-- Healthcare IT News: [HSCC guide addresses cybersecurity risks specific to healthcare AI](https://www.healthcareitnews.com/news/new-hscc-guide-addresses-cybersecurity-risks-specific-healthcare-ai)
-- Industrial Cyber: [HSCC publishes AI cyber governance guide](https://industrialcyber.co/ai/hscc-publishes-ai-cyber-governance-guide-to-help-healthcare-providers-manage-emerging-ai-threats/)
+## Overall Summary
+The conversation centers on extracting all structural, conceptual, and reference information from a Discovery Card summarizing a joint Pacific AI × Blue Marlin AI Advisors white paper. The story presents governance as a growth catalyst rather than a constraint, introducing the AI Adoption Stack Framework™ as a unified model integrating governance, workflows, leadership, and workforce enablement. Multiple syndicated versions of the same press release are identified, along with company and product reference URLs. The user placed the assistant into extraction mode, adding all primitives to a running draft list. The final request is to consolidate all links, article details, conceptual signals, and extracted primitives into a deterministic summary block.
+
+## Inclusion Primitives (Suggested)
+- unified governance model  
+- embedded oversight  
+- governance as growth enabler  
+- compliance‑by‑design  
+- AI Adoption Stack Framework™  
+- six‑layer adoption model  
+- continuous monitoring  
+- policy enforcement  
+- leadership alignment  
+- redesigned incentives  
+- workflow integration  
+- governance–adoption interdependence  
+- auditable systems  
+- transparency across AI lifecycle  
+- embedded governance tools (Policy Suite, Governor, Guardian)  
+- strategic consulting integration  
+- faster time‑to‑value  
+- pilot‑to‑production acceleration  
+- measurable business outcomes  
+- compliance integrated with transformation  
+- governance embedded into AI systems  
+- enterprise‑scale alignment  
+- regulatory alignment  
+- business impact alignment  
+
+## Exclusion Primitives (Suggested)
+- governance without adoption  
+- controls without context  
+- risk mitigation without ROI  
+- compliance‑only strategies  
+- AI as cost center  
+- disconnected governance layers  
+- adoption pipelines that bypass governance  
+- siloed compliance frameworks  
+- governance treated as barrier  
+- non‑auditable AI systems  
+
+## Other Relevant Suggestions
+- pattern: governance + adoption as a single operating model  
+- pattern: embedding controls directly into AI workflows  
+- architectural consideration: layered AI adoption stack  
+- architectural consideration: continuous monitoring as a platform primitive  
+- architectural consideration: leadership‑driven workflow redesign  
+- architectural consideration: incentives as part of governance  
+- future trend: regulatory pressure intensifying globally  
+- future trend: enterprises seeking faster AI time‑to‑value  
+- eco‑aligned insight: governance as a substrate‑level primitive  
+- eco‑aligned insight: interdependence between governance and operational workflows  
+- eco‑aligned insight: need for auditable, transparent AI systems  
+- eco‑aligned insight: governance as foundation for sustainable scaling  
+
+# === END SUMMARY BLOCK ===

@@ -1,65 +1,142 @@
----
-title: "Microsoft Build 2026: Agent-First Computing, Execution Containers, and Offline Autonomy"
-publication: "Microsoft Build 2026"
-url: ""
-date: "2026-05"
-topics: [agent-runtime, platform-architecture, identity-trust, ux-design]
-relevance: [eco, .eco, cockpit, governance-commons, agent-matrix, ons]
----
+# Source 06
+# === BEGIN SUMMARY BLOCK ===
 
-## Summary
+## Links
+- https://arxiv.org/abs/2507.05405
+- https://doi.org/10.1613/jair.1.20808
+- https://arxiv.org/abs/2507.05405v2
+- https://arxiv.org/abs/2403.02468
+- https://doi.org/10.1007/978-3-540-69850-0
+- https://arxiv.org/abs/2004.09602
+- https://quantumai.google
+- https://research.ibm.com/quantum
+- https://azure.microsoft.com/en-us/products/quantum
+- https://arxiv.org/abs/2310.07063
+- https://arxiv.org/abs/2402.01832
 
-Microsoft Build 2026 signals that agent-first computing is now mainstream direction.
-Key announcements: OpenClaw sandbox demo blocking unauthorized file deletions, Execution
-Containers as an isolated runtime primitive, Surface Laptop Ultra and RTX Spark Dev Box
-pushing local-first AI inference, and Project Solara replacing app-centric computing with
-intent orchestration. The competitive axis has shifted from capability to trust, safety,
-and offline reliability. Hardware-aware agents targeting ambient devices, wearables, and
-edge compute are the next form factor.
+## Article Details
 
-## Key Points
+### https://arxiv.org/abs/2507.05405
+- Source: arXiv
+- Title: PT-LiRPA (robustness verification for neural networks)
+- Summary: Describes a method for tightening output bounds of neural networks with minimal overhead, improving reliability certificates by up to 3.3x.
+- Conceptual signals for eco: bound-tightening, robustness certificates, verification envelopes, mathematical guarantees.
 
-- **Sandboxed autonomy as a universal invariant**: every agent action is untrusted by
-  default; destructive or irreversible actions require explicit user confirmation;
-  OpenClaw demo (blocking file deletion) demonstrates this as a constitutional rule
-- **Execution Containers as the atomic runtime unit**: deterministic reproducible
-  execution environments; per-task isolation; permission-scoped capabilities;
-  no silent side effects rule
-- **Offline-first capability**: local inference as default; cloud as optional accelerator;
-  graceful degradation when offline; hardware abstraction layer adjusting behavior by
-  detected capabilities
-- **Agent-first OS model**: Project Solara replaces apps with capability surfaces, UI
-  with intent orchestration, and workflows with autonomous multi-step agents
-- **Secure autonomy as a differentiator**: transparent decision logs, inspectable
-  reasoning chains, user-owned data vaults, zero-knowledge capability tokens, and
-  human override as a constitutional clause
-- **Hardware-aware agents**: agents will live in ambient devices, wearables, and edge
-  compute nodes; hardware capability schema and device-level ecosystem graph needed;
-  unified agent interface across form factors
+### https://doi.org/10.1613/jair.1.20808
+- Source: JAIR
+- Title: PT-LiRPA journal publication
+- Summary: Peer‑reviewed version of PT‑LiRPA, detailing formal robustness verification techniques for neural networks.
+- Conceptual signals: formal verification, certificate generation, scalable robustness analysis.
 
-## Relevance to Eco
+### https://arxiv.org/abs/2507.05405v2
+- Source: arXiv
+- Title: PT-LiRPA (versioned)
+- Summary: Updated version of the PT‑LiRPA paper with refinements to verification bounds and performance.
+- Conceptual signals: iterative verification improvement, bound refinement.
 
-- **eco runtime (.eco)**: sandboxed autonomy and execution containers are direct
-  formalizations of eco's constitutional OS model — adopt as universal invariants, not
-  features; "no silent side effects" should be a core runtime rule
-- **cockpit**: intent orchestration and capability surfaces replace chat and UI;
-  cockpit's role is exposing composable agent modules, not building a chat interface
-- **agent-matrix**: permission-scoped capabilities per execution container map cleanly
-  to the capability/routing/trust model; hardware capability negotiation adds a new
-  dimension to agent capability declarations
-- **governance-commons**: transparent decision logs, inspectable reasoning chains, and
-  human override as a constitutional clause are governance standards to formalize
-- **ons**: execution container types, hardware capability schemas, and offline degradation
-  states should be registered namespace entries
+### https://arxiv.org/abs/2403.02468
+- Source: arXiv
+- Title: Saarthi (LLM-assisted SystemVerilog Assertion generation)
+- Summary: Describes an agentic framework that automates SystemVerilog assertion generation, reducing verification iteration cycles by ~50%.
+- Conceptual signals: automated constraint generation, agentic verification, natural-language-to-assertion pipelines.
 
-**Big takeaway**: eco can go further than Microsoft by being more principled and
-transparent — embedding human override as a constitutional clause, user-owned data
-vaults, and ZK capability tokens. Eco's strength is being open and interoperable
-where corporate agents are opaque and vendor-bound.
+### https://doi.org/10.1007/978-3-540-69850-0
+- Source: Springer / DOI
+- Title: Model Checking (Clarke et al.)
+- Summary: Foundational text on model checking, temporal logic, and formal verification of system behavior.
+- Conceptual signals: model checking, temporal logic, formal guarantees, verification backends.
 
-## Excerpts
+### https://arxiv.org/abs/2004.09602
+- Source: arXiv
+- Title: Barrier Certificates for Safety Verification
+- Summary: Introduces barrier certificates as a scalable method for proving system safety without exhaustive state exploration.
+- Conceptual signals: barrier certificates, safety envelopes, mathematical safety proofs.
 
-> "Agents must operate inside strict execution containers."
-> "All destructive or irreversible actions require explicit user confirmation."
-> "Local inference as the default — cloud as an optional accelerator."
-> "Replace apps with capability surfaces, UI with intent orchestration."
+### https://quantumai.google
+- Source: Google Quantum AI
+- Summary: Research hub for quantum processors, error correction, and verification of quantum architectures.
+- Conceptual signals: quantum verification, qubit reliability, hardware‑specific verification.
+
+### https://research.ibm.com/quantum
+- Source: IBM Quantum
+- Summary: IBM’s research on quantum computing, error correction, and formal verification of quantum systems.
+- Conceptual signals: quantum circuit validation, hardware‑bound verification.
+
+### https://azure.microsoft.com/en-us/products/quantum
+- Source: Microsoft Azure Quantum
+- Summary: Microsoft’s quantum computing platform, including verification and error‑correction research.
+- Conceptual signals: quantum architecture verification, enterprise quantum tooling.
+
+### https://arxiv.org/abs/2310.07063
+- Source: arXiv
+- Title: LLM-assisted LTL synthesis
+- Summary: Research on converting natural language into Linear Temporal Logic using large language models.
+- Conceptual signals: NL→LTL translation, formal specification generation, semantics extraction.
+
+### https://arxiv.org/abs/2402.01832
+- Source: arXiv
+- Title: Hierarchical semantics decomposition for formal specifications
+- Summary: Describes a method for decomposing natural language into structured semantics for formal verification.
+- Conceptual signals: hierarchical semantics, structured intent decomposition, formal spec pipelines.
+
+## Overall Summary
+The conversation centers on extracting primitives, signals, and architectural considerations from a Discovery Card about AI verification, quantum circuit verification, and natural-language-to-formal-specification research. The linked sources cover robustness verification (PT‑LiRPA), automated assertion generation (Saarthi), formal methods (model checking, barrier certificates), quantum verification programs (Google, IBM, Microsoft), and LLM-driven formal specification generation (LTL synthesis, hierarchical semantics). The discussion identifies which primitives eco should adopt, which to exclude, and how they align with eco’s governance-first, substrate-neutral architecture. Extraction mode was activated to accumulate raw primitives across turns.
+
+## Inclusion Primitives (Suggested)
+- bound-tightening verification
+- robustness certificates
+- behavioral envelopes
+- certificate-aware trust gates
+- deterministic replay with bound-aware deltas
+- automated constraint generation
+- agentic verification frameworks
+- natural-language-to-formal-spec pipelines
+- LTL-grade specification extraction
+- hierarchical semantics decomposition
+- model checking
+- abstract interpretation
+- verification backend registry
+- constraint surfacing in cockpit
+- verification-aware scenario deltas
+- certificate-aware operator feedback
+- deterministic PASS flows
+- safety-core verification hooks
+- trust-volume integration
+- universal substrate-neutral verification primitives
+- replay-first debugging
+- constraint-aware PASS templates
+- modular verification surfaces
+- verification-aware modding APIs
+- scenario-level invariants
+- certificate-aware extensions
+- governance-first substrate alignment
+
+## Exclusion Primitives (Suggested)
+- quantum-specific verification primitives
+- qubit architecture verification
+- hardware-bound verification flows
+- SystemVerilog-specific verification
+- domain-specific safety models (autonomous vehicles, medical, finance)
+- enterprise compliance frameworks
+- ML-culture statistical primitives
+- UX behavior-shaping systems
+- sustainability narratives
+- management frameworks
+- adoption metrics
+- OS-level assumptions
+- filesystem semantics
+- monolithic runtime assumptions
+
+## Other Relevant Suggestions
+- patterns of automated verification
+- agentic constraint generation
+- formal guarantees as governance tools
+- future trend: LLM-driven formal verification
+- future trend: verification integrated into agent workflows
+- architectural consideration: maintain substrate neutrality
+- architectural consideration: avoid domain lock-in
+- eco-aligned insight: verification as a core governance primitive
+- eco-aligned insight: formal methods as trust infrastructure
+- eco-aligned insight: scenario engines benefit from formal constraints
+
+# === END SUMMARY BLOCK ===

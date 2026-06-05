@@ -1,64 +1,100 @@
----
-title: "Data Mesh, Data Fabric, and Federated Governance at Scale"
-publication: ""
-url: ""
-date: ""
-topics: [platform-architecture, data-contracts, ai-governance, observability]
-relevance: [eco, .eco, governance-commons, ons, agent-matrix]
----
+# Source 10
+# === BEGIN SUMMARY BLOCK ===
 
-## Summary
+## Links
+- https://tacnode.com/blog/enterprise-integration-patterns-modern-data-architectures
+- https://www.enterpriseintegrationpatterns.com/
+- https://learn.microsoft.com/en-us/azure/architecture/patterns/publisher-subscriber
+- https://www.bing.com/search?q="https%3A%2F%2Ftacnode.com%2Fblog%2Fenterprise-integration-patterns-modern-data-architectures"
+- https://www.bing.com/search?q="https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Farchitecture%2Fpatterns%2Fpublisher-subscriber"
 
-Analysis of enterprise data mesh and data fabric adoption, federated governance maturity,
-and scaling failure patterns. Only 18% of enterprises have sufficient governance maturity
-for data mesh. Systems reliably hit compliance collapse at 2,500-3,500 data assets or
-15-20 domains. The article maps three layers — data mesh (domain autonomy), data fabric
-(semantic consistency), and service mesh (operational reliability) — and argues they must
-be unified into a single interoperability fabric. Core lesson: governance baked into the
-protocol layer survives scale; governance as an afterthought collapses.
+## Article Details
 
-## Key Points
+### 1. Tacnode — Enterprise Integration Patterns: The Complete Guide for Modern Data Architectures
+- **Source:** tacnode.com  
+- **Summary:** Covers modern integration patterns including publish–subscribe, content‑based routing, event sourcing, and how these patterns support scalable, decoupled systems. Emphasizes AI‑agent compatibility, schema evolution, and flexible routing.  
+- **Conceptual Signals Relevant to eco:** decoupling, event-driven architecture, routing intelligence, schema governance, AI‑agent integration, scalable messaging, pattern vocabulary.
 
-- **Decentralized ownership as a first-class primitive**: every domain owns its data
-  products, schemas, and pipelines; ownership must be explicit, discoverable, and
-  enforceable; domains as sovereign micro-ecosystems with their own lifecycle rules
-- **Federated governance as the protocol layer**: policy-as-code enforces semantic
-  standards, lineage, access policies, and quality contracts automatically — not
-  human-policed; a governance kernel all domains inherit from
-- **Ecosystem fabric as a native concept**: unifying data mesh, data fabric, and service
-  mesh into a single interoperability layer with real-time metadata, cross-domain lineage,
-  zero-trust identity, and multi-cloud/multi-agent routing
-- **Scaling guardrails required from day one**: compliance collapse occurs at 2,500-3,500
-  assets or 15-20 domains; auto-detection of domain sprawl, schema drift controls,
-  automated catalog maintenance, and AI-driven governance enforcement prevent this
-- **Automation-first, not automation-later**: enterprises fail by relying on humans to
-  maintain standards; metadata generation, lineage, compliance checks, and domain
-  onboarding must all be automated from the start
+### 2. Enterprise Integration Patterns — Official Site (Hohpe & Woolf)
+- **Source:** enterpriseintegrationpatterns.com  
+- **Summary:** Canonical definitions of messaging patterns including pub/sub, content‑based routing, event sourcing, message channels, and routing rules.  
+- **Conceptual Signals Relevant to eco:** canonical pattern definitions, routing semantics, message channels, event logs, integration vocabulary.
 
-## Relevance to Eco
+### 3. Microsoft Azure Architecture Center — Publisher–Subscriber Pattern
+- **Source:** learn.microsoft.com  
+- **Summary:** Explains the pub/sub pattern, message brokers, decoupling, scalability, and asynchronous communication. Includes cloud‑native framing and operational considerations.  
+- **Conceptual Signals Relevant to eco:** pub/sub mechanics, decoupling, asynchronous events, distributed scaling, message brokers.
 
-- **governance-commons**: federated governance kernel that all domains inherit — this is
-  the concrete architecture for governance-commons as a protocol layer, not a standards
-  document; policy-as-code, lineage tracking, and quality contracts as first-class outputs
-- **eco runtime (.eco)**: domain registries, ownership manifests, and self-describing data
-  products map directly to eco's module/agent ownership model; each eco domain is a
-  sovereign micro-ecosystem with its own lifecycle rules enforced at the runtime level
-- **ons**: domain registry schemas, ownership manifest types, data product descriptors,
-  and quality contract formats should all be registered namespace entries
-- **agent-matrix**: cross-domain lineage and zero-trust identity routing are capability
-  and trust routing requirements; multi-agent routing is the agent-matrix equivalent of
-  multi-cloud routing
-- **eco scaling**: drift detectors, domain sprawl auto-detection, and automated
-  remediation loops should be built into eco's governance telemetry from the start —
-  not added when the system starts breaking
+## Overall Summary
+The conversation explored how enterprise integration patterns—publish–subscribe, content‑based routing, and event sourcing—map directly onto eco, eOS, Cockpit, and LASSO. These patterns provide a shared vocabulary and architectural foundation for decoupled communication, intelligent routing, deterministic state reconstruction, and multi‑agent orchestration. The discussion produced an official eco integration‑patterns specification and identified all URLs associated with the Discover Card. The user also initiated extraction mode for inclusion/exclusion primitives and requested a deterministic summary block containing links, article details, conceptual signals, and architectural considerations.
 
-**Big takeaway**: eco is not just a system — it is an ecosystem protocol. Ecosystems
-survive scale when ownership is local, governance is federated, interoperability is
-universal, and automation is pervasive. Eco is already philosophically aligned; the work
-is making the architectural edges crisp.
+## Inclusion Primitives (Suggested)
+- Publish–subscribe event bus
+- Topic‑based event domains
+- Decoupled module communication
+- Content‑based routing
+- Routing rules based on content and manifest metadata
+- Event sourcing for all state changes
+- Immutable event logs
+- Replayable state reconstruction
+- Reasoning trace storage
+- Timeline reconstruction
+- Shared vocabulary for integration patterns
+- Canonical event grammar
+- Canonical event schema fields (id, timestamp, domain, type, payload, source, version)
+- eco runtime enforcing schema compatibility
+- eco routing engine
+- Module manifests declaring routing filters
+- LASSO agent arbitration via CBR
+- Cockpit surface updates via CBR
+- Cockpit timeline backed by event sourcing
+- Deterministic workflows
+- Reproducible pipelines
+- Diagnostics‑enabled environment
+- Multi‑agent orchestration
+- State‑centric architecture
+- Modular, pluggable subsystems
+- Environment‑aware defaults
+- Performance modes
+- Asynchronous integrity pipeline
+- Trust volume metadata
+- Workspace metadata
+- Mode architecture
+- Lifecycle grammar
+- Standards stack (ONS, EBNF, ABNF)
+- Archival and prompt governance
+- Trusted/performance zones
+- Real‑world integration layer
+- Multi‑strain evolution model
+- Human–tech augmentation layer
+- Agent orchestration and scenario engine
 
-## Excerpts
+## Exclusion Primitives (Suggested)
+- Monolithic architectures
+- Direct module‑to‑module calls
+- Hardcoded routing logic
+- ML statistical reasoning as architectural primitive
+- UX‑driven sustainability narratives
+- Management frameworks
+- Adoption metrics
+- Human‑vs‑AI skill models
+- eco acting as filesystem or OS extension
+- eco acting as kernel feature
+- eco acting as desktop assistant or channel bot
+- Aesthetic‑driven behavior systems
+- Non‑deterministic workflows
+- Bypassing event bus
+- Schema‑violating modules
 
-> "Only 18% of enterprises have governance maturity for data mesh."
-> "Systems hit compliance collapse at 2,500-3,500 data assets or 15-20 domains."
-> "Governance baked into the protocol layer survives scale; governance as an afterthought collapses."
+## Other Relevant Suggestions
+- Use enterprise integration patterns as eco’s shared architectural vocabulary.
+- Maintain strict boundary discipline across eco/eOS/Cockpit/LASSO.
+- Use event sourcing for debugging, auditing, and reproducibility.
+- Use pub/sub for scalable multi‑agent orchestration.
+- Use CBR for intelligent routing of agents, pipelines, and UI surfaces.
+- Adopt canonical event grammar for clarity and governance.
+- Future extensions: distributed event bus, event compaction, routing DSL, Cockpit timeline filters, eco‑wide event governance dashboard.
+- Patterns support eco’s goals of modularity, determinism, extensibility, and governance.
+- Integration patterns align eco with enterprise‑grade architecture and future multi‑agent ecosystems.
+
+# === END SUMMARY BLOCK ===

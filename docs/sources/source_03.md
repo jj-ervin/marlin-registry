@@ -1,61 +1,128 @@
----
-title: "FunFuzz: LLM-Powered Evolutionary Fuzzing Framework"
-publication: "arXiv"
-url: "https://arxiv.org/abs/2605.02789"
-date: "2026-05"
-topics: [agent-runtime, platform-architecture, llm-infra, observability]
-relevance: [eco, .eco, agent-matrix, governance-commons]
----
+# Source 03
+# === BEGIN SUMMARY BLOCK ===
 
-## Summary
+## Links
+- https://osprey.readthedocs.io/en/v0.11.4/
+- https://github.com/als-apg/osprey
+- https://pypi.org/project/osprey-framework/0.11.4/
+- https://www.bing.com/search?q="https%3A%2F%2Fpypi.org%2Fproject%2Fosprey-framework%2F0.11.4%2F"
+- https://github.com/langchain-ai/langgraph
+- https://www.bing.com/search?q="https%3A%2F%2Fgithub.com%2Flangchain-ai%2Flanggraph"
+- https://epics-controls.org/
+- https://www.ni.com/labview
+- https://www.tango-controls.org/
+- https://als.lbl.gov/
+- https://doi.org/10.1063/5.0306302
 
-FunFuzz introduces a multi-island evolutionary fuzzing framework guided by LLMs.
-Multiple agent populations explore in parallel with different starting conditions,
-periodically migrating only high-value artifacts to prevent convergence collapse.
-Feedback-adaptive prompting dynamically rewrites instructions based on outcome signals.
-Learned strategies are distilled from large models into lightweight executors for fast
-runtime use. The framework consistently uncovers deeper bugs than traditional fuzzers.
+## Article Details
 
-## Key Points
+### https://osprey.readthedocs.io/en/v0.11.4/
+- Source: Osprey Framework Documentation
+- Title: Osprey Framework Documentation — v0.11.4
+- Summary: Describes Osprey as a production-ready architecture for agentic AI in safety-critical scientific facilities. Covers semantic addressing, dual-mode orchestration, typed planning, hardware-write detection, PV boundary validation, protocol-agnostic connectors (EPICS, LabVIEW, Tango), ARIEL semantic logbook search, secure containerized execution, dynamic capability classification, and facility-scale data handling.
+- Conceptual Signals: safety-critical orchestration; typed planning; semantic addressing; human-in-the-loop review; audit trails; dynamic capability classification; PV boundary validation; protocol-agnostic integration; secure execution; intelligent downsampling; ARIEL retrieval.
 
-- **Multi-island evolution**: parallel populations with different priors and heuristics
-  explore independently; periodic migration shares only high-value artifacts, preserving
-  diversity as a first-class metric
-- **Feedback-adaptive prompting**: prompts are dynamically rewritten based on compiler
-  feedback (coverage, novelty, failure modes) to avoid stagnation and redundancy; each
-  module starts with a different "instruction genome"
-- **Coverage-driven prioritization**: incremental coverage metrics and internal failure
-  signals rank candidates; errors, contradictions, and dead ends are treated as valuable
-  signals rather than noise
-- **Strategy distillation**: LLMs generate heuristics; learned patterns are distilled into
-  smaller models for fast, low-cost runtime execution as micro-agents
-- **Adversarial self-testing**: evolutionary + LLM guidance uncovers deeper failures than
-  traditional approaches; resilience under perturbation is measurable
+### https://github.com/als-apg/osprey
+- Source: GitHub
+- Title: als-apg/osprey
+- Summary: Repository containing Osprey’s source code, release notes, templates, testing guides, and examples. Highlights ARIEL write support, machine-state reader, Google Sheets integration, and deployment patterns for scientific control systems.
+- Conceptual Signals: early-access architecture; production-ready agentic AI; template initialization; scientific workflow integration; research alignment.
 
-## Relevance to Eco
+### https://pypi.org/project/osprey-framework/0.11.4/
+- Source: PyPI
+- Title: osprey-framework 0.11.4
+- Summary: Release page describing Osprey’s features including dual-mode orchestration, PV boundary checking, dynamic capability management, protocol-agnostic integration, and deployments at major facilities. Includes citation for APL Machine Learning paper.
+- Conceptual Signals: dual-mode orchestration; safety enforcement; scalable capability management; production deployment; research citation.
 
-- **eco runtime**: multi-island evolution maps directly to parallel agent populations with
-  different worldviews; diversity preservation should be a first-class runtime metric, not
-  a side effect
-- **agent-matrix**: feedback-weighted sampling — agents shift generation strategies based
-  on measurable progress signals — is a natural extension of the capability/routing model
-- **eco exploration engine**: coverage maps generalize to any domain (knowledge, behavior,
-  environment, strategy); novelty scoring rewards exploration of unvisited operational regions
-- **eco micro-agents**: strategy distillation pattern — large models generate heuristics,
-  small models execute them — supports modular, low-cost runtime execution
-- **governance-commons**: continuous adversarial self-testing and resilience scoring as
-  built-in governance primitives, not optional add-ons
+### https://github.com/langchain-ai/langgraph
+- Source: GitHub
+- Title: LangGraph
+- Summary: Framework providing StateGraph, enabling typed, deterministic, multi-step planning and orchestration.
+- Conceptual Signals: typed planning; state-based orchestration; deterministic workflow modeling.
 
-**Big takeaway**: eco should treat exploration as an evolutionary, multi-population,
-feedback-driven process — not a single-agent reasoning loop. Multi-island evolution +
-adaptive prompting is the architectural primitive to adopt.
+### https://epics-controls.org/
+- Source: EPICS
+- Title: EPICS Controls
+- Summary: Widely used control system toolkit for scientific facilities.
+- Conceptual Signals: protocol integration; control-system interoperability.
 
-## Excerpts
+### https://www.ni.com/labview
+- Source: National Instruments
+- Title: LabVIEW
+- Summary: Visual programming environment for instrumentation and control.
+- Conceptual Signals: protocol integration; hardware interfacing.
 
-> "Multiple populations explore in parallel with different starting conditions."
-> "Feedback-adaptive prompting dynamically rewrites prompts based on compiler feedback."
-> "Distill learned patterns into smaller models for fast runtime use."
+### https://www.tango-controls.org/
+- Source: Tango Controls
+- Title: Tango Controls
+- Summary: Distributed control system framework used in scientific environments.
+- Conceptual Signals: protocol integration; device abstraction.
 
-## Secondary Sources
+### https://als.lbl.gov/
+- Source: Lawrence Berkeley National Laboratory
+- Title: Advanced Light Source
+- Summary: Scientific facility referenced as a deployment site for Osprey.
+- Conceptual Signals: real-world deployment; safety-critical operations.
 
-- aimodels.fyi: [FunFuzz paper summary](https://www.aimodels.fyi/papers/arxiv/funfuzz-llm-powered-evolutionary-fuzzing-framework)
+### https://doi.org/10.1063/5.0306302
+- Source: APL Machine Learning
+- Title: Osprey: Production-ready agentic AI for safety-critical control systems
+- Summary: Peer-reviewed research paper describing Osprey’s architecture, safety model, and deployment in scientific environments.
+- Conceptual Signals: research grounding; safety-critical AI; formal architecture.
+
+## Overall Summary
+The conversation focuses on extracting structural, architectural, and conceptual signals from the Osprey Framework v0.11.4 Discovery Card and all linked sources. The materials describe Osprey as a safety-critical orchestration framework for scientific facilities, integrating typed planning, dual-mode orchestration, semantic addressing, hardware-write detection, PV boundary validation, dynamic capability classification, protocol-agnostic connectors, secure containerized execution, ARIEL semantic logbook search, and facility-scale data integration. GitHub and PyPI reinforce these features with deployment examples, research citations, and tooling details. Additional referenced systems (LangGraph, EPICS, LabVIEW, Tango) contextualize Osprey’s interoperability. The summary consolidates links, article details, conceptual signals, and extracted primitives for eco.
+
+## Inclusion Primitives (Suggested)
+- safety-critical orchestration
+- human-in-the-loop safety review
+- semantic addressing across large namespaces
+- typed planning
+- dual-mode orchestration (plan-first + reactive)
+- checkpointing and rollback
+- explicit dependencies
+- audit trails
+- dynamic capability classification
+- hardware-write detection
+- PV boundary validation
+- protocol-agnostic connectors (EPICS, LabVIEW, Tango)
+- secure containerized execution
+- static analysis for code safety
+- facility data integration
+- intelligent downsampling
+- ARIEL semantic logbook search
+- agentic retrieval modes
+- modular deployment
+- artifact management
+- domain-agnostic orchestration
+- integration with LangGraph StateGraph
+- production-ready agentic AI
+- scalable capability management
+- research-aligned architecture
+- typed, deterministic workflow modeling
+
+## Exclusion Primitives (Suggested)
+- uncontrolled hardware writes
+- unvalidated setpoints
+- prompt overload from large tool inventories
+- opaque execution without audit trails
+- monolithic orchestration without typed steps
+- unsafe parameter changes
+- non-auditable workflows
+- protocol-locked architectures
+- uncontrolled code execution environments
+- unbounded time-series ingestion without downsampling
+
+## Other Relevant Suggestions
+- patterns for safety-critical AI orchestration
+- architectural considerations for typed, deterministic planning
+- future trends in scientific facility automation
+- eco-aligned insights around modularity, auditability, and typed workflows
+- cross-domain applicability (wind farms, industrial processes, smart grids)
+- governance patterns for multi-agent systems
+- integration strategies for heterogeneous control systems
+- artifact management for reproducible workflows
+- facility-scale semantic retrieval patterns
+- dynamic capability management for large tool inventories
+
+# === END SUMMARY BLOCK ===
