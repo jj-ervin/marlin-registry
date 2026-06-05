@@ -22,7 +22,7 @@ jobs:
             throw 'projects.yaml must contain a top-level projects: list'
           }
           $names = Select-String -Path projects.yaml -Pattern '^\s+- name:\s+(.+)$'
-          $paths = Select-String -Path projects.yaml -Pattern '^\s+path:\s+(.+)$'
+          $paths = Select-String -Path projects.yaml -Pattern '^    path:\s+(.+)$'
           if ($names.Count -eq 0) { throw 'No projects found in projects.yaml' }
           if ($names.Count -ne $paths.Count) {
             throw "Project name/path count mismatch: $($names.Count) names, $($paths.Count) paths"

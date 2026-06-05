@@ -15,14 +15,22 @@ projects:
     description: "Governed execution platform for operational and AI-assisted workflows"
     status: active
     branch: main
+    planning:
+      canonical: eco/DEV-PLAN.md
+      path: eco/DEV-PATH.md
+      tracks: eco/TRACKS.md
+      notes: "Owns master eco product/release planning; child track files live under eco/tracks/."
 
   - name: eco-edge
     path: eco-edge
     group: eco-ecosystem
     description: "Edge runtime layer for eco"
     status: active
-    branch: master
+    branch: main
     runtime_of: eco
+    planning:
+      canonical: eco/tracks/TRACK-A.md
+      notes: "Tracked as part of eco Track A until eco-edge receives its own canonical plan."
 
   - name: eco-slate
     path: eco-slate
@@ -31,6 +39,8 @@ projects:
     status: active
     branch: main
     governance_package: eco
+    planning:
+      roadmap: eco-slate/docs/roadmap.md
 
   - name: eco-slate-www
     path: eco-slate-www
@@ -39,6 +49,9 @@ projects:
     status: active
     branch: main
     site_for: eco-slate
+    planning:
+      canonical: eco-slate-www/docs/DEV_PLAN.md
+      path: eco-slate-www/docs/DEV_PATH.md
 
   - name: eco.vs
     path: eco.vs
@@ -47,6 +60,9 @@ projects:
     status: wip
     branch: ~
     runtime_of: eco
+    planning:
+      canonical: eco/tracks/TRACK-B.md
+      notes: "Tracked as part of eco Track B until eco.vs receives its own canonical plan."
 
   - name: .eco
     path: .eco
@@ -55,6 +71,10 @@ projects:
     status: active
     branch: main
     governance_package: eco
+    planning:
+      path: .eco/devpath.md
+      changelog: .eco/passchangelog.md
+      notes: "Runtime-kernel path only; not the eco product roadmap."
 
   - name: eos
     path: eos
@@ -63,6 +83,9 @@ projects:
     status: active
     branch: main
     runtime_of: eco
+    planning:
+      canonical: eco/DEV-PLAN.md
+      notes: "Direction currently inherited from eco governance/runtime planning."
 
   - name: ons
     path: governance-commons/ons
@@ -71,6 +94,8 @@ projects:
     status: stable
     branch: main
     governance_package: eco
+    planning:
+      notes: "Stable Governance Commons standard; no standalone roadmap found in active scan."
 
   # ─── COCKPIT ─────────────────────────────────────────────────────────────────
   # UI/UX layer for eco — portable across apps, mods, platforms, and devices
@@ -82,6 +107,9 @@ projects:
     status: scaffold
     branch: main
     runtime_of: eco
+    planning:
+      canonical: eco/tracks/TRACK-B.md
+      notes: "Tracked as part of eco Track B until cockpit receives its own canonical plan."
 
   # ─── GOVERNANCE COMMONS ──────────────────────────────────────────────────────
   # Open standards for agent governance, orchestration, and runtime contracts
@@ -92,6 +120,8 @@ projects:
     description: "Per-agent contract spec — what an orchestrator reads before assigning work"
     status: active
     branch: main
+    planning:
+      roadmap: governance-commons/agent-dossier/ROADMAP.md
 
   - name: agent-dossier-www
     path: governance-commons/agent-dossier-www
@@ -100,6 +130,8 @@ projects:
     status: active
     branch: main
     site_for: agent-dossier
+    planning:
+      domain_plan: governance-commons/agent-dossier-www/GOVERNANCE_COMMONS_DOMAIN_PLAN.md
 
   - name: agent-matrix
     path: governance-commons/agent-matrix
@@ -107,6 +139,8 @@ projects:
     description: "Capability, routing, trust, and safety model for agent orchestration"
     status: active
     branch: main
+    planning:
+      notes: "No active roadmap/dev plan found in scan; status inferred from README/version/changelog."
 
   - name: governance-commons-www
     path: governance-commons/governance-commons-www
@@ -114,6 +148,8 @@ projects:
     description: "Public web presence for Governance Commons"
     status: active
     branch: main
+    planning:
+      notes: "No active standalone plan found; site direction currently follows Governance Commons standards publishing needs."
 
   - name: governance-commons-code
     path: governance-commons/governance-commons-code
@@ -121,6 +157,8 @@ projects:
     description: "Code-level implementation of Governance Commons standards"
     status: wip
     branch: ~
+    planning:
+      notes: "No git repo or active plan found yet."
 
   - name: project-orchestrator-agent
     path: governance-commons/project-orchestrator-agent
@@ -128,6 +166,10 @@ projects:
     description: "Runtime orchestration contract — task graph, dispatch, handoff, audit"
     status: active
     branch: main
+    planning:
+      canonical: governance-commons/project-orchestrator-agent/DevPlan-v1.0.md
+      path: governance-commons/project-orchestrator-agent/DevPath-v1.0.md
+      tracks: governance-commons/project-orchestrator-agent/Tracks.md
 
   # ─── DEV TOOLS ───────────────────────────────────────────────────────────────
 
@@ -137,6 +179,8 @@ projects:
     description: "Modular developer OS — environment scaffolding, diagnostics, cleanup"
     status: active
     branch: main
+    planning:
+      implementation_plan: devtoolkit/docs/DevToolkit-V1.0-ImplementationPlan.md
 
   - name: devxtoolkit
     path: devxtoolkit
@@ -145,6 +189,9 @@ projects:
     status: active
     branch: ~
     depends_on: eco
+    planning:
+      project: devxtoolkit/governance/project.yaml
+      changelog: devxtoolkit/governance/passchangelog.md
 
   - name: powershell
     path: powershell
@@ -152,6 +199,8 @@ projects:
     description: "PowerShell scripts and shell utilities"
     status: active
     branch: main
+    planning:
+      notes: "No active direction doc found in scan."
 
   - name: tools
     path: tools
@@ -159,6 +208,8 @@ projects:
     description: "General-purpose tooling and scripts"
     status: wip
     branch: ~
+    planning:
+      notes: "No active direction doc found; external tool repos should stay outside default planning health."
 
   # ─── APPS & PRODUCTS ─────────────────────────────────────────────────────────
 
@@ -168,14 +219,23 @@ projects:
     description: "Flutter app for obligation tracking — bills, subscriptions, reminders"
     status: active
     branch: main
+    planning:
+      path: kinjuu/devpath.md
+      project: kinjuu/project.yaml
+      changelog: kinjuu/passchangelog.md
 
   - name: niji
     path: niji
     group: apps
     description: "Deterministic color palette module for eco"
     status: active
-    branch: master
+    branch: main
     publishes_to: eco
+    planning:
+      canonical: niji/niji_current_status.md
+      path: niji/niji_dev_path_v0.1_to_v2.0.md
+      implementation_plan: niji/niji_implementation_plan_v0.1.md
+      alternate_status: niji/docs/niji_current_status.md
 
   - name: elan
     path: elan
@@ -183,6 +243,8 @@ projects:
     description: "TBD"
     status: scaffold
     branch: main
+    planning:
+      notes: "No active direction doc found."
 
   - name: arche
     path: arche
@@ -190,6 +252,8 @@ projects:
     description: "TBD"
     status: scaffold
     branch: main
+    planning:
+      notes: "No active direction doc found."
 
   # ─── DOCS ────────────────────────────────────────────────────────────────────
 
@@ -199,6 +263,9 @@ projects:
     description: "Cross-project documentation"
     status: wip
     branch: ~
+    planning:
+      canonical: docs/project-direction-inventory.md
+      standard: docs/planning-normalization.md
 
   # ─── ARCHIVES ────────────────────────────────────────────────────────────────
 
