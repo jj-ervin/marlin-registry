@@ -1,3 +1,22 @@
-# Source 40
-Placeholder for article summary and extraction.
+---
+title: ""
+publication: ""
+url: ""
+date: ""
+topics: []
+relevance: []
+---
 
+## Summary
+
+
+## Key Points
+
+-
+
+## Relevance to Eco
+
+
+## Excerpts
+
+>
