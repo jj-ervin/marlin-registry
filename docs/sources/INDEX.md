@@ -13,7 +13,7 @@ Add a row here whenever a new source file is populated.
 | [06](source_06.md) | Microsoft Build 2026: Agent-First Computing, Execution Containers, and Offline Autonomy | Microsoft Build | 2026-05 | agent-runtime, platform-architecture, identity-trust, ux-design | eco, .eco, cockpit, governance-commons, agent-matrix, ons |
 | [07](source_07.md) | Asana Unveils Operating System for Human-Agent Teams | Asana / Business Wire | 2026-06 | platform-architecture, agent-runtime, open-source, devex | eco, governance-commons, agent-matrix, cockpit, agent-dossier |
 | [08](source_08.md) | Neuromorphic Computing: Event-Driven Computation, Locality, and Energy-Aware Routing | TBD | TBD | platform-architecture, agent-runtime, llm-infra, observability | eco, .eco, eos, agent-matrix |
-| [09](source_09.md) | — | — | — | — | — |
+| [09](source_09.md) | CoCoT and MuSLR: Structured Reasoning Pipelines and Formal Logic for Agent Cognition | TBD | TBD | llm-infra, agent-runtime, platform-architecture, ai-governance | eco, .eco, agent-matrix, governance-commons, ons |
 | [10](source_10.md) | — | — | — | — | — |
 | [11](source_11.md) | — | — | — | — | — |
 | [12](source_12.md) | — | — | — | — | — |
