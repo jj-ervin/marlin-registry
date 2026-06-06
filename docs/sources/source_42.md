@@ -1,4 +1,8 @@
 # Source 42
+# === BEGIN SUMMARY BLOCK ===
+
+## Links
+(Eco-internal synthesis document. No external URLs — derived from sources 38–41.)
 
 # eco OG v0.2 — Governance Mapping Matrix  
 ### eco → International Standards, Protocols & Frameworks

@@ -1,67 +1,103 @@
 # Source Index
 
-Research articles informing eco ecosystem development.
-Add a row here whenever a new source file is populated.
+Research summaries informing eco ecosystem development.
+Add a row here whenever a new source file is populated. Next slot: **source_97.md**.
 
 | # | Title | Publication | Date | Topics | Relevance |
 | --- | --- | --- | --- | --- | --- |
-| [01](source_01.md) | AI Cyber Governance Framework Implementation Guide | HSCC | 2026-05 | ai-governance, agent-runtime, identity-trust, observability | eco, .eco, governance-commons, agent-dossier, agent-matrix |
-| [02](source_02.md) | Governance, Correctness, and Cross-Runtime Enforcement as Architectural Primitives | TBD | TBD | ai-governance, agent-runtime, platform-architecture, identity-trust | eco, .eco, governance-commons, agent-matrix, agent-dossier, ons |
-| [03](source_03.md) | FunFuzz: LLM-Powered Evolutionary Fuzzing Framework | arXiv | 2026-05 | agent-runtime, platform-architecture, llm-infra, observability | eco, .eco, agent-matrix, governance-commons |
-| [04](source_04.md) | Walrus Memory: Portable, Encrypted, Cross-Provider Agent Memory | TBD | TBD | agent-runtime, platform-architecture, identity-trust, llm-infra | eco, .eco, agent-dossier, agent-matrix, governance-commons, ons |
-| [05](source_05.md) | The Future Belongs to Embedded, Autonomous, Tool-Connected Agents | TBD | TBD | agent-runtime, platform-architecture, devex, ux-design | eco, .eco, cockpit, agent-matrix, governance-commons, ons |
-| [06](source_06.md) | Microsoft Build 2026: Agent-First Computing, Execution Containers, and Offline Autonomy | Microsoft Build | 2026-05 | agent-runtime, platform-architecture, identity-trust, ux-design | eco, .eco, cockpit, governance-commons, agent-matrix, ons |
-| [07](source_07.md) | Asana Unveils Operating System for Human-Agent Teams | Asana / Business Wire | 2026-06 | platform-architecture, agent-runtime, open-source, devex | eco, governance-commons, agent-matrix, cockpit, agent-dossier |
-| [08](source_08.md) | Neuromorphic Computing: Event-Driven Computation, Locality, and Energy-Aware Routing | TBD | TBD | platform-architecture, agent-runtime, llm-infra, observability | eco, .eco, eos, agent-matrix |
-| [09](source_09.md) | CoCoT and MuSLR: Structured Reasoning Pipelines and Formal Logic for Agent Cognition | TBD | TBD | llm-infra, agent-runtime, platform-architecture, ai-governance | eco, .eco, agent-matrix, governance-commons, ons |
-| [10](source_10.md) | Data Mesh, Data Fabric, and Federated Governance at Scale | TBD | TBD | platform-architecture, data-contracts, ai-governance, observability | eco, .eco, governance-commons, ons, agent-matrix |
-| [11](source_11.md) | — | — | — | — | — |
-| [12](source_12.md) | — | — | — | — | — |
-| [13](source_13.md) | — | — | — | — | — |
-| [14](source_14.md) | — | — | — | — | — |
-| [15](source_15.md) | — | — | — | — | — |
-| [16](source_16.md) | — | — | — | — | — |
-| [17](source_17.md) | — | — | — | — | — |
-| [18](source_18.md) | — | — | — | — | — |
-| [19](source_19.md) | — | — | — | — | — |
-| [20](source_20.md) | — | — | — | — | — |
-| [21](source_21.md) | — | — | — | — | — |
-| [22](source_22.md) | — | — | — | — | — |
-| [23](source_23.md) | — | — | — | — | — |
-| [24](source_24.md) | — | — | — | — | — |
-| [25](source_25.md) | — | — | — | — | — |
-| [26](source_26.md) | — | — | — | — | — |
-| [27](source_27.md) | — | — | — | — | — |
-| [28](source_28.md) | — | — | — | — | — |
-| [29](source_29.md) | — | — | — | — | — |
-| [30](source_30.md) | — | — | — | — | — |
-| [31](source_31.md) | — | — | — | — | — |
-| [32](source_32.md) | — | — | — | — | — |
-| [33](source_33.md) | — | — | — | — | — |
-| [34](source_34.md) | — | — | — | — | — |
-| [35](source_35.md) | — | — | — | — | — |
-| [36](source_36.md) | — | — | — | — | — |
-| [37](source_37.md) | — | — | — | — | — |
-| [38](source_38.md) | — | — | — | — | — |
-| [39](source_39.md) | — | — | — | — | — |
-| [40](source_40.md) | — | — | — | — | — |
-| [41](source_41.md) | — | — | — | — | — |
-| [42](source_42.md) | — | — | — | — | — |
-| [43](source_43.md) | — | — | — | — | — |
-| [44](source_44.md) | — | — | — | — | — |
-| [45](source_45.md) | — | — | — | — | — |
-| [46](source_46.md) | — | — | — | — | — |
-| [47](source_47.md) | — | — | — | — | — |
-| [48](source_48.md) | — | — | — | — | — |
-| [49](source_49.md) | — | — | — | — | — |
-| [50](source_50.md) | — | — | — | — | — |
-| [51](source_51.md) | — | — | — | — | — |
-| [52](source_52.md) | — | — | — | — | — |
-| [53](source_53.md) | — | — | — | — | — |
-| [54](source_54.md) | — | — | — | — | — |
-| [55](source_55.md) | — | — | — | — | — |
-| [56](source_56.md) | — | — | — | — | — |
-| [57](source_57.md) | — | — | — | — | — |
-| [58](source_58.md) | — | — | — | — | — |
-| [59](source_59.md) | — | — | — | — | — |
-| [60](source_60.md) | — | — | — | — | — |
+| [01](source_01.md) | From Governance to Growth: Pacific AI and Blue Marlin AI — Unified Framework for Enterprise AI | GlobeNewswire / Pacific AI | 2026-03 | ai-governance, platform-architecture | eco, .eco, governance-commons |
+| [02](source_02.md) | RegScale: Gartner 2026 Market Guide for DevOps Continuous Compliance Automation | RegScale / Gartner | 2026-03 | ai-governance, platform-architecture, regulations | eco, .eco, governance-commons |
+| [03](source_03.md) | Osprey Framework and LangGraph: Agentic Workflow Orchestration Research | Osprey / LangChain / ALS | 2024 | agent-runtime, platform-architecture, llm-infra | eco, .eco, agent-matrix |
+| [04](source_04.md) | (extraction template — no article content) | — | — | — | — |
+| [05](source_05.md) | Scientist AI, AGI Cognitive Framework, and Superintelligence Safety | arXiv / DeepMind / LawZero | 2025-2026 | ai-governance, llm-infra, platform-architecture | eco, .eco, governance-commons, agent-matrix |
+| [06](source_06.md) | PT-LiRPA: Neural Network Robustness Verification and Bound-Tightening | arXiv / JAIR | 2024-2025 | llm-infra, platform-architecture | eco, .eco, agent-matrix |
+| [07](source_07.md) | Industry 4.0 and RAMI 4.0: Structured Digital Architecture for Enterprise AI | Devdiscourse / ISA | 2026 | platform-architecture, agent-runtime | eco, .eco |
+| [08](source_08.md) | AMA Research: AI as a Daily Workplace Tool — Adoption Patterns and Governance | AMA / PR Newswire | 2026 | ai-governance, platform-architecture | eco, .eco, governance-commons |
+| [09](source_09.md) | From Tools to Workflows: The Structural Shift in Agentic AI | MSN | 2026 | agent-runtime, platform-architecture | eco, .eco, agent-matrix, governance-commons |
+| [10](source_10.md) | Enterprise Integration Patterns for Modern Data Architectures | Tacnode / EIP | 2026 | platform-architecture, data-contracts | eco, .eco, agent-matrix |
+| [11](source_11.md) | Software Carbon Intensity (SCI) Specification and ISO/IEC 21031:2024 | Green Software Foundation / ISO | 2024 | observability, sustainability | eco, .eco, eos |
+| [12](source_12.md) | Clean Sky 2 Next-Generation Cockpit and Adaptive Aviation Interfaces | aqf.pt / Clean Aviation EU | 2024 | ux-design, platform-architecture | eco, cockpit |
+| [13](source_13.md) | Measuring Progress Toward AGI: A Cognitive Framework | Google DeepMind | 2026 | llm-infra, ai-governance, platform-architecture | eco, .eco, agent-matrix |
+| [14](source_14.md) | PokeeResearch-7B: RLAIF, Self-Verification, and Multi-Hop Reasoning | Hugging Face / arXiv | 2025 | llm-infra, agent-runtime | eco, .eco, agent-matrix |
+| [15](source_15.md) | Meta's Manus Desktop App: Local-First AI Agent Execution | CNBC / Manus | 2026-03 | agent-runtime, platform-architecture, ux-design | eco, .eco, cockpit, agent-matrix |
+| [16](source_16.md) | White House National AI Policy Framework | White House | 2026-03 | ai-governance, regulations | eco, .eco, governance-commons, ons |
+| [17](source_17.md) | International AI Safety Report 2026 | internationalaisafetyreport.org | 2026-02 | ai-governance | eco, .eco, governance-commons |
+| [18](source_18.md) | Real-Time Win Probability and Latent Ability: STATS X and T-Score Framework | arXiv | 2026 | llm-infra, platform-architecture | eco, .eco, agent-matrix |
+| [19](source_19.md) | API Integration Patterns for AI: REST, GraphQL, and Multi-API Orchestration | Atlan / GraphQL.org | 2026 | platform-architecture, agent-runtime | eco, .eco, agent-matrix, ons |
+| [20](source_20.md) | LASSO, Ridge, and Elastic Net: Variable Selection and Regularization | Springer / Berkeley | 2025 | llm-infra, platform-architecture | eco, .eco, agent-matrix |
+| [21](source_21.md) | From Connectivity to Mission-Critical Service: Telco Orchestration Evolution | BaseN / LinkedIn | 2026 | platform-architecture, agent-runtime | eco, .eco, governance-commons |
+| [22](source_22.md) | Windows Dev Drive: ReFS, Performance Zones, and Developer Workspace Configuration | Microsoft Learn | 2026 | devex, platform-architecture | eco, .eco |
+| [23](source_23.md) | Green Software Engineering: Sustainable Computing Standards and Legislation 2026 | Programming Helper / GSF | 2026 | observability, sustainability, regulations | eco, .eco, eos |
+| [24](source_24.md) | Top 5 Strategic Shifts Transforming Creative Operations in 2026 | ICP / Adobe / Gartner | 2026 | platform-architecture, ux-design | eco, .eco, cockpit |
+| [25](source_25.md) | LexisNexis Future of Work Report 2026: GenAI Adoption and Governance Gaps | LexisNexis / GlobeNewswire | 2026-03 | ai-governance, platform-architecture | eco, .eco, governance-commons |
+| [26](source_26.md) | Workplace Mental Health 2026: Burnout Prevention and Psychological Safety | Favor Mental Health / CSA | 2026 | ai-governance, platform-architecture | eco, .eco, governance-commons |
+| [27](source_27.md) | Metadata Management as a Service: Global Market Report 2026 | TBRC | 2026 | platform-architecture, data-contracts | eco, .eco, governance-commons, ons |
+| [28](source_28.md) | AI and Leadership: Forbes Series on the Leadership Identity Gap | Forbes | 2026 | ai-governance, platform-architecture | eco, .eco, governance-commons |
+| [29](source_29.md) | Deloitte 2026 Global Human Capital Trends and Enterprise AI Trust Frameworks | Deloitte | 2026 | ai-governance, platform-architecture | eco, .eco, governance-commons |
+| [30](source_30.md) | Tencent GDC 2026: MagicDawn, VISVISE, and ACE AI Technologies | Inven Global / Tencent | 2026-03 | llm-infra, platform-architecture, agent-runtime | eco, .eco, agent-matrix |
+| [31](source_31.md) | Creative Ops 2026: Efficacy Over Efficiency and Strategic AI Alignment | Aquent / Martech | 2026 | platform-architecture, ux-design | eco, .eco, cockpit |
+| [32](source_32.md) | SoftBank and AEP: 10 GW Ohio AI Data Center Campus | MSN / SoftBank | 2026 | platform-architecture | eco, .eco |
+| [33](source_33.md) | Trump National AI Legislative Framework: Federal Preemption and Innovation Policy | White House / MSN | 2026-03 | ai-governance, regulations | eco, .eco, governance-commons, ons |
+| [34](source_34.md) | ISO/IEC 42001, EU AI Act, NIST AI RMF: AI Governance and Compliance Standards | ISO / EU / NIST | 2023-2026 | ai-governance, regulations | eco, .eco, governance-commons, ons |
+| [35](source_35.md) | UniSAFE: Unified Safety Benchmark for Multimodal Models | arXiv | 2026-03 | ai-governance, llm-infra | eco, .eco, governance-commons, agent-matrix |
+| [36](source_36.md) | WordPress.com MCP Write Capabilities: AI Agents with Editorial Authority | CMSWire / The Next Web | 2026-03 | agent-runtime, platform-architecture | eco, .eco, agent-matrix |
+| [37](source_37.md) | Udemy Altus: Agentic AI for Skills Diagnostics and Workforce Capability | Business Wire / Udemy | 2026-03 | agent-runtime, platform-architecture | eco, .eco, agent-matrix |
+| [38](source_38.md) | HIMSS26 Consolidated Synthesis: Agentic AI in Healthcare Operations | HIMSS26 corpus | 2026 | ai-governance, agent-runtime, observability | eco, .eco, governance-commons, agent-matrix |
+| 39 | eco OG v0.2 Standards Alignment | eco / Internal | 2026 | ai-governance, regulations | → moved to `c:/dev/eco/canon/governance/og-v0.2/standards-alignment.md` |
+| 40 | eco OG v0.2 Inclusion Set | eco / Internal | 2026 | ai-governance | → moved to `c:/dev/eco/canon/governance/og-v0.2/og-v0.2.inclusion.md` |
+| 41 | eco OG v0.2 Exclusion Set | eco / Internal | 2026 | ai-governance | → moved to `c:/dev/eco/canon/governance/og-v0.2/og-v0.2.exclusion.md` |
+| 42 | eco OG v0.2 Governance Mapping Matrix | eco / Internal | 2026 | ai-governance, regulations | → moved to `c:/dev/eco/canon/governance/og-v0.2/og-v0.2.governance-mapping-matrix.md` |
+| [43](source_43.md) | International AI Safety Report 2026: Copilot Canonical Summary Block | International AI Safety Report | 2026-02 | ai-governance | eco, .eco, governance-commons |
+| [44](source_44.md) | Grammar from the International AI Safety Report 2026 for eco Adoption | International AI Safety Report | 2026-02 | ai-governance, platform-architecture | eco, .eco, governance-commons |
+| [45](source_45.md) | EU AI Act / NIST AI RMF Compliance Research | Copilot synthesis | 2026 | ai-governance, regulations | eco, .eco, governance-commons |
+| [46](source_46.md) | Embodied AI, LLM Convergence, and Theory-of-Mind Survey | Copilot synthesis | 2026 | llm-infra, agent-runtime, platform-architecture | eco, .eco, agent-matrix |
+| [47](source_47.md) | MCP (Model Context Protocol) and Serverless Execution Patterns | Copilot synthesis | 2026 | agent-runtime, platform-architecture, llm-infra | eco, .eco, agent-matrix |
+| [48](source_48.md) | Multi-Agent Governance: Entra Agent ID, Workday ASOR, Cross-Model Governance | Copilot synthesis | 2026 | ai-governance, agent-runtime, identity-trust | eco, .eco, agent-matrix, governance-commons, agent-dossier |
+| [49](source_49.md) | Dreaming-Style Memory Consolidation and Multi-Agent Self-Healing | Copilot synthesis | 2026 | agent-runtime, llm-infra | eco, .eco, agent-matrix |
+| [50](source_50.md) | Adversarial AI Safety, Formal Reasoning, and IDS Synthesis | Copilot synthesis | 2026 | ai-governance, llm-infra | eco, .eco, governance-commons, agent-matrix |
+| [51](source_51.md) | Prompt Injection and Confusable Deputy Threat Model | Copilot synthesis | 2026 | ai-governance, agent-runtime | eco, .eco, governance-commons, agent-matrix |
+| [52](source_52.md) | AI Security Platforms: Continuous Validation, Swarm Architecture, Human Governance | Copilot synthesis | 2026 | ai-governance, agent-runtime | eco, .eco, governance-commons, agent-matrix |
+| [53](source_53.md) | Chaos Engineering and Observability: Blast Radius and Fault Injection | Copilot synthesis | 2026 | observability, platform-architecture, agent-runtime | eco, .eco, agent-matrix |
+| [54](source_54.md) | NVIDIA Physical-AI Stack: Cosmos, Omniverse, Isaac, NemoClaw | Copilot synthesis | 2026 | platform-architecture, agent-runtime | eco, .eco, agent-matrix |
+| [55](source_55.md) | Agentic AI Failure Modes and Resilience OS Framing | Copilot synthesis | 2026 | ai-governance, agent-runtime | eco, .eco, governance-commons, agent-matrix |
+| [56](source_56.md) | GIGABYTE AI TOP Hardware Ecosystem (COMPUTEX 2026) | GIGABYTE / COMPUTEX | 2026-05 | platform-architecture | eco, .eco |
+| [57](source_57.md) | HSCC AI Cybersecurity Governance Framework Implementation Guide | HSCC | 2026-05 | ai-governance, agent-runtime, identity-trust, observability | eco, .eco, governance-commons, agent-dossier, agent-matrix |
+| [58](source_58.md) | AI Legal and Regulatory Landscape 2026: EU AI Act, U.S. State Laws, and Compliance Obligations | EU / Colorado / Trump Admin / xAI litigation | 2026 | ai-governance, regulations, identity-trust | eco, .eco, governance-commons, ons |
+| [59](source_59.md) | AI, Antitrust, and Platform Power: Regulatory Lessons for eco Architecture | Copilot synthesis | 2026 | ai-governance, regulations, platform-architecture | eco, .eco, governance-commons, ons |
+| [60](source_60.md) | Trump AI Executive Order June 2026: Voluntary Oversight, Security-First, and Geopolitical Framing | White House / CBS / AP / JD Supra | 2026-06 | ai-governance, regulations, platform-architecture | eco, .eco, governance-commons, ons |
+| [61](source_61.md) | Workforce Readiness, 10-Day Skill Loops, and Lifecycle Integration as AI Deployment Primitives | Copilot synthesis | 2026 | platform-architecture, agent-runtime, devex | eco, .eco, cockpit, agent-matrix, governance-commons |
+| [62](source_62.md) | Codex vs eco: Vertical Bundles vs Horizontal Primitives — Strategic Positioning Analysis | Copilot synthesis | 2026 | platform-architecture, agent-runtime | eco, .eco, governance-commons, agent-matrix |
+| [63](source_63.md) | DRL-Guided Exploration, Temporal Logic, and Multi-Objective Verification for AI Runtime Safety | Copilot synthesis | 2026 | platform-architecture, llm-infra, ai-governance | eco, .eco, agent-matrix, governance-commons |
+| [64](source_64.md) | Formal Verification as a First-Class Architectural Primitive: Proof-Native Pipelines for AI Systems | Copilot synthesis | 2026 | platform-architecture, llm-infra, ai-governance | eco, .eco, agent-matrix, governance-commons |
+| [65](source_65.md) | Distributed Governance at Scale: Hybrid Stewards, Metadata Contracts, and Federated Authority | Copilot synthesis | 2026 | ai-governance, platform-architecture, data-contracts | eco, .eco, governance-commons, agent-matrix, ons |
+| [66](source_66.md) | Data Mesh, Federated Governance, and Ecosystem Fabric: Scaling Guardrails for Distributed AI Systems | Copilot synthesis | 2026 | platform-architecture, data-contracts, ai-governance | eco, .eco, governance-commons, ons, agent-matrix |
+| [67](source_67.md) | CoCoT and MuSLR: Structured Reasoning Pipelines and Formal Logic for eco's Cognition Stack | Copilot synthesis | 2026 | llm-infra, platform-architecture, ai-governance | eco, .eco, agent-matrix, governance-commons |
+| [68](source_68.md) | Neuromorphic Computing Principles: Event-Driven Computation, Locality, and Energy-Aware Routing for eco, HELM, and Jäger-Modus | Copilot synthesis | 2026 | platform-architecture, agent-runtime, observability | eco, .eco, eos, agent-matrix |
+| [69](source_69.md) | Asana Unveils Operating System for Human-Agent Teams: Market Validation for eco's Architecture | Reworked / Business Wire / Melbourne Insider | 2026-06 | platform-architecture, agent-runtime, ai-governance | eco, .eco, cockpit, agent-matrix, governance-commons |
+| [70](source_70.md) | Microsoft Build 2026: Sandboxed Autonomy, Execution Containers, and Agent-First OS Architecture | Copilot synthesis | 2026-06 | platform-architecture, agent-runtime, ai-governance, devex | eco, .eco, cockpit, agent-matrix, governance-commons, eos |
+| [71](source_71.md) | The End of Chat: Embedded Autonomous Agents, MCP Infrastructure, and eco as Protocol-Native OS | Copilot synthesis | 2026-06 | platform-architecture, agent-runtime, ai-governance, llm-infra | eco, .eco, agent-matrix, governance-commons, ons |
+| [72](source_72.md) | Walrus Memory: Portable Context, Cryptographic Verification, and Cross-Provider Continuity for eco | Copilot synthesis | 2026-06 | platform-architecture, agent-runtime, identity-trust, llm-infra | eco, .eco, agent-matrix, governance-commons, agent-dossier |
+| [73](source_73.md) | FunFuzz: Multi-Island Evolution, Adaptive Prompting, and Evolutionary Exploration as eco Primitives | arXiv / aimodels.fyi | 2026 | llm-infra, platform-architecture, agent-runtime, ai-governance | eco, .eco, agent-matrix, governance-commons |
+| [74](source_74.md) | Governance as Architecture: Formal Specification, ACS Guardrails, and Network-Layer Enforcement for eco | Copilot synthesis | 2026-06 | ai-governance, platform-architecture, agent-runtime, identity-trust | eco, .eco, governance-commons, agent-matrix, ons |
+| [75](source_75.md) | HSCC AI Cybersecurity Governance Framework: AI-Specific Threats, AIBOM, and Lifecycle Governance for eco | HSCC / Healthcare IT News / Industrial Cyber | 2026-05 | ai-governance, identity-trust, platform-architecture, regulations | eco, .eco, governance-commons, agent-dossier, agent-matrix, ons |
+| [76](source_76.md) | GIGABYTE AI TOP Ecosystem: Local-First Sovereignty, Tiered Architecture, and Hardware-Aware Design Signals for eco | Copilot synthesis | 2026-06 | platform-architecture, agent-runtime, devex | eco, .eco, eos, agent-matrix |
+| [77](source_77.md) | Agentic Resilience OS: Hidden Failure Modes, Chaos Engineering Gaps, and eco as the Governed Execution Environment | Copilot synthesis | 2026-06 | ai-governance, platform-architecture, agent-runtime, observability | eco, .eco, governance-commons, agent-matrix, cockpit |
+| [78](source_78.md) | NVIDIA Physical-AI Open-Source Stack: eco's Integration Pathways and Governance Layer Positioning | Markets Business Insider | 2026-06 | platform-architecture, agent-runtime, llm-infra | eco, .eco, agent-matrix, governance-commons |
+| [79](source_79.md) | MetaKarta Semantic Hub: Write-Once Compile-Anywhere Metric Governance and the Semantic Consistency Problem | PR Newswire / Briefglance / Futunn | 2026 | data-contracts, platform-architecture, ai-governance | eco, .eco, governance-commons, ons, agent-matrix |
+| [80](source_80.md) | Chaos Engineering as a Native eco Primitive: Fault Injection, Steady-State Contracts, and Resilience-as-Infrastructure | Copilot synthesis | 2026-06 | platform-architecture, agent-runtime, observability, ai-governance | eco, .eco, agent-matrix, governance-commons |
+| [81](source_81.md) | Security-AI Platforms: Continuous Validation, Agent Swarms, and Human-Trust Governance as eco Primitives | Copilot synthesis | 2026-06 | ai-governance, agent-runtime, platform-architecture, observability | eco, .eco, governance-commons, agent-matrix, cockpit |
+| [82](source_82.md) | NVIDIA DGX Spark as eco's Physical Substrate: Hardware-Software Alignment and the Local Cognitive Node Model | Copilot synthesis | 2026-06 | platform-architecture, agent-runtime, llm-infra | eco, .eco, eos, agent-matrix |
+| [83](source_83.md) | Stroustrup's Critique of AI-Generated Code: eco's Constitutional Primitives as the Direct Response | OfficeChai / The News International / Caimpare.ai | 2026 | ai-governance, platform-architecture, devex, llm-infra | eco, .eco, governance-commons, agent-matrix |
+| [84](source_84.md) | Sysdig Autonomous AI Attack Chain: eco's Behavioral Detection, Containment, and Teaching-Layer Response | Copilot synthesis | 2026-06 | ai-governance, agent-runtime, identity-trust, observability | eco, .eco, governance-commons, agent-matrix, agent-dossier |
+| [85](source_85.md) | Metadata-First AI Architecture: eco as the Governed Context Layer Where Metadata Is the System | Copilot synthesis | 2026-06 | data-contracts, platform-architecture, ai-governance, observability | eco, .eco, governance-commons, ons, agent-matrix |
+| [86](source_86.md) | eco-goalie: Defensive Autonomy Layer, Constitutional Safety, and Governed Physical Interception of Machines | Copilot synthesis | 2026-06 | platform-architecture, agent-runtime, ai-governance, identity-trust | eco, .eco, governance-commons, agent-matrix, cockpit |
+| [87](source_87.md) | Enterprise MDM 2026: Contextual Truths, Autonomous Stewardship, and eco as the Semantic Layer Above Data Governance | Copilot synthesis | 2026-06 | data-contracts, platform-architecture, ai-governance | eco, .eco, governance-commons, ons, agent-matrix |
+| [88](source_88.md) | Metadata Maturity as the Primary AI Reliability Determinant: Gartner, arXiv, and IJDC Unified Model | Alation/Gartner / arXiv / IJDC | 2024-2026 | data-contracts, platform-architecture, ai-governance, observability | eco, .eco, governance-commons, ons, agent-matrix |
+| [89](source_89.md) | U.S. State Privacy and AI Governance 2025-2026: Rights-Centric Architecture Primitives for eco | DLA Piper / NCSL / Novum Strategy | 2025-2026 | regulations, ai-governance, data-contracts, identity-trust | eco, .eco, governance-commons, ons, agent-dossier |
+| [90](source_90.md) | EU AI Act Global Compliance Architecture: Risk Tiers, Role Resolution, and Jurisdictional Override Primitives for eco | TechRepublic / JD Supra / CCI / EU Parliament | 2025-2026 | regulations, ai-governance, platform-architecture, identity-trust | eco, .eco, governance-commons, ons, agent-matrix |
+| [91](source_91.md) | Embodied AI, Theory-of-Mind, and LLM-Embodiment Convergence: Mental-World Modeling Primitives for eco | arXiv / Tsinghua / Frontiers | 2025 | llm-infra, platform-architecture, agent-runtime | eco, .eco, agent-matrix, cockpit, governance-commons |
+| [92](source_92.md) | Serverless MCP: Protocol-Native Execution, eco as Meta-Framework, and the Industry Convergence Validation | Serverless Framework / AWS / AWS Labs | 2026 | platform-architecture, agent-runtime, llm-infra, identity-trust | eco, .eco, agent-matrix, governance-commons, ons |
+| [93](source_93.md) | Multi-Agent Governance Convergence: Unified Control Plane, Agent Identity, and Governance-First Architecture for eco | Copilot synthesis | 2026-06 | ai-governance, identity-trust, platform-architecture, agent-runtime | eco, .eco, governance-commons, agent-matrix, agent-dossier |
+| [94](source_94.md) | Anthropic Dreaming + ManageEngine Zia Agents: Memory Consolidation, Orchestrated Self-Healing, and eco's Adoption Path | conzit.com / aitrove.ai / ManageEngine / shashi.co | 2026 | agent-runtime, platform-architecture, ai-governance, llm-infra | eco, .eco, agent-matrix, governance-commons |
+| [95](source_95.md) | Continuous Adversarial Verification, Formal Reasoning Contracts, and Inductive-Deductive Synthesis as eco Primitives | Copilot synthesis | 2026-06 | llm-infra, platform-architecture, ai-governance, agent-runtime | eco, .eco, agent-matrix, governance-commons |
+| [96](source_96.md) | Prompt Injection as a Structural Vulnerability: Prompt Firewall, Confusable Deputy Defense, and eco's Ingestion Pipeline Architecture | Decrypt / DataProvider / Cyber Security News / LinkedIn | 2026 | ai-governance, agent-runtime, identity-trust, platform-architecture | eco, .eco, governance-commons, agent-matrix |

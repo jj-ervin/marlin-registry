@@ -1,4 +1,9 @@
 # Source 39
+# === BEGIN SUMMARY BLOCK ===
+
+## Links
+(Eco-internal synthesis document. No external URLs — derived from publicly available standards summaries and crosswalks.)
+
 # eco OG v0.2 — Standards Alignment (Global Governance, Safety, Interop)
 
 ## 0. Scope

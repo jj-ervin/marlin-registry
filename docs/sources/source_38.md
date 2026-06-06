@@ -1,4 +1,9 @@
 # Source 38
+# === BEGIN SUMMARY BLOCK ===
+
+## Links
+(Eco-internal synthesis document. No external URLs — derived from HIMSS26 web corpus queries.)
+
 # himss26.web.corpus.v0.1 — Consolidated Summary + Inc/Exc Candidates
 
 ## 0. Corpus Definition (v0.1)

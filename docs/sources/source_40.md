@@ -1,4 +1,9 @@
 # Source 40
+# === BEGIN SUMMARY BLOCK ===
+
+## Links
+(Eco-internal synthesis document. No external URLs — merged from sources 38 and 39.)
+
 # eco OG v0.2 — Inclusion Set (Merged: HIMSS26 + Global Standards)
 
 ## 0. Purpose

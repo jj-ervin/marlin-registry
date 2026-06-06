@@ -1,4 +1,8 @@
-#Source 44
+# Source 44
+# === BEGIN SUMMARY BLOCK ===
+
+## Links
+(Eco-internal synthesis document. No external URLs — grammar extracted from International AI Safety Report 2026 text.)
 
 # Grammar From the International AI Safety Report 2026 That eco Should Adopt
 
