@@ -9,10 +9,10 @@
 
 ## CANONICAL DOC RULE
 
-`DEVPATH.md` owns: phase history, design decisions, origin story, agent onboarding.
+`DEVPATH.md` owns: phase history, design decisions, origin story, and task registry.
 `DEVPLAN.md` owns: current execution state, active milestones, release targets, SKU roadmap.
 
-DCP *is* `C:\dev` — this file governs the portfolio control plane itself as a product.
+This file governs the portable DCP template repo as a product.
 
 ---
 
@@ -26,13 +26,13 @@ Before working on DCP as a product, read in order:
 4. `DEVPLAN.md` — current release targets and work queue
 5. `README.md` — user-facing product description
 
-DCP components are in `C:\dev` root. They are not in a child repo — they *are* the control plane.
+DCP Core components are in this repository. When installed, they may live in a dedicated `devx-control-plane/` folder or directly in a user's portfolio root.
 
 ---
 
 ## ORIGIN
 
-DCP emerged from a governance session on 2026-06-05/06 during which the `C:\dev` portfolio was audited and the following were established in a single working session:
+DCP emerged from a governance session on 2026-06-05/06 during which a local multi-repo portfolio was audited and the following were established in a single working session:
 
 - Boundary doctrine (`DEV-CONTROL-PLANE.md`) — what lives in each layer and why
 - Planning normalization standard (`docs/planning-normalization.md`)
@@ -42,7 +42,7 @@ DCP emerged from a governance session on 2026-06-05/06 during which the `C:\dev`
 - Planning template kit (`docs/templates/`)
 - Portfolio registry cleanup (`projects.yaml` — 27 pointers verified)
 
-The session was reviewed by both Claude and Codex. Both agreed the thesis was sound. The architectural position (governance-commons / control plane / project repos / runtime) is the stable foundation DCP is built on.
+The architectural position (standards / control plane / project repos / runtime) is the stable foundation DCP is built on.
 
 ---
 
@@ -50,11 +50,11 @@ The session was reviewed by both Claude and Codex. Both agreed the thesis was so
 
 ### Phase 0 — Foundation (2026-06-05 → 2026-06-06) ✅ COMPLETE
 
-**Goal:** Establish `C:\dev` as a governed portfolio control plane.
+**Goal:** Establish the original local workspace as a governed portfolio control plane.
 
 **Key decisions:**
-- `C:\dev` is a *control plane*, not a monorepo. This distinction prevents it from absorbing execution artifacts.
-- Portability rule: portable across orgs → `governance-commons/`; local to this portfolio → `C:\dev`.
+- The portfolio root is a *control plane*, not a monorepo. This distinction prevents it from absorbing execution artifacts.
+- Portability rule: reusable standards belong outside the local DCP instance; local workflow and registry conventions belong in DCP.
 - Runtime state (live task queues, agent handoffs) must not be committed — it belongs in a workspace or database.
 - `project-orchestrator-agent` holds the runtime *contract and schemas*, not live state.
 
@@ -69,29 +69,42 @@ The session was reviewed by both Claude and Codex. Both agreed the thesis was so
 
 ---
 
-### Phase 1 — Extraction & Packaging (2026-06-06 → ongoing)
+### Phase 1 — Extraction & Packaging (2026-06-06) ✅ COMPLETE
 
-**Goal:** Make DCP portable — extractable from `C:\dev` and replicable by others.
+**Goal:** Make DCP portable — extractable from the original reference workspace and replicable by others.
 
-**Key decisions to make:**
-- What is DCP-core vs eco-ecosystem-specific? The registry schema and tooling are generic; the PASS governance system is eco-specific.
-- Where does the DCP template repo live? Options: `governance-commons/dcp`, new standalone GitHub repo, or npm/pip scaffold.
-- What is the minimum viable DCP? (Core SKU definition)
+**Key decisions:**
+- DCP Core is the standalone template repo: registry, dashboard, pointer validator, source guard, boundary doctrine, README, onboarding, and SKU boundaries.
+- Governance Kit is the separable planning layer: templates, planning normalization, and planning audit conventions.
+- Agent Kit is the separable multi-agent workflow layer: task templates, routing patterns, onboarding, handoff protocol, and audit conventions.
+- Runtime state remains outside the repo.
 
-**Planned:**
-- DCP.10 — Extract DCP into a standalone template/scaffold repo
-- DCP.11 — Define SKU boundaries (Core / Governance Kit / Agent Kit / Studio)
-- DCP.12 — Write DCP onboarding doc (for new users, not agents)
-- DCP.13 — Write consulting pitch one-pager
+**Completed:**
+- DCP.10 — Extracted DCP into a standalone template/scaffold repo
+- DCP.11 — Defined SKU boundaries in `docs/SKU-BOUNDARIES.md`
+- DCP.12 — Wrote DCP onboarding doc for new users
+- DCP.13 — Wrote consulting pitch one-pager
 
 ---
 
-### Phase 2 — Agent Kit Module (future)
+### Phase 2 — Governance Kit Module (current)
+
+**Goal:** Package the planning and normalization layer as a separable module.
+
+Planned:
+- audit `docs/templates/` for generic language
+- promote `docs/planning-normalization.md` into Governance Kit docs
+- add a planning audit checklist
+- document how Core users adopt Governance Kit incrementally
+
+---
+
+### Phase 3 — Agent Kit Module (future)
 
 **Goal:** Package the AI-agent-specific layer of DCP as a separable module.
 
 The Agent Kit includes:
-- PASS template set (generalised from eco's PASS system)
+- task template set
 - Model routing pattern library
 - Agent onboarding doc template
 - Multi-agent handoff protocol
@@ -100,7 +113,7 @@ This is DCP's primary market differentiator. Most competing tools solve the regi
 
 ---
 
-### Phase 3 — Distribution (future)
+### Phase 4 — Distribution (future)
 
 **Goal:** Make DCP findable, installable, and sellable.
 
@@ -133,18 +146,18 @@ This is DCP's primary market differentiator. Most competing tools solve the regi
 | DCP.04 | Planning template kit | done | 0 | `docs/templates/` |
 | DCP.05 | Registry audit and normalization | done | 0 | `projects.yaml` |
 | DCP.06 | README + --help + planning docs | done | 0 | This file + `DEVPLAN.md` + `README.md` |
-| DCP.10 | Extract into template repo | planned | 1 | — |
-| DCP.11 | SKU boundary definition | planned | 1 | See `DEVPLAN.md` |
-| DCP.12 | User onboarding doc | planned | 1 | — |
-| DCP.13 | Consulting pitch one-pager | planned | 1 | — |
-| DCP.20 | Agent Kit — PASS template set | planned | 2 | — |
-| DCP.21 | Agent Kit — routing pattern library | planned | 2 | — |
-| DCP.30 | GitHub template repo | planned | 3 | — |
-| DCP.31 | Scaffold CLI (`dcp init`) | planned | 3 | — |
-| DCP.32 | Consulting offering definition | planned | 3 | — |
+| DCP.10 | Extract into template repo | done | 1 | `devx-control-plane` |
+| DCP.11 | SKU boundary definition | done | 1 | `docs/SKU-BOUNDARIES.md` |
+| DCP.12 | User onboarding doc | done | 1 | `ONBOARDING.md` |
+| DCP.13 | Consulting pitch one-pager | done | 1 | `docs/PITCH.md` |
+| DCP.20 | Agent Kit — task template set | planned | 3 | — |
+| DCP.21 | Agent Kit — routing pattern library | planned | 3 | — |
+| DCP.30 | GitHub template repo | planned | 4 | — |
+| DCP.31 | Scaffold CLI (`dcp init`) | planned | 4 | — |
+| DCP.32 | Consulting offering definition | planned | 4 | — |
 
 ---
 
 ## CHANGELOG
 
-- `passchangelog.md` — session handoff log (if created)
+- 2026-06-06 — v0.2.0 Core Portable extraction completed.

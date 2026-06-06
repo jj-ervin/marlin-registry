@@ -15,15 +15,15 @@
 
 ## CURRENT POSITION
 
-**Active phase:** Phase 1 — Extraction & Packaging
-**Current version:** v0.1.0 (Phase 0 complete — foundation established)
-**Next release target:** v0.2.0 — DCP Core portable and replicable
+**Active phase:** Phase 2 — Governance Kit Packaging
+**Current version:** v0.2.0 (Core Portable complete)
+**Next release target:** v0.3.0 — Governance Kit packaged and documented
 
-**Phase 0 is complete.** All foundation work is committed. DCP exists and functions as the `C:\dev` portfolio control plane.
+**Phase 1 is complete.** DCP Core exists as a standalone template repo with a self-validating registry, portable dashboard, onboarding docs, and explicit SKU boundaries.
 
-**P0 blockers before Phase 1 work begins:**
+**P0 blockers before Phase 2 work begins:**
 
-- None. Phase 1 work can start immediately.
+- None. Phase 2 work can start immediately.
 
 ---
 
@@ -32,9 +32,9 @@
 | Version | Name | Description | Status |
 |---------|------|-------------|--------|
 | v0.1.0 | Foundation | Boundary doctrine, registry, tooling, templates, dashboard | ✅ Done |
-| v0.2.0 | Core Portable | DCP extracted as standalone template; SKU boundaries defined | ⬜ Next |
-| v0.3.0 | Governance Kit | Governance Kit packaged and documented as separable module | ⬜ |
-| v0.4.0 | Agent Kit | Agent Kit module — PASS templates, routing patterns | ⬜ |
+| v0.2.0 | Core Portable | DCP extracted as standalone template; SKU boundaries defined | ✅ Done |
+| v0.3.0 | Governance Kit | Governance Kit packaged and documented as separable module | ⬜ Next |
+| v0.4.0 | Agent Kit | Agent Kit module — task templates, routing patterns | ⬜ |
 | v1.0.0 | Studio | All modules; onboarding; consulting offering live | ⬜ |
 
 ---
@@ -55,6 +55,8 @@ Includes:
 - `protect-sources.ps1` corpus guard
 - `DEV-CONTROL-PLANE.md` boundary doctrine
 - `README.md`
+- `ONBOARDING.md`
+- `docs/SKU-BOUNDARIES.md`
 
 **Audience:** Any developer managing 3+ repos who wants a registry-driven portfolio view.
 
@@ -81,13 +83,13 @@ Includes:
 The AI-agent governance layer. This is what separates DCP from generic service catalogs.
 
 Includes:
-- Generalised PASS template set (task-level governance with authority levels)
+- Generalised task template set (task-level governance with authority levels)
 - Model routing pattern library (which agent/model for which task type)
 - Agent onboarding doc template
 - Multi-window / multi-agent handoff protocol
 - Agent-readable planning doc conventions
 
-**Audience:** Developers running multi-agent workflows (Claude + Codex + Copilot or similar) who need routing, audit trails, and governance.
+**Audience:** Developers running multi-agent workflows who need routing, audit trails, and governance.
 
 ---
 
@@ -115,9 +117,9 @@ Deliverables: configured DCP instance, custom `projects.yaml` schema, agent rout
 
 | Track | Name | Goal | Status | Next |
 |-------|------|------|--------|------|
-| A | Extraction | DCP Core portable as standalone template repo | 🔴 Not started | DCP.10 |
-| B | Documentation | Onboarding doc, consulting pitch, feature list | 🔵 Active | DCP.12 README done |
-| C | Agent Kit | PASS templates + routing patterns as separable module | 🔴 Not started | DCP.20 |
+| A | Extraction | DCP Core portable as standalone template repo | ✅ Done | v0.2.0 |
+| B | Governance Kit | Planning normalization, templates, and audit workflow packaged | 🔵 Active | DCP.14 |
+| C | Agent Kit | Task templates + routing patterns as separable module | 🔴 Not started | DCP.20 |
 | D | Distribution | GitHub template, scaffold CLI, consulting offering | 🔴 Not started | DCP.30 |
 
 ---
@@ -126,11 +128,14 @@ Deliverables: configured DCP instance, custom `projects.yaml` schema, agent rout
 
 | ID | Task | Track | Priority | Status |
 |----|------|-------|----------|--------|
-| DCP.10 | Extract DCP into standalone template repo | A | P0 | ⬜ |
-| DCP.11 | Define SKU boundaries (what is Core vs Kit vs Studio) | A | P0 | ⬜ |
-| DCP.12 | Write user onboarding doc (non-agent audience) | B | P1 | ⬜ |
-| DCP.13 | Write consulting pitch one-pager | B | P1 | ⬜ |
-| DCP.20 | Agent Kit — generalise PASS template set | C | P2 | ⬜ |
+| DCP.10 | Extract DCP into standalone template repo | A | P0 | ✅ |
+| DCP.11 | Define SKU boundaries (what is Core vs Kit vs Studio) | A | P0 | ✅ |
+| DCP.12 | Write user onboarding doc (non-agent audience) | B | P1 | ✅ |
+| DCP.13 | Write consulting pitch one-pager | B | P1 | ✅ |
+| DCP.14 | Package Governance Kit overview | B | P0 | ✅ |
+| DCP.15 | Add planning audit checklist | B | P0 | ✅ |
+| DCP.16 | Run adversarial normalization audit | B | P0 | ✅ |
+| DCP.20 | Agent Kit — generalise task template set | C | P2 | ⬜ |
 | DCP.21 | Agent Kit — write routing pattern library | C | P2 | ⬜ |
 | DCP.30 | Create GitHub template repository | D | P2 | ⬜ |
 | DCP.31 | Define consulting engagement structure and pricing | D | P2 | ⬜ |
@@ -146,6 +151,19 @@ Deliverables: configured DCP instance, custom `projects.yaml` schema, agent rout
 - DCP.04 — Planning template kit (4 templates)
 - DCP.05 — Registry audit and normalization (`projects.yaml`)
 - DCP.06 — README + `--help` + DEVPLAN + DEVPATH
+
+## RECENTLY COMPLETED (Phase 1)
+
+- DCP.10 — Extracted DCP Core into this standalone template repo
+- DCP.11 — Defined Core / Governance Kit / Agent Kit / Studio / Consulting boundaries
+- DCP.12 — Added user onboarding doc for self-service setup
+- DCP.13 — Added consulting pitch one-pager
+
+## RECENTLY COMPLETED (Phase 2)
+
+- DCP.14 — Added Governance Kit package overview
+- DCP.15 — Added planning audit checklist
+- DCP.16 — Ran adversarial normalization audit and recorded findings
 
 ---
 
