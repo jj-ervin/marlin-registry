@@ -237,7 +237,6 @@ projects:
       canonical: niji/niji_current_status.md
       path: niji/niji_dev_path_v0.1_to_v2.0.md
       implementation_plan: niji/niji_implementation_plan_v0.1.md
-      alternate_status: niji/docs/niji_current_status.md
 
   - name: elan
     path: elan
