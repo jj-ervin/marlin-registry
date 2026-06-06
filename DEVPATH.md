@@ -155,6 +155,9 @@ This is DCP's primary market differentiator. Most competing tools solve the regi
 | DCP.30 | GitHub template repo | planned | 4 | — |
 | DCP.31 | Scaffold CLI (`dcp init`) | planned | 4 | — |
 | DCP.32 | Consulting offering definition | planned | 4 | — |
+| DCP.40 | Team Kit — shared registry and domain ownership | planned | 5 | `docs/team-kit/TEAM-KIT.md` (TBD) |
+| DCP.41 | Team Kit — role-based review routing and PR governance | planned | 5 | `docs/team-kit/REVIEW-ROUTING.md` (TBD) |
+| DCP.42 | Team Kit — team onboarding and shift handoff templates | planned | 5 | `docs/team-kit/TEAM-ONBOARDING.md` (TBD) |
 
 ---
 

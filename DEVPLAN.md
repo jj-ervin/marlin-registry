@@ -35,6 +35,7 @@
 | v0.2.0 | Core Portable | DCP extracted as standalone template; SKU boundaries defined | ✅ Done |
 | v0.3.0 | Governance Kit | Governance Kit packaged and documented as separable module | ✅ Done |
 | v0.4.0 | Agent Kit | Agent Kit module — task templates, routing patterns | ✅ Done |
+| v0.5.0 | Team Kit | Team governance module — shared registry, review routing, team handoff | ⬜ Next |
 | v1.0.0 | Studio | All modules; onboarding; consulting offering live | ⬜ |
 
 ---
@@ -118,9 +119,10 @@ Deliverables: configured DCP instance, custom `projects.yaml` schema, agent rout
 | Track | Name | Goal | Status | Next |
 |-------|------|------|--------|------|
 | A | Extraction | DCP Core portable as standalone template repo | ✅ Done | v0.2.0 |
-| B | Governance Kit | Planning normalization, templates, and audit workflow packaged | 🔵 Active | DCP.14 |
+| B | Governance Kit | Planning normalization, templates, and audit workflow packaged | ✅ Done | — |
 | C | Agent Kit | Task templates + routing patterns as separable module | ✅ Done | — |
 | D | Distribution | GitHub template, scaffold CLI, consulting offering | 🔴 Not started | DCP.30 |
+| E | Team Kit | Multi-person team governance module | 🔴 Not started | DCP.40 |
 
 ---
 
@@ -139,6 +141,9 @@ Deliverables: configured DCP instance, custom `projects.yaml` schema, agent rout
 | DCP.21 | Agent Kit — write routing pattern library | C | P2 | ✅ |
 | DCP.30 | Create GitHub template repository | D | P2 | ⬜ |
 | DCP.31 | Define consulting engagement structure and pricing | D | P2 | ⬜ |
+| DCP.40 | Team Kit — shared registry and domain ownership conventions | E | P3 | ⬜ |
+| DCP.41 | Team Kit — role-based review routing and PR governance | E | P3 | ⬜ |
+| DCP.42 | Team Kit — team onboarding and shift handoff templates | E | P3 | ⬜ |
 
 ---
 
