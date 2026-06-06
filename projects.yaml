@@ -1,5 +1,5 @@
 version: "1.0"
-updated: "2026-06-05"
+updated: "2026-06-05"  # pointers normalized; all planning paths verified
 root: "c:/dev"
 
 # Status values: active | stable | wip | scaffold | archive
@@ -121,7 +121,9 @@ projects:
     status: active
     branch: main
     planning:
-      roadmap: governance-commons/agent-dossier/ROADMAP.md
+      canonical: governance-commons/agent-dossier/DEVPLAN.md
+      path: governance-commons/agent-dossier/DEVPATH.md
+      tracks: governance-commons/agent-dossier/TRACKS.md
 
   - name: agent-dossier-www
     path: governance-commons/agent-dossier-www
@@ -167,8 +169,8 @@ projects:
     status: active
     branch: main
     planning:
-      canonical: governance-commons/project-orchestrator-agent/DevPlan-v1.0.md
-      path: governance-commons/project-orchestrator-agent/DevPath-v1.0.md
+      canonical: governance-commons/project-orchestrator-agent/DEVPLAN.md
+      path: governance-commons/project-orchestrator-agent/DEVPATH.md
       tracks: governance-commons/project-orchestrator-agent/Tracks.md
 
   # ─── DEV TOOLS ───────────────────────────────────────────────────────────────
