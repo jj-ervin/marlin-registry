@@ -4,6 +4,8 @@
 
 ## project-orchestrator-agent Gap Analysis: Stale Planning Artifacts, Unreachable Escalation, Missing Runtime Enforcement, and Test Coverage Gaps
 
+_Part of the Governance Commons gap analysis series (sources 97–101)._
+
 ### Summary
 Post-PASS-2026-0002 gap analysis of project-orchestrator-agent following the Python rewrite. All 26 compiler tests pass, but nine gaps remain across governance enforcement, runtime wiring, test coverage, and spec compliance. Companion to source_97 (agent-dossier) and source_98 (agent-matrix) — together the three documents map the full implementation debt across the eco agent runtime stack.
 
@@ -76,6 +78,6 @@ _(internal analysis — no external URLs)_
 - **Publication:** Internal / eco
 - **Date:** 2026-06-05
 - **Topics:** platform-architecture, agent-runtime, ai-governance, devex
-- **Relevance:** eco, agent-matrix, agent-dossier, eos
+- **Relevance:** eco, agent-matrix, agent-dossier, governance-commons, eos
 
 # === END SUMMARY BLOCK ===

@@ -4,6 +4,8 @@
 
 ## Governance Commons Gap Analysis & Industry Positioning: Protocol Alignment, Security, Observability, Compliance Depth, and Ahead-of-Curve Opportunities
 
+_Part of the Governance Commons gap analysis series (sources 97–101). Capstone document._
+
 ### Summary
 Strategic gap analysis and industry positioning document for Governance Commons as a whole — covering all four specs (agent-dossier, agent-matrix, ONS, and the conformance layer) together. Identifies current strengths, seven gap categories, and a three-tier action ladder: unblocks adoption, industry-aligned, and ahead of the curve. Capstone document for the internal gap analysis series (sources 97–101).
 

@@ -4,6 +4,8 @@
 
 ## ONS v1.2.0 Gap Analysis: Publication Infrastructure, Spec Correctness, Tooling, Industry Alignment, and Ahead-of-Curve Opportunities
 
+_Part of the Governance Commons gap analysis series (sources 97–101)._
+
 ### Summary
 Comprehensive gap analysis of ONS (Object Naming Standard) v1.2.0 across five sections: publication infrastructure gaps (blocked on org), remaining spec correctness gaps, tooling gaps, industry alignment requirements, and five ahead-of-curve opportunities with no parallel in any existing naming standard. Third internal gap analysis document alongside source_97 (agent-dossier) and source_99 (project-orchestrator-agent).
 

@@ -4,6 +4,8 @@
 
 ## agent-dossier Runtime Gap Analysis: Spec-to-Implementation Audit — Critical Blockers, Architecture, Modularity, and SKU-ability
 
+_Part of the Governance Commons gap analysis series (sources 97–101)._
+
 ### Summary
 A rigorous multi-dimensional gap analysis of the agent-dossier project runtime, organized into five categories: critical blockers, industry alignment gaps, modularity/architecture gaps, portability gaps, and SKU-ability gaps. Also identifies five ahead-of-curve opportunities not yet first-class primitives in the industry.
 
@@ -44,6 +46,10 @@ Prioritized fix list spans P0 (5-minute fixes: package.json, .gitignore, schema 
 - Cross-organization agent federation with org-issued key signing
 
 ### Cross-references
+- See [[source_98]] — agent-matrix strategic gap analysis (series companion: protocol, SKU, identity, SLA gaps)
+- See [[source_99]] — project-orchestrator-agent gap analysis (series companion: escalation, telemetry, test coverage)
+- See [[source_100]] — ONS v1.2.0 gap analysis (series companion: RFC 2119, LSP, cluster registry)
+- See [[source_101]] — Governance Commons capstone gap analysis & industry positioning (series capstone)
 - See [[source_74]] — governance as architecture, ACS guardrails, formal specification
 - See [[source_80]] — chaos engineering as native eco primitive; fault injection
 - See [[source_84]] — Sysdig autonomous AI attack chain; behavioral detection
@@ -56,6 +62,6 @@ _(internal analysis — no external URLs)_
 - **Publication:** Internal / eco
 - **Date:** 2026-06-05
 - **Topics:** platform-architecture, agent-runtime, ai-governance, devex
-- **Relevance:** eco, agent-dossier, eos
+- **Relevance:** eco, agent-dossier, governance-commons, eos
 
 # === END SUMMARY BLOCK ===

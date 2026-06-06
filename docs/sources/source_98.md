@@ -4,6 +4,8 @@
 
 ## agent-matrix Strategic Gap Analysis: Protocol Alignment, SKU Architecture, Modularity, Identity, and Federated Orchestration
 
+_Part of the Governance Commons gap analysis series (sources 97–101)._
+
 ### Summary
 A comprehensive strategic gap analysis of agent-matrix across twelve dimensions, identifying critical blockers, high-severity architectural gaps, and medium-term risks. Companion to source_97 (agent-dossier runtime gap analysis); together they map the full spec-to-implementation debt across both projects.
 
