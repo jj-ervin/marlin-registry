@@ -150,8 +150,8 @@ This is DCP's primary market differentiator. Most competing tools solve the regi
 | DCP.11 | SKU boundary definition | done | 1 | `docs/SKU-BOUNDARIES.md` |
 | DCP.12 | User onboarding doc | done | 1 | `ONBOARDING.md` |
 | DCP.13 | Consulting pitch one-pager | done | 1 | `docs/PITCH.md` |
-| DCP.20 | Agent Kit — task template set | planned | 3 | — |
-| DCP.21 | Agent Kit — routing pattern library | planned | 3 | — |
+| DCP.20 | Agent Kit — task template set | done | 3 | `docs/agent-kit/TASK-TEMPLATE.md`, `AGENT-KIT.md`, `AGENT-ONBOARDING.md` |
+| DCP.21 | Agent Kit — routing pattern library | done | 3 | `docs/agent-kit/ROUTING-PATTERNS.md`, `HANDOFF-PROTOCOL.md` |
 | DCP.30 | GitHub template repo | planned | 4 | — |
 | DCP.31 | Scaffold CLI (`dcp init`) | planned | 4 | — |
 | DCP.32 | Consulting offering definition | planned | 4 | — |
