@@ -141,9 +141,9 @@ Deliverables: configured DCP instance, custom `projects.yaml` schema, agent rout
 | DCP.21 | Agent Kit — write routing pattern library | C | P2 | ✅ |
 | DCP.30 | Create GitHub template repository | D | P2 | ✅ |
 | DCP.31 | Define consulting engagement structure and pricing | D | P2 | ⬜ |
-| DCP.40 | Team Kit — shared registry and domain ownership conventions | E | P3 | ⬜ |
-| DCP.41 | Team Kit — role-based review routing and PR governance | E | P3 | ⬜ |
-| DCP.42 | Team Kit — team onboarding and shift handoff templates | E | P3 | ⬜ |
+| DCP.40 | Team Kit — shared registry and domain ownership conventions | E | P3 | ✅ |
+| DCP.41 | Team Kit — role-based review routing and PR governance | E | P3 | ✅ |
+| DCP.42 | Team Kit — team onboarding and shift handoff templates | E | P3 | ✅ |
 
 ---
 
