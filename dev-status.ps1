@@ -21,6 +21,7 @@ param(
 
 $Root     = $PSScriptRoot
 $YamlFile = Join-Path $Root "projects.yaml"
+$RawYaml  = Get-Content $YamlFile -Raw
 
 # ── Parse projects.yaml (no external module needed) ──────────────────────────
 function Read-Projects([string]$yamlPath) {
@@ -103,13 +104,36 @@ function Get-DirtyCounts([string]$fullPath) {
     }
 }
 
+function Get-PlanHealth([string]$projectName) {
+    $fileKeys = 'canonical|path|tracks|roadmap|implementation_plan|domain_plan|project|changelog'
+    $blocks   = [regex]::Split($RawYaml, '(?m)^  - (?=name:)')
+    $block    = $blocks | Where-Object { $_ -match "^name:\s+[`"']?$([regex]::Escape($projectName))[`"']?" } | Select-Object -First 1
+    if (-not $block -or $block -notmatch 'planning:') { return "none" }
+    # Extract only the planning sub-block (lines indented 6+ spaces under planning:)
+    $planMatch = [regex]::Match($block, '(?ms)^\s{4}planning:\s*\n((?:\s{6,}[^\n]*\n?)*)')
+    if (-not $planMatch.Success) { return "none" }
+    $planBlock = $planMatch.Groups[1].Value
+    if ($planBlock -match "(?m)^\s+($fileKeys):\s+\S") { return "plan" }
+    return "notes"
+}
+
 function Show-ProjectRow($project, [string]$color, [bool]$CountTotals = $true) {
     $fullPath = Join-Path $Root $project.path
     $name     = $project.name
 
+    $statusLabel = $project.status
+    $statusColor = switch ($project.status) {
+        "active"   { "Green"    }
+        "stable"   { "Cyan"     }
+        "wip"      { "Yellow"   }
+        "scaffold" { "DarkGray" }
+        default    { "DarkGray" }
+    }
+
     if (-not (Test-Path $fullPath)) {
         if (-not $DirtyOnly) {
-            Write-Host ("  {0,-28} " -f $name) -NoNewline -ForegroundColor DarkGray
+            Write-Host ("  {0,-24} " -f $name) -NoNewline -ForegroundColor DarkGray
+            Write-Host ("{0,-8} " -f $statusLabel) -NoNewline -ForegroundColor $statusColor
             Write-Host "path not found: $($project.path)" -ForegroundColor DarkRed
         }
         return $false
@@ -118,7 +142,8 @@ function Show-ProjectRow($project, [string]$color, [bool]$CountTotals = $true) {
     $hasGit = Test-Path (Join-Path $fullPath ".git")
     if (-not $hasGit) {
         if (-not $DirtyOnly) {
-            Write-Host ("  {0,-28} " -f $name) -NoNewline -ForegroundColor DarkGray
+            Write-Host ("  {0,-24} " -f $name) -NoNewline -ForegroundColor DarkGray
+            Write-Host ("{0,-8} " -f $statusLabel) -NoNewline -ForegroundColor $statusColor
             Write-Host "no git" -ForegroundColor DarkGray
         }
         return $false
@@ -148,8 +173,11 @@ function Show-ProjectRow($project, [string]$color, [bool]$CountTotals = $true) {
         if ($behind -and [int]$behind -gt 0) { $aheadBehind += "-$behind" }
     }
 
-    Write-Host ("  {0,-26} " -f $name) -NoNewline -ForegroundColor $color
-    Write-Host ("{0,-10} " -f $branch)  -NoNewline -ForegroundColor DarkCyan
+    $planHealth = Get-PlanHealth $name
+
+    Write-Host ("  {0,-24} " -f $name) -NoNewline -ForegroundColor $color
+    Write-Host ("{0,-8} " -f $statusLabel) -NoNewline -ForegroundColor $statusColor
+    Write-Host ("{0,-10} " -f $branch) -NoNewline -ForegroundColor DarkCyan
 
     if ($dirtyCounts.Work -gt 0 -and $dirtyCounts.Env -gt 0) {
         Write-Host ("● {0} work + {1} env  " -f $dirtyCounts.Work, $dirtyCounts.Env) -NoNewline -ForegroundColor Red
@@ -161,6 +189,12 @@ function Show-ProjectRow($project, [string]$color, [bool]$CountTotals = $true) {
         Write-Host "✓ clean     " -NoNewline -ForegroundColor DarkGreen
     }
 
+    switch ($planHealth) {
+        "plan"  { Write-Host "plan  " -NoNewline -ForegroundColor DarkGreen  }
+        "notes" { Write-Host "notes " -NoNewline -ForegroundColor DarkYellow }
+        default { Write-Host "      " -NoNewline                              }
+    }
+
     if ($aheadBehind) {
         Write-Host ("{0,-6} " -f $aheadBehind) -NoNewline -ForegroundColor DarkYellow
     } else {
@@ -169,7 +203,7 @@ function Show-ProjectRow($project, [string]$color, [bool]$CountTotals = $true) {
 
     if ($hash) {
         Write-Host "$hash  " -NoNewline -ForegroundColor DarkGray
-        Write-Host ("{0,-42} " -f $msg) -NoNewline -ForegroundColor Gray
+        Write-Host ("{0,-36} " -f $msg) -NoNewline -ForegroundColor Gray
         Write-Host $timeStr -ForegroundColor DarkGray
     } else {
         Write-Host "(no commits)" -ForegroundColor DarkGray
