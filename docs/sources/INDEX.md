@@ -1,7 +1,7 @@
 # Source Index
 
 Research summaries informing eco ecosystem development.
-Add a row here whenever a new source file is populated. Next slot: **source_97.md**.
+Add a row here whenever a new source file is populated. Next slot: **source_102.md**.
 
 | # | Title | Publication | Date | Topics | Relevance |
 | --- | --- | --- | --- | --- | --- |
@@ -101,3 +101,8 @@ Add a row here whenever a new source file is populated. Next slot: **source_97.m
 | [94](source_94.md) | Anthropic Dreaming + ManageEngine Zia Agents: Memory Consolidation, Orchestrated Self-Healing, and eco's Adoption Path | conzit.com / aitrove.ai / ManageEngine / shashi.co | 2026 | agent-runtime, platform-architecture, ai-governance, llm-infra | eco, .eco, agent-matrix, governance-commons |
 | [95](source_95.md) | Continuous Adversarial Verification, Formal Reasoning Contracts, and Inductive-Deductive Synthesis as eco Primitives | Copilot synthesis | 2026-06 | llm-infra, platform-architecture, ai-governance, agent-runtime | eco, .eco, agent-matrix, governance-commons |
 | [96](source_96.md) | Prompt Injection as a Structural Vulnerability: Prompt Firewall, Confusable Deputy Defense, and eco's Ingestion Pipeline Architecture | Decrypt / DataProvider / Cyber Security News / LinkedIn | 2026 | ai-governance, agent-runtime, identity-trust, platform-architecture | eco, .eco, governance-commons, agent-matrix |
+| [97](source_97.md) | agent-dossier Runtime Gap Analysis: Spec-to-Implementation Audit — Critical Blockers, Architecture, Modularity, and SKU-ability | Internal / eco | 2026-06-05 | platform-architecture, agent-runtime, ai-governance, devex | eco, agent-dossier, eos |
+| [98](source_98.md) | agent-matrix Strategic Gap Analysis: Protocol Alignment, SKU Architecture, Modularity, Identity, and Federated Orchestration | Internal / eco | 2026-06-05 | platform-architecture, agent-runtime, ai-governance, identity-trust, devex | eco, agent-matrix, agent-dossier, governance-commons, eos |
+| [99](source_99.md) | project-orchestrator-agent Gap Analysis: Stale Planning Artifacts, Unreachable Escalation, Missing Runtime Enforcement, and Test Coverage Gaps | Internal / eco | 2026-06-05 | platform-architecture, agent-runtime, ai-governance, devex | eco, agent-matrix, agent-dossier, eos |
+| [100](source_100.md) | ONS v1.2.0 Gap Analysis: Publication Infrastructure, Spec Correctness, Tooling, Industry Alignment, and Ahead-of-Curve Opportunities | Internal / eco | 2026-06-05 | ai-governance, platform-architecture, devex, open-source | eco, ons, governance-commons, agent-dossier, eos |
+| [101](source_101.md) | Governance Commons Gap Analysis & Industry Positioning: Protocol Alignment, Security, Observability, Compliance Depth, and Ahead-of-Curve Opportunities | Internal / eco | 2026-06-05 | ai-governance, platform-architecture, identity-trust, devex, open-source, regulations | eco, governance-commons, agent-matrix, agent-dossier, ons, eos, .eco |
