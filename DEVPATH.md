@@ -152,15 +152,31 @@ This is DCP's primary market differentiator. Most competing tools solve the regi
 | DCP.13 | Consulting pitch one-pager | done | 1 | `docs/PITCH.md` |
 | DCP.20 | Agent Kit — task template set | done | 3 | `docs/agent-kit/TASK-TEMPLATE.md`, `AGENT-KIT.md`, `AGENT-ONBOARDING.md` |
 | DCP.21 | Agent Kit — routing pattern library | done | 3 | `docs/agent-kit/ROUTING-PATTERNS.md`, `HANDOFF-PROTOCOL.md` |
-| DCP.30 | GitHub template repo | planned | 4 | — |
-| DCP.31 | Scaffold CLI (`dcp init`) | planned | 4 | — |
-| DCP.32 | Consulting offering definition | planned | 4 | — |
+| DCP.30 | GitHub template repo | done | 4 | `devx-control-plane` marked as GitHub template |
+| DCP.31 | Scaffold CLI (`dcp init`) | done | 4 | `dcp.ps1` — init, status, validate, help |
+| DCP.32 | Consulting offering definition | done | 4 | `docs/CONSULTING.md` |
 | DCP.40 | Team Kit — shared registry and domain ownership | done | 5 | `docs/team-kit/TEAM-KIT.md` |
 | DCP.41 | Team Kit — role-based review routing and PR governance | done | 5 | `docs/team-kit/REVIEW-ROUTING.md` |
 | DCP.42 | Team Kit — team onboarding and shift handoff templates | done | 5 | `docs/team-kit/TEAM-ONBOARDING.md` |
+| DCP.50 | Cross-platform path normalization | planned | 6 | Remove hardcoded `\`; use `Join-Path` throughout |
+| DCP.51 | PS7 Mac/Linux validation | planned | 6 | Test all scripts on non-Windows PS7 |
+| DCP.52 | Cross-platform onboarding | planned | 6 | `ONBOARDING.md` Mac/Linux setup section |
+| DCP.60 | eco registry integration | planned | 7 | `.eco` reads `projects.yaml` schema |
+| DCP.61 | PASS validation gate | planned | 7 | `validate-pointers.ps1` as eco governance check |
+| DCP.62 | Agent Kit ↔ eco PASS alignment | planned | 7 | Task IDs ↔ PASS entries formal link |
+| DCP.70 | VS Code extension scaffold | planned | 8 | Portfolio dashboard sidebar |
+| DCP.71 | Inline pointer validation | planned | 8 | Validate on save in editor |
+| DCP.72 | projects.yaml UI | planned | 8 | Add/edit repos, change status in extension |
+| DCP.73 | Plan health status bar | planned | 8 | Per-project plan health in VS Code status bar |
+| DCP.80 | GitHub org integration | planned | 9 | Auto-discover repos into hosted registry |
+| DCP.81 | Hosted dashboard | planned | 9 | Browser-based dev-status (SaaS) |
+| DCP.82 | Multi-user registry | planned | 9 | Team role management in hosted layer |
+| DCP.90 | Agent Kit hosted service | planned | 10 | Routing tables + audit trails via API |
+| DCP.91 | agent-team-protocol integration | planned | 10 | Fleet governance API |
 
 ---
 
 ## CHANGELOG
 
+- 2026-06-06 — v1.0.0 Studio complete. All modules shipped. GitHub template live.
 - 2026-06-06 — v0.2.0 Core Portable extraction completed.

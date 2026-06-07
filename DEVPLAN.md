@@ -15,15 +15,11 @@
 
 ## CURRENT POSITION
 
-**Active phase:** Phase 4 — Distribution
+**Active phase:** Phase 5 — Growth
 **Current version:** v1.0.0 (Studio — all modules complete)
-**Next release target:** Post-v1.0.0 — ongoing maintenance and consulting
+**Next release target:** v1.1.0 — Cross-platform (Mac/Linux PS7 support)
 
-**Phase 1 is complete.** DCP Core exists as a standalone template repo with a self-validating registry, portable dashboard, onboarding docs, and explicit SKU boundaries.
-
-**P0 blockers before Phase 2 work begins:**
-
-- None. Phase 2 work can start immediately.
+v1.0.0 is complete. All modules shipped: Core, Governance Kit, Agent Kit, Team Kit, Distribution CLI, Consulting. GitHub template repo is live. Next phase focuses on widening the audience (portability), deepening eco integration, and building toward a product with a real moat (VS Code extension → SaaS → Agent Infrastructure).
 
 ---
 
@@ -35,8 +31,13 @@
 | v0.2.0 | Core Portable | DCP extracted as standalone template; SKU boundaries defined | ✅ Done |
 | v0.3.0 | Governance Kit | Governance Kit packaged and documented as separable module | ✅ Done |
 | v0.4.0 | Agent Kit | Agent Kit module — task templates, routing patterns | ✅ Done |
-| v0.5.0 | Team Kit | Team governance module — shared registry, review routing, team handoff | ⬜ Next |
+| v0.5.0 | Team Kit | Team governance module — shared registry, review routing, team handoff | ✅ Done |
 | v1.0.0 | Studio | All modules; onboarding; consulting offering live | ✅ Done |
+| v1.1.0 | Cross-Platform | Mac/Linux PS7 support; path normalization; cross-platform test suite | ⬜ Next |
+| v1.2.0 | eco Integration | eco registry integration, PASS validation gate, Agent Kit alignment | ⬜ |
+| v2.0.0 | VS Code Extension | Portfolio sidebar, inline validation, projects.yaml UI, plan health status | ⬜ |
+| v3.0.0 | SaaS | Hosted dashboard, GitHub org auto-discovery, multi-user registry | ⬜ |
+| v4.0.0 | Agent Infrastructure | Agent Kit as hosted service — routing tables, audit trails, fleet API | ⬜ |
 
 ---
 
@@ -118,11 +119,16 @@ Deliverables: configured DCP instance, custom `projects.yaml` schema, agent rout
 
 | Track | Name | Goal | Status | Next |
 |-------|------|------|--------|------|
-| A | Extraction | DCP Core portable as standalone template repo | ✅ Done | v0.2.0 |
+| A | Extraction | DCP Core portable as standalone template repo | ✅ Done | — |
 | B | Governance Kit | Planning normalization, templates, and audit workflow packaged | ✅ Done | — |
 | C | Agent Kit | Task templates + routing patterns as separable module | ✅ Done | — |
-| D | Distribution | GitHub template, scaffold CLI, consulting offering | 🔴 Not started | DCP.30 |
-| E | Team Kit | Multi-person team governance module | 🔴 Not started | DCP.40 |
+| D | Distribution | GitHub template, scaffold CLI, consulting offering | ✅ Done | — |
+| E | Team Kit | Multi-person team governance module | ✅ Done | — |
+| F | Portability | Mac/Linux cross-platform scripting support | 🔴 Not started | DCP.50 |
+| G | eco Integration | eco registry, PASS gate, Agent Kit ↔ eco PASS alignment | 🔴 Not started | DCP.60 |
+| H | VS Code Extension | Portfolio sidebar, inline validation, projects.yaml UI | 🔴 Not started | DCP.70 |
+| I | SaaS | Hosted dashboard, GitHub auto-discovery, multi-user | 🔴 Not started | DCP.80 |
+| J | Agent Infrastructure | Agent Kit as hosted service — routing, audit trail, fleet API | 🔴 Not started | DCP.90 |
 
 ---
 
@@ -145,6 +151,21 @@ Deliverables: configured DCP instance, custom `projects.yaml` schema, agent rout
 | DCP.40 | Team Kit — shared registry and domain ownership conventions | E | P3 | ✅ |
 | DCP.41 | Team Kit — role-based review routing and PR governance | E | P3 | ✅ |
 | DCP.42 | Team Kit — team onboarding and shift handoff templates | E | P3 | ✅ |
+| DCP.50 | Cross-platform path normalization (remove hardcoded `\`) | F | P1 | ⬜ |
+| DCP.51 | Validate all scripts on PS7 Mac/Linux | F | P1 | ⬜ |
+| DCP.52 | Update ONBOARDING.md with cross-platform setup instructions | F | P2 | ⬜ |
+| DCP.60 | eco registry integration — `.eco` reads `projects.yaml` schema | G | P2 | ⬜ |
+| DCP.61 | PASS validation gate — `validate-pointers.ps1` as eco governance check | G | P2 | ⬜ |
+| DCP.62 | Agent Kit ↔ eco PASS formal alignment (task IDs ↔ PASS entries) | G | P2 | ⬜ |
+| DCP.70 | VS Code extension scaffold — portfolio dashboard sidebar panel | H | P2 | ⬜ |
+| DCP.71 | Inline pointer validation on save | H | P2 | ⬜ |
+| DCP.72 | projects.yaml UI — add/edit repos, change status | H | P3 | ⬜ |
+| DCP.73 | Plan health status bar item per project | H | P3 | ⬜ |
+| DCP.80 | GitHub org integration — auto-discover repos into registry | I | P3 | ⬜ |
+| DCP.81 | Hosted dashboard — browser-based dev-status | I | P3 | ⬜ |
+| DCP.82 | Multi-user registry and team role management | I | P3 | ⬜ |
+| DCP.90 | Agent Kit as hosted service — routing tables and audit trails via API | J | P3 | ⬜ |
+| DCP.91 | agent-team-protocol integration — fleet governance API | J | P3 | ⬜ |
 
 ---
 
