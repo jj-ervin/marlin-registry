@@ -26,7 +26,29 @@ CLAUDE.md         — Claude Code specific instructions
 
 ---
 
-## Quick start
+## Five-minute install
+
+From this repo:
+
+```powershell
+# Add blank governance files to the current project
+.\install.ps1 -TargetPath C:\work\my-project
+
+# Or start from pre-filled examples
+.\install.ps1 -TargetPath C:\work\my-project -Mode template
+```
+
+Then open the target project and fill in:
+
+1. `.governance/context.md` — what this project is and what state it is in
+2. `.governance/agents.md` — what AI agents can and cannot do
+3. `.governance/log.md` — the first dated entry explaining what changed
+
+Success means a new AI session can read `AGENTS.md` and understand the project without you reconstructing everything from chat history.
+
+---
+
+## Manual install
 
 **Option 1 — Starter (blank structure, fill it yourself):**
 
