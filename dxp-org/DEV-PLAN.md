@@ -1,4 +1,4 @@
-# DEVPLAN - dxp-org
+# DEV-PLAN - dxp-org
 
 **AUTHORITY LEVEL: AL:1**
 **Status:** ACTIVE
@@ -8,8 +8,8 @@
 
 ## CANONICAL DOC RULE
 
-`DEVPLAN.md` owns: current execution state, active milestones, release targets, and project disposition.
-`DEVPATH.md` owns: phase history, decisions, naming cleanup, and the task registry.
+`DEV-PLAN.md` owns: current execution state, active milestones, release targets, and project disposition.
+`DEV-PATH.md` owns: phase history, decisions, naming cleanup, and the task registry.
 
 This file governs the `dxp-org` workspace as a portfolio root. Individual repos own their own execution details.
 
@@ -71,7 +71,7 @@ The larger product direction is to get DevX Control Plane and DevXToolkit to cre
 
 | ID | Task | Priority | Status |
 | --- | --- | --- | --- |
-| DXP.01 | Add `DEVPLAN.md` and `DEVPATH.md` to `dxp-org` | P0 | In progress |
+| DXP.01 | Add `DEV-PLAN.md` and `DEV-PATH.md` to `dxp-org` | P0 | In progress |
 | DXP.02 | Add planning docs to `devxtoolkit-v1-x` | P0 | In progress |
 | DXP.03 | Add planning docs to `devxtoolkit-v2-x` | P0 | In progress |
 | DXP.04 | Confirm `devx-control-plane` existing planning docs are canonical | P0 | In progress |

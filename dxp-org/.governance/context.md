@@ -12,7 +12,7 @@ This is a workspace and portfolio boundary, not a single application repo. Indiv
 - `devxtoolkit-v1-x` is the active runnable DevToolkit v1 implementation.
 - `devxtoolkit-v2-x` is scaffold-only until architecture and compatibility are defined.
 - Legacy `devtoolkit` is not active in this workspace.
-- `DEVPLAN.md` and `DEVPATH.md` define the current portfolio execution plan and development history.
+- `DEV-PLAN.md` and `DEV-PATH.md` define the current portfolio execution plan and development history.
 
 ## Key decisions made
 
@@ -27,7 +27,7 @@ This is a workspace and portfolio boundary, not a single application repo. Indiv
 - `dxp-org` itself is under the parent `C:\dev` git repo, so DCP currently reports the workspace root as `no git`.
 - Some nested repos are represented as gitlinks in the parent workspace.
 - DCP pointer validation must use paths relative to `devx-control-plane`.
-- The `.governance` layer should remain lightweight and should not replace `DEVPLAN.md` or `DEVPATH.md`.
+- The `.governance` layer should remain lightweight and should not replace `DEV-PLAN.md` or `DEV-PATH.md`.
 
 ## What done looks like
 

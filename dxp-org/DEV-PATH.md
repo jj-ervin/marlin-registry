@@ -1,4 +1,4 @@
-# DEVPATH - dxp-org
+# DEV-PATH - dxp-org
 
 **AUTHORITY LEVEL: AL:1**
 **Status:** ACTIVE
@@ -9,8 +9,8 @@
 
 ## CANONICAL DOC RULE
 
-`DEVPATH.md` owns: phase history, decisions, naming cleanup, and the task registry.
-`DEVPLAN.md` owns: current execution state, active milestones, release targets, and project disposition.
+`DEV-PATH.md` owns: phase history, decisions, naming cleanup, and the task registry.
+`DEV-PLAN.md` owns: current execution state, active milestones, release targets, and project disposition.
 
 ---
 
@@ -39,7 +39,7 @@ The portfolio now has a product direction beyond normalization: make the core wo
 
 ### Phase 1 - Planning Coverage
 
-**Goal:** Give every active or scaffold repo a canonical `DEVPLAN.md` and `DEVPATH.md`.
+**Goal:** Give every active or scaffold repo a canonical `DEV-PLAN.md` and `DEV-PATH.md`.
 
 **In progress:**
 - `dxp-org` planning docs.
@@ -87,7 +87,7 @@ The portfolio now has a product direction beyond normalization: make the core wo
 
 | ID | Task | Status | Notes |
 |----|------|--------|-------|
-| DXP.01 | Create `dxp-org` planning docs | in progress | This file and `DEVPLAN.md` |
+| DXP.01 | Create `dxp-org` planning docs | in progress | This file and `DEV-PLAN.md` |
 | DXP.02 | Create `devxtoolkit-v1-x` planning docs | in progress | Active v1 implementation |
 | DXP.03 | Create `devxtoolkit-v2-x` planning docs | in progress | Future/scaffold repo |
 | DXP.04 | Confirm `devx-control-plane` docs | in progress | Existing docs are canonical |

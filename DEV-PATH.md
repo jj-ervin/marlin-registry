@@ -1,4 +1,4 @@
-# DEVPATH — DevX Control Plane (DCP)
+# DEV-PATH — DevX Control Plane (DCP)
 
 **AUTHORITY LEVEL: AL:1**
 **Status:** ACTIVE — single authoritative source for DCP development path
@@ -9,8 +9,8 @@
 
 ## CANONICAL DOC RULE
 
-`DEVPATH.md` owns: phase history, design decisions, origin story, and task registry.
-`DEVPLAN.md` owns: current execution state, active milestones, release targets, SKU roadmap.
+`DEV-PATH.md` owns: phase history, design decisions, origin story, and task registry.
+`DEV-PLAN.md` owns: current execution state, active milestones, release targets, SKU roadmap.
 
 This file governs the portable DCP template repo as a product.
 
@@ -23,7 +23,7 @@ Before working on DCP as a product, read in order:
 1. `DEV-CONTROL-PLANE.md` — boundary doctrine, the core architectural decision
 2. `docs/planning-normalization.md` — planning standard (DCP enforces this for others)
 3. **This file** — phase history, design rationale
-4. `DEVPLAN.md` — current release targets and work queue
+4. `DEV-PLAN.md` — current release targets and work queue
 5. `README.md` — user-facing product description
 
 DCP Core components are in this repository. When installed, they may live in a dedicated `devx-control-plane/` folder or directly in a user's portfolio root.
@@ -65,7 +65,7 @@ The architectural position (standards / control plane / project repos / runtime)
 - DCP.03 — Dashboard status + plan health columns
 - DCP.04 — Planning template kit (4 templates)
 - DCP.05 — projects.yaml pointer audit and normalization (27 verified)
-- DCP.06 — README, --help, DEVPLAN, DEVPATH (this file)
+- DCP.06 — README, --help, DEV-PLAN, DEV-PATH (this file)
 
 ---
 
@@ -145,7 +145,7 @@ This is DCP's primary market differentiator. Most competing tools solve the regi
 | DCP.03 | Dashboard status + plan health | done | 0 | `dev-status.ps1` |
 | DCP.04 | Planning template kit | done | 0 | `docs/templates/` |
 | DCP.05 | Registry audit and normalization | done | 0 | `projects.yaml` |
-| DCP.06 | README + --help + planning docs | done | 0 | This file + `DEVPLAN.md` + `README.md` |
+| DCP.06 | README + --help + planning docs | done | 0 | This file + `DEV-PLAN.md` + `README.md` |
 | DCP.10 | Extract into template repo | done | 1 | `devx-control-plane` |
 | DCP.11 | SKU boundary definition | done | 1 | `docs/SKU-BOUNDARIES.md` |
 | DCP.12 | User onboarding doc | done | 1 | `ONBOARDING.md` |

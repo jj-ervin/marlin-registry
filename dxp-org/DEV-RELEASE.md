@@ -3,7 +3,7 @@
 Status: **Active — Phase 1 (Planning Coverage) in progress**  
 Created: 2026-06-09  
 Authority: Owned by this repo. Sequencing and cross-repo dependencies defer to [`docs/DEV-RELEASE.md`](../docs/DEV-RELEASE.md).  
-Relationship to DEVPLAN: `DEVPLAN.md` owns current execution state, active milestones, and project disposition. This file owns release contracts — what ships publicly, under what conditions, and what each release unlocks downstream.
+Relationship to DEV-PLAN: `DEV-PLAN.md` owns current execution state, active milestones, and project disposition. This file owns release contracts — what ships publicly, under what conditions, and what each release unlocks downstream.
 
 ---
 
@@ -42,11 +42,11 @@ Relationship to DEVPLAN: `DEVPLAN.md` owns current execution state, active miles
 | devxtoolkit-v1-x test suite | `src/tests/Scaffolding.Commands.Tests.ps1` | Test suite presence confirmed; coverage unknown |
 | devx-toolkit TypeScript CLI | eco-import, eco-upgrade, eco-validate, new-project commands; rule engine, scaffold generator, diff engine | Legacy origin of v1/v2 — reference only, not a release artifact |
 
-### Prerequisite: Phase 1 completion (DEVPLAN DXP.0-4)
+### Prerequisite: Phase 1 completion (DEV-PLAN DXP.0-4)
 
 These must complete before any public release target is accessible:
 
-- [ ] DXP.01 — dxp-org DEVPLAN.md and DEVPATH.md canonical (in progress — these files now exist)
+- [ ] DXP.01 — dxp-org DEV-PLAN.md and DEV-PATH.md canonical (in progress — these files now exist)
 - [ ] DXP.02 — devxtoolkit-v1-x planning docs canonical (in progress)
 - [ ] DXP.03 — devxtoolkit-v2-x planning docs canonical (in progress)
 - [ ] DXP.04 — devx-control-plane existing planning docs confirmed canonical (in progress)
@@ -207,8 +207,8 @@ The primary gap in dxp-org is not missing functionality — most pieces work. Th
 
 ## Related Documents
 
-- [`DEVPLAN.md`](DEVPLAN.md) — canonical execution plan; owns current phase state, project disposition
-- [`DEVPATH.md`](DEVPATH.md) — phase history, key decisions, naming cleanup
+- [`DEV-PLAN.md`](DEV-PLAN.md) — canonical execution plan; owns current phase state, project disposition
+- [`DEV-PATH.md`](DEV-PATH.md) — phase history, key decisions, naming cleanup
 - [`OSS-5-MINUTE-READINESS.md`](OSS-5-MINUTE-READINESS.md) — the readiness doctrine this repo implements
 - [`dotgovernance/README.md`](dotgovernance/README.md) — dotgovernance user-facing entry point
 - [`docs/DEV-RELEASE.md`](../docs/DEV-RELEASE.md) — portfolio master, priority order, dependency graph

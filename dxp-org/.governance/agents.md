@@ -6,7 +6,7 @@
 
 ## What agents are allowed to do
 
-- Read and update `DEVPLAN.md` and `DEVPATH.md`.
+- Read and update `DEV-PLAN.md` and `DEV-PATH.md`.
 - Read and update `.governance/` files.
 - Inspect nested repos to determine status, planning coverage, and governance coverage.
 - Update `devx-control-plane/projects.yaml` when portfolio registry state changes.
@@ -23,7 +23,7 @@
 
 ## How agents should work
 
-- Read `DEVPLAN.md`, `DEVPATH.md`, and `.governance/context.md` before portfolio-level work.
+- Read `DEV-PLAN.md`, `DEV-PATH.md`, and `.governance/context.md` before portfolio-level work.
 - Prefer small, scoped changes in the specific repo that owns the behavior.
 - Keep `.governance` lightweight: context, agent rules, and log only unless a standard requires more.
 - After meaningful workspace governance changes, update `.governance/log.md`.
@@ -31,5 +31,5 @@
 
 ## Current focus
 
-Governance rollout: make `.governance` visible to DCP and validate governance files alongside `DEVPLAN.md` and `DEVPATH.md`.
+Governance rollout: make `.governance` visible to DCP and validate governance files alongside `DEV-PLAN.md` and `DEV-PATH.md`.
 

@@ -1,4 +1,4 @@
-# DEVPLAN — DevX Control Plane (DCP)
+# DEV-PLAN — DevX Control Plane (DCP)
 
 **AUTHORITY LEVEL: AL:1**
 **Status:** ACTIVE
@@ -8,8 +8,8 @@
 
 ## CANONICAL DOC RULE
 
-`DEVPLAN.md` owns: current execution state, active milestones, release targets, SKU roadmap.
-`DEVPATH.md` owns: phase history, design decisions, origin story, task registry.
+`DEV-PLAN.md` owns: current execution state, active milestones, release targets, SKU roadmap.
+`DEV-PATH.md` owns: phase history, design decisions, origin story, task registry.
 
 ---
 
@@ -72,7 +72,7 @@ The planning and normalization layer. Separable from Core.
 Includes:
 - `docs/templates/` — DEV-PLAN, DEV-PATH, TRACKS, PROJECT-STATUS templates
 - `docs/planning-normalization.md` — vocabulary, pointer shape, canonical patterns
-- DEVPLAN + DEVPATH conventions
+- DEV-PLAN + DEV-PATH conventions
 - Planning health tooling (already in dashboard)
 
 **Audience:** Teams with multiple active projects who need consistent planning across repos.
@@ -177,7 +177,7 @@ Deliverables: configured DCP instance, custom `projects.yaml` schema, agent rout
 - DCP.03 — Dashboard status + plan health columns
 - DCP.04 — Planning template kit (4 templates)
 - DCP.05 — Registry audit and normalization (`projects.yaml`)
-- DCP.06 — README + `--help` + DEVPLAN + DEVPATH
+- DCP.06 — README + `--help` + DEV-PLAN + DEV-PATH
 
 ## RECENTLY COMPLETED (Phase 1)
 
