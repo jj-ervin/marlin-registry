@@ -19,9 +19,9 @@ Relationship to DEV-PLAN: `DEV-PLAN.md` owns current execution state, active mil
 | --- | --- | --- | --- |
 | dotgovernance | `dotgovernance/` | Functional — not yet hardened for public release | install.ps1 works; missing dry-run, manifest, checksums, test suite |
 | devx-control-plane | `devx-control-plane/` | Functionally complete — not yet stranger-tested outside source repo | dcp.ps1, dev-status.ps1, projects.yaml, validate-pointers.ps1, template library all present |
-| devxtoolkit-v1-x | `devxtoolkit-v1-x/` | Implementation absorbed — needs release stabilization | DevToolkit.psd1/psm1, all Invoke-Mk*.ps1 commands, test suite present |
+| devxtoolkit-v1-x | `devxtoolkit-v1-x/` | Implementation absorbed — needs release stabilization | DevXToolkit.psd1/psm1, all Invoke-Mk*.ps1 commands, test suite present |
 | devxtoolkit-v2-x | `devxtoolkit-v2-x/` | Scaffold only — reserved for Pass6 paid tier | No implementation yet; gates on v1 OSS proof |
-| devx-toolkit | `devx-toolkit/` | Legacy origin — historical ancestor of devxtoolkit v1 and v2; not an active release target | TypeScript CLI that seeded the v1/v2 design; reference/archive only |
+| devx-toolkit | `devx-toolkit/` | Archive/reference — historical ancestor of devxtoolkit v1 and v2; not an active release target | TypeScript CLI that seeded the v1/v2 design; reference only |
 
 ### What is functionally complete (not open gaps — the gap is public release posture)
 
@@ -38,7 +38,7 @@ Relationship to DEV-PLAN: `DEV-PLAN.md` owns current execution state, active mil
 | DCP agent-kit | Onboarding, handoff protocol, routing patterns, task template | — |
 | DCP team-kit | Team onboarding, review routing | — |
 | DCP planning templates | DEV-PATH, DEV-PLAN, TRACKS, PROJECT-STATUS templates | — |
-| devxtoolkit-v1-x implementation | All `Invoke-Mk*.ps1` commands (CI, Config, Docs, License, Proj, Readme, Venv), DevToolkit.psd1/psm1 | Needs release stabilization pass |
+| devxtoolkit-v1-x implementation | All `Invoke-Mk*.ps1` commands (CI, Config, Docs, License, Proj, Readme, Venv), DevXToolkit.psd1/psm1 | Needs release stabilization pass |
 | devxtoolkit-v1-x test suite | `src/tests/Scaffolding.Commands.Tests.ps1` | Test suite presence confirmed; coverage unknown |
 | devx-toolkit TypeScript CLI | eco-import, eco-upgrade, eco-validate, new-project commands; rule engine, scaffold generator, diff engine | Legacy origin of v1/v2 — reference only, not a release artifact |
 
@@ -51,7 +51,7 @@ These must complete before any public release target is accessible:
 - [ ] DXP.03 — devxtoolkit-v2-x planning docs canonical (in progress)
 - [ ] DXP.04 — devx-control-plane existing planning docs confirmed canonical (in progress)
 - [ ] DXP.05 — DCP registry updated to include all active workspace repos
-- [ ] DXP.07 — devtoolkit legacy disposition confirmed (devx-toolkit is the historical origin of v1/v2; archive or leave as reference)
+- [x] DXP.07 — devtoolkit legacy disposition confirmed (devx-toolkit is the historical origin of v1/v2; reference only; old devtoolkit is cold archive)
 
 ---
 

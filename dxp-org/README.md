@@ -2,8 +2,8 @@
 
 This workspace now uses ONS-compliant directory names for the DevXToolkit versioned repositories.
 
-- `devxtoolkit-v1-x/` — former `devtoolkit-v1.x`, renamed to follow ONS `lowercase-kebab` directory naming.
-- `devxtoolkit-v2-x/` — former `devtoolkit-v2.x`, renamed to follow ONS `lowercase-kebab` directory naming.
+- `devxtoolkit-v1-x/` — normalized v1 repo, following ONS `lowercase-kebab` directory naming.
+- `devxtoolkit-v2-x/` — normalized v2 repo, following ONS `lowercase-kebab` directory naming.
 
 Rationale:
 - ONS directory names must use `lowercase-kebab` form.

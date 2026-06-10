@@ -92,7 +92,7 @@ The portfolio now has a product direction beyond normalization: make the core wo
 | DXP.03 | Create `devxtoolkit-v2-x` planning docs | in progress | Future/scaffold repo |
 | DXP.04 | Confirm `devx-control-plane` docs | in progress | Existing docs are canonical |
 | DXP.05 | Add all active repos to DCP registry | planned | Use relative paths from control-plane context carefully |
-| DXP.06 | Audit `devx-toolkit` | planned | Determine whether it is separate or part of toolkit naming family |
+| DXP.06 | Audit `devx-toolkit` | done | Historical TypeScript origin; reference/archive only |
 | DXP.07 | Decide whether legacy archive remains local only or gets GitHub archival treatment | planned | Preserve history without active workspace confusion |
 | DXP.08 | Define OSS release criteria for DCP and DevXToolkit v1 | planned | README, license, install path, examples, tests, release notes, support boundaries |
 | DXP.09 | Define Governance Commons OSS release checklist | planned | Confirm package shape, docs, templates, and public positioning |

@@ -21,7 +21,7 @@ This file governs the `dxp-org` workspace as a portfolio root. Individual repos 
 **Current state:** Multi-repo workspace with DCP control-plane coverage emerging
 **Next target:** Every active repo has canonical planning docs, an unambiguous status, and a clear OSS-versus-paid-tier disposition.
 
-The immediate concern is reducing name ambiguity around DevToolkit. The old `devtoolkit` repo has been moved out of the active workspace, and `devxtoolkit-v1-x` is now the active v1 implementation.
+The immediate concern is reducing name ambiguity around DevXToolkit. The old `devtoolkit` repo has been moved out of the active workspace, and `devxtoolkit-v1-x` is now the active v1 implementation.
 
 The larger product direction is to get DevX Control Plane and DevXToolkit to credible OSS release quality first. Paid-tier work should be treated as a later Pass6 track: differentiated, ahead-of-industry features that build on proven OSS adoption rather than distracting from release readiness.
 
@@ -34,7 +34,7 @@ The larger product direction is to get DevX Control Plane and DevXToolkit to cre
 | `devx-control-plane` | active | Portfolio governance and dashboard tooling; OSS baseline before paid Pass6 tier | Keep canonical DCP docs current and define OSS release criteria |
 | `devxtoolkit-v1-x` | active | Current PowerShell DevXToolkit implementation; OSS release candidate path | Finish legacy absorption and release stabilization |
 | `devxtoolkit-v2-x` | scaffold | Future paid-tier DevXToolkit architecture/research track | Define Pass6 scope after v1 OSS baseline is stable |
-| `devx-toolkit` | needs audit | Separate TypeScript/toolkit repo | Determine relationship to DevToolkit naming family |
+| `devx-toolkit` | archive/reference | Historical TypeScript CLI origin for DevXToolkit v1/v2; not an active release target | Keep as lineage/reference only unless explicitly revived under a new name |
 | `dotgovernance` | stable/wip | Governance Commons OSS release surface, with Pass6 and VS Code extension possibilities | Register in control-plane once status is confirmed |
 
 ---
@@ -45,7 +45,7 @@ The larger product direction is to get DevX Control Plane and DevXToolkit to cre
 | --- | --- | --- | --- |
 | DXP.0 | Baseline | Create portfolio planning docs | In progress |
 | DXP.1 | Registry | Register active projects in the control-plane registry | Planned |
-| DXP.2 | Naming cleanup | Remove ambiguous legacy toolkit folders from active workspace | In progress |
+| DXP.2 | Naming cleanup | Remove ambiguous legacy toolkit folders from active workspace | Done |
 | DXP.3 | Repo disposition | Decide archive/active/scaffold status for every repo | Planned |
 | DXP.4 | Validation | Dashboard and pointer validation clean across the portfolio | Planned |
 | DXP.5 | OSS readiness | Prepare DCP, DevXToolkit v1, and Governance Commons for public OSS release expectations | Planned |
@@ -76,8 +76,8 @@ The larger product direction is to get DevX Control Plane and DevXToolkit to cre
 | DXP.03 | Add planning docs to `devxtoolkit-v2-x` | P0 | In progress |
 | DXP.04 | Confirm `devx-control-plane` existing planning docs are canonical | P0 | In progress |
 | DXP.05 | Update DCP registry to include active workspace repos | P1 | Planned |
-| DXP.06 | Audit `devx-toolkit` naming and relationship to DevToolkit | P1 | Planned |
-| DXP.07 | Commit or archive legacy `devtoolkit` disposition cleanly | P1 | Planned |
+| DXP.06 | Audit `devx-toolkit` naming and relationship to DevXToolkit | P1 | Done |
+| DXP.07 | Commit or archive legacy `devtoolkit` disposition cleanly | P1 | Done |
 | DXP.08 | Define OSS release criteria for DCP and DevXToolkit v1 | P1 | Planned |
 | DXP.09 | Define Governance Commons OSS release checklist | P1 | Planned |
 | DXP.10 | Draft Pass6 paid-tier hypothesis for DCP, DevXToolkit v2, and Governance Commons | P2 | Planned |
@@ -133,6 +133,7 @@ These are documented as constraints, not roadmap items. Any work that introduces
 - Project execution belongs inside individual project repos.
 - DCP owns registry, dashboard, validation, and portfolio governance.
 - Legacy repo names should not remain in the active workspace if they create ambiguity.
+- `devtoolkit` is not an active product or release target; current ownership is `devxtoolkit-v1-x` and `devxtoolkit-v2-x`.
 - A repo should not be deleted until its code, docs, tests, and history disposition are understood.
 - OSS release readiness comes before paid-tier implementation.
 - Pass6 is a product hypothesis until user demand and willingness to pay are validated.

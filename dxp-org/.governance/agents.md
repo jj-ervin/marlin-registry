@@ -18,6 +18,7 @@
 - Treat `dxp-org` as a monorepo implementation surface.
 - Move or delete nested repos without explicit user instruction.
 - Recreate or reactivate legacy `devtoolkit`.
+- Treat `devx-toolkit` as an active release target without an explicit disposition change.
 - Push commits to remotes without explicit instruction.
 - Add portable standards directly here when they belong in Governance Commons.
 
@@ -32,4 +33,3 @@
 ## Current focus
 
 Governance rollout: make `.governance` visible to DCP and validate governance files alongside `DEV-PLAN.md` and `DEV-PATH.md`.
-
