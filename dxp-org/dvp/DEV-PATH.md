@@ -84,7 +84,7 @@ Note: DVP does not exist yet. All gaps are open. This analysis defines what must
 
 ## Live Example
 
-Osprey Holding LLC (`C:\Users\Jess\OneDrive\Documents\100_BUISNESS\Osprey_Holding_LLC`) is the
+Osprey LLC (`C:\Users\Jess\OneDrive\Documents\100_BUISNESS\Osprey_LLC`) is the
 first manually-configured DVP vault. The `.governance/` folder there (profile.yml, ons.yml,
 retention.yml, agents.yml) is the reference implementation for what DVP will generate automatically.
 
