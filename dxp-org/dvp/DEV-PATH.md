@@ -37,6 +37,26 @@ See `c:\dev\governance-commons\DEV-PLAN.md` PASS-6 Track VI for the full DVP sco
 
 ---
 
+## Role Model (pre-build requirement)
+
+DVP touches legally sensitive business records. Roles must be defined before any installer code is written.
+
+| Role | Access | Can mutate vault | Notes |
+| --- | --- | --- | --- |
+| Vault Owner | Full | Yes — install, restructure, delete with confirm | Must approve any destructive action |
+| Operator | Scan + report + generate agent config | No restructure | Generating reports is a write action; still logged |
+| Agent | Read-only, constrained by `agents.yml` | No | Cannot exceed what `agents.yml` declares |
+| Auditor | Archive read-only | No | Cannot trigger any action |
+
+**Invariants:**
+
+- DVP must log every file it creates, moves, or renames — immutable audit trail
+- No delete or destructive restructure without explicit Vault Owner confirmation
+- Derived artifacts (scan reports, agent configs) produced from sensitive source material are also sensitive — treat with same access controls as the vault itself
+- Least-privilege: each role gets only what its function requires, nothing more
+
+---
+
 ## Build Order (PROPOSED)
 
 1. PowerShell/Python CLI — validates concept, works on Windows today
