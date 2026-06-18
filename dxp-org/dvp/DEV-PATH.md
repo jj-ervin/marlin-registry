@@ -113,6 +113,46 @@ but to receive permission or denial for a specific operation on a specific recor
 
 ---
 
+## Future Verticals — Industry Applications
+
+DVP's core (installer, scanner, manifest, agent operation policy) is domain-agnostic. Industry
+verticals instantiate DVP with a domain-specific GC profile and a regulatory rules layer.
+
+### EHS Compliance Dashboard (STUB — 2026-06-17)
+
+**Status:** Idea — pending ChatGPT review pass before any scoping decision
+**Source:** Claude Desktop + Claude Code synthesis, 2026-06-17
+
+**What it is:** DVP applied to industrial compliance document management (chemical plants,
+manufacturing, energy). A compliance health dashboard: document + certification registry,
+gap detection against triggered regulatory obligations, regulatory change monitoring.
+
+**Three layers (Claude Desktop analysis):**
+
+| Layer | What it does | Liability exposure | Build complexity |
+| --- | --- | --- | --- |
+| 1 — Document + deadline registry | Ingests permits, certs, training records, inspection reports; extracts expiry dates; maintains calendar with lead-time alerts | None — calendar/tracking only | Low — DVP core does most of this |
+| 2 — Gap detection | Given chemical inventory + processes, what permits/certs should exist that don't? Requires rules mapping chemical thresholds to triggered regulations (RMP, PSM, RCRA, EPCRA, etc.) | Medium — implies regulatory judgment; needs compliance professional review of ruleset | Medium — finite, stable ruleset once built per regulatory regime |
+| 3 — Regulatory monitoring | Watches EPA/OSHA/state dockets for rule changes affecting relevant CFR sections; flags "this affects you" | Low — surfacing only, no verdicts | High — external data pipeline, state-level variation |
+
+**Regulatory domain (US federal core):** EPA RMP (CAA 112r), OSHA PSM (1910.119), TSCA, RCRA,
+EPCRA/Tier II, DOT hazmat, NPDES. State agencies layer on top (TCEQ, etc.). Scope is finite once
+a plant's chemical inventory and process thresholds are defined.
+
+**Market context:** EHS compliance software is an existing category (Intelex, VelocityEHS,
+Enablon). Incumbents are enterprise workflow software, not agent-native. Differentiated angle:
+agent-readable document governance a founder/EHS manager sets up in an afternoon without an
+implementation consultant — same wedge as DVP for LLCs.
+
+**Relationship to DVP:** Layer 1 is DVP core + a `gc.profile.ehs-compliance` profile.
+Layer 2 adds a `required-documents.yml` per regulatory regime (already sketched as
+`gc.profile.audit-gap` in GC PASS-6 Track I). Layer 3 is the only genuinely new piece.
+
+**Next step:** ChatGPT review pass on regulatory specifics, especially Layer 2 ruleset
+mapping CFR sections to chemical thresholds. Decide: standalone product or DVP industry vertical.
+
+---
+
 ## Relationship to Other Repos
 
 | Layer | Repo | Role |
