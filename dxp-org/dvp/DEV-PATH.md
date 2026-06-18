@@ -91,6 +91,28 @@ Note: DVP does not exist yet. All gaps are open. This analysis defines what must
 
 ---
 
+## Agent Safety Gap Items — DVP
+
+**Source:** Claude + ChatGPT synthesis, 2026-06-17
+**Context:** The policy layer already exists in gc.profile.doc-vault (`ai-access-boundaries.md`,
+`access-matrix.template.yml`, `metadata.schema.yml`, `lifecycle.yml`). Agents have rules to read.
+The enforcement layer — machine-enforceable operating contracts before an agent renames, moves,
+opens, or modifies a file — does not yet exist. These items define what must be built.
+
+| ID | Item | Priority | Description |
+| --- | --- | --- | --- |
+| DVP-AGENT-01 | Agent naming decision contract | P0 | Machine-readable rules for constructing filenames from entity, domain, category, lifecycle state, version, and date. Belongs in doc-vault/DVP, not ONS. ONS validates shape; DVP decides the correct business/legal segments. Agents execute this algorithm deterministically — no guessing from prose examples |
+| DVP-AGENT-02 | Protected record manifest | P0 | `.governance/record-manifest.yml` tracks all governed records: immutable flags, SHA-256 hashes, lifecycle state, access level, and authorized operations per record. Stronger than an immutability manifest — covers rename/move/delete/read permissions. Files with `executed`, `issued`, `confirmation`, or `received` status are immutable by default |
+| DVP-AGENT-03 | Agent operation policy | P0 | Defines what agents may do: suggest rename, stage rename, execute rename, create draft, redact copy, update index, etc. Sensitive or immutable records require Vault Owner approval before any mutation. No agent may exceed the operations declared in this policy |
+| DVP-SEC-01 | Storage and encryption posture checks | P1 | DVP cannot encrypt, but it can verify declared posture: `owner-only` files must be in private/encrypted storage; public paths must not contain restricted classes; AI-accessible paths (MCP config) must not include `owner-only` records. Flags violations on every scan |
+| DVP-AUDIT-01 | Unauthorized mutation detection | P1 | Compare filesystem state against `record-manifest.yml` hashes and index. If a governed record changed without a logged DVP operation, flag it as an unlogged mutation. Provides tamper-evidence without requiring OS-level audit tooling |
+
+**Architectural boundary:** DVP-AGENT-01 through DVP-AUDIT-01 make `.governance/` a machine-enforceable
+operating contract, not just a briefing document. The agent reads it not to understand what to do,
+but to receive permission or denial for a specific operation on a specific record.
+
+---
+
 ## Relationship to Other Repos
 
 | Layer | Repo | Role |
