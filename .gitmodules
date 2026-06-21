@@ -1,0 +1,9 @@
+[submodule "dxp-org/devxtoolkit-v1-x"]
+	path = dxp-org/devxtoolkit-v1-x
+	url = https://github.com/dxp-org/devxtoolkit-v1-x.git
+[submodule "dxp-org/devxtoolkit-v2-x"]
+	path = dxp-org/devxtoolkit-v2-x
+	url = https://github.com/dxp-org/devxtoolkit-v2-x.git
+[submodule "dxp-org/doc-vault-plane"]
+	path = dxp-org/doc-vault-plane
+	url = https://github.com/dxp-org/doc-vault-plane.git
