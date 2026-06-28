@@ -1,4 +1,4 @@
-# DEV-PATH - dxp-org
+# DEV-PATH — dxp-org
 
 **AUTHORITY LEVEL: AL:1**
 **Status:** ACTIVE
@@ -72,7 +72,7 @@ The portfolio now has a product direction beyond normalization: make the core wo
 ## KEY DECISIONS
 
 | Decision | Date | Rationale |
-|----------|------|-----------|
+| --- | --- | --- |
 | Treat `dxp-org` as a workspace root | 2026-06-09 | Avoids pretending nested repos are one monorepo |
 | Make `devxtoolkit-v1-x` the active v1 implementation | 2026-06-09 | It absorbed the legacy implementation and now passes tests |
 | Move `devtoolkit` out of the active workspace | 2026-06-09 | The old name caused too much ambiguity |
@@ -86,7 +86,7 @@ The portfolio now has a product direction beyond normalization: make the core wo
 ## TASK REGISTRY
 
 | ID | Task | Status | Notes |
-|----|------|--------|-------|
+| --- | --- | --- | --- |
 | DXP.01 | Create `dxp-org` planning docs | in progress | This file and `DEV-PLAN.md` |
 | DXP.02 | Create `devxtoolkit-v1-x` planning docs | in progress | Active v1 implementation |
 | DXP.03 | Create `devxtoolkit-v2-x` planning docs | in progress | Future/scaffold repo |

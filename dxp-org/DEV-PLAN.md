@@ -1,4 +1,4 @@
-# DEV-PLAN - dxp-org
+# DEV-PLAN — dxp-org
 
 **AUTHORITY LEVEL: AL:1**
 **Status:** ACTIVE

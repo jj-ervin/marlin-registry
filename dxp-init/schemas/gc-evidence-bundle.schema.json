@@ -1,0 +1,371 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://governancecommons.org/schemas/gc-evidence-bundle.schema.json",
+  "title": "GC Evidence Bundle",
+  "description": "Signed machine-readable evidence record produced by dxp-init audit operations. Consumable by auditors, automated compliance platforms, and GC-compatible tooling. Aligns with gc-compliance-evidence.schema.json (GC), SLSA provenance v1.0 predicate shape, JOSE EdDSA/Ed25519 signing, and SBOM reference formats.",
+  "type": "object",
+  "required": ["version", "bundle_id", "operation", "principal_ref", "timestamp", "validator", "scope", "findings", "summary"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "bundle_id": {
+      "type": "string",
+      "description": "UUID v4 — unique per audit run"
+    },
+    "operation": {
+      "type": "string",
+      "$comment": "EU AI Act Article 12 relevance: records the audited/install/status operation as an event class for traceability over the system lifecycle.",
+      "enum": [
+        "install",
+        "install-dry-run",
+        "audit-validate",
+        "audit-normalize",
+        "audit-verify",
+        "audit-adversarial",
+        "audit-meta",
+        "audit-trace",
+        "audit-authority",
+        "audit-registry",
+        "audit-close-loop",
+        "audit-destale",
+        "status"
+      ]
+    },
+    "principal_ref": {
+      "type": "string",
+      "$comment": "EU AI Act Article 13 relevance: supports provider/operator identity traceability when evidence is presented to deployers or auditors.",
+      "description": "principal_id from gc-principal.yaml. Full principal record is not embedded to avoid bloat; verify via the signing public key."
+    },
+    "principal_snapshot": {
+      "type": "object",
+      "$comment": "EU AI Act Article 13 relevance: carries the minimal actor/provider context needed to interpret who produced the evidence bundle.",
+      "description": "Minimal snapshot of principal fields at time of run for standalone verification",
+      "properties": {
+        "principal_id": { "type": "string" },
+        "name": { "type": "string" },
+        "role": { "type": "string" },
+        "public_key": { "type": "string" }
+      }
+    },
+    "timestamp": {
+      "type": "object",
+      "$comment": "EU AI Act Article 12 relevance: supports log chronology and audit traceability for the audited event.",
+      "required": ["iso"],
+      "properties": {
+        "iso": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 UTC timestamp of run completion"
+        },
+        "time_loc": {
+          "type": "string",
+          "description": "time.loc v1.2 canonical temporal-spatial primitive (see time-loc/ project)"
+        },
+        "epoch_ms": {
+          "type": "integer",
+          "description": "Unix epoch milliseconds for deterministic sorting"
+        }
+      }
+    },
+    "validator": {
+      "type": "object",
+      "$comment": "EU AI Act Article 9 relevance: identifies the control/check used in the risk management and review process; Article 13 relevance: explains how evidence was produced.",
+      "required": ["name", "version", "standard"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "e.g. dxp-init"
+        },
+        "version": {
+          "type": "string",
+          "description": "Semver of the dxp-init tool that produced this bundle"
+        },
+        "standard": {
+          "type": "string",
+          "description": "Governance standard applied, e.g. GC:2008 (DEV-ACCORD.00)"
+        },
+        "standard_version": {
+          "type": "string"
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "$comment": "EU AI Act Article 12 relevance: identifies the system/artifacts covered by the log record; Article 9 relevance: bounds the risk-management evidence to a project and file set.",
+      "required": ["project"],
+      "properties": {
+        "project": {
+          "type": "string",
+          "description": "Project name or path"
+        },
+        "root": {
+          "type": "string",
+          "description": "Absolute path to the scanned directory"
+        },
+        "files_scanned": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Relative paths of all files included in this audit"
+        },
+        "preset": {
+          "type": "string",
+          "description": "Named preset applied, if any (e.g. soc2, nist-ai-rmf, eu-ai-act-readiness)"
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "$comment": "EU AI Act Article 9 relevance: records identified risks, control failures, remediations, and residual conformance state for iterative risk management.",
+      "items": {
+        "type": "object",
+        "required": ["id", "severity", "description"],
+        "properties": {
+          "id": { "type": "string", "description": "e.g. DEV-ACCORD-CI-1" },
+          "severity": {
+            "type": "string",
+            "enum": ["error", "warning", "info", "pass"]
+          },
+          "file": { "type": "string" },
+          "line": { "type": "integer" },
+          "description": { "type": "string" },
+          "rule": { "type": "string" },
+          "standard_ref": { "type": "string", "description": "e.g. GC:2008 §CI-1" },
+          "remediation": { "type": "string" }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "$comment": "EU AI Act Article 9 relevance: summarizes risk/control outcome and closure state; Article 13 relevance: makes the result understandable without replaying the full audit.",
+      "required": ["total", "errors", "warnings", "passed", "conformant"],
+      "properties": {
+        "total": { "type": "integer" },
+        "errors": { "type": "integer" },
+        "warnings": { "type": "integer" },
+        "info": { "type": "integer" },
+        "passed": { "type": "integer" },
+        "conformant": {
+          "type": "boolean",
+          "description": "True only when errors === 0 and all required checks passed"
+        },
+        "closure_state": {
+          "type": "string",
+          "enum": ["open", "spec-complete", "release-complete", "runtime-complete"],
+          "description": "Gap closure state per REVIEW-GRAMMAR.md"
+        }
+      }
+    },
+    "gee_envelope": {
+      "type": "object",
+      "$comment": "EU AI Act Article 12 relevance: optional governed event wrapper for interoperable record-keeping; should include time.loc in the full GEE record.",
+      "description": "Optional Governed Event Envelope wrapper. Present when agentic governance is enabled in gc-principal.yaml.",
+      "properties": {
+        "event_id": { "type": "string" },
+        "event_type": { "type": "string" },
+        "namespace": { "type": "string" }
+      }
+    },
+    "slsa_provenance": {
+      "type": "object",
+      "$comment": "EU AI Act Article 12 relevance: provenance record for how this evidence artifact was produced; Article 9 relevance: supports supply-chain risk controls for the evidence-generation process.",
+      "description": "Optional in-toto Statement carrying a SLSA provenance v1.0 predicate. This records how the evidence bundle artifact was produced; it is not a substitute for signing the bundle.",
+      "required": ["_type", "subject", "predicateType", "predicate"],
+      "additionalProperties": false,
+      "properties": {
+        "_type": {
+          "type": "string",
+          "const": "https://in-toto.io/Statement/v1"
+        },
+        "subject": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/resourceDescriptor" }
+        },
+        "predicateType": {
+          "type": "string",
+          "const": "https://slsa.dev/provenance/v1"
+        },
+        "predicate": {
+          "type": "object",
+          "required": ["buildDefinition", "runDetails"],
+          "additionalProperties": true,
+          "properties": {
+            "buildDefinition": {
+              "type": "object",
+              "required": ["buildType", "externalParameters"],
+              "additionalProperties": true,
+              "properties": {
+                "buildType": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "SLSA Build Type v1.0 URI identifying the parameterized template/process used to produce this bundle."
+                },
+                "externalParameters": {
+                  "type": "object",
+                  "description": "Tenant/user-controlled parameters to the evidence-generation run; downstream verifiers treat these as untrusted inputs."
+                },
+                "internalParameters": {
+                  "type": "object",
+                  "description": "Builder-controlled parameters useful for reproducibility, debugging, or incident response."
+                },
+                "resolvedDependencies": {
+                  "type": "array",
+                  "items": { "$ref": "#/$defs/resourceDescriptor" }
+                }
+              }
+            },
+            "runDetails": {
+              "type": "object",
+              "required": ["builder"],
+              "additionalProperties": true,
+              "properties": {
+                "builder": {
+                  "type": "object",
+                  "required": ["id"],
+                  "additionalProperties": true,
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "URI for the trusted build/evidence-generation platform."
+                    },
+                    "builderDependencies": {
+                      "type": "array",
+                      "items": { "$ref": "#/$defs/resourceDescriptor" }
+                    },
+                    "version": {
+                      "type": "object",
+                      "additionalProperties": { "type": "string" }
+                    }
+                  }
+                },
+                "metadata": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "invocationId": { "type": "string" },
+                    "startedOn": { "type": "string", "format": "date-time" },
+                    "finishedOn": { "type": "string", "format": "date-time" }
+                  }
+                },
+                "byproducts": {
+                  "type": "array",
+                  "items": { "$ref": "#/$defs/resourceDescriptor" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "sbom_ref": {
+      "type": "object",
+      "$comment": "EU AI Act Article 9 relevance: supports supply-chain risk management by linking this evidence bundle to an SBOM. Recommendation: use CycloneDX JSON for dxp-init's first implementation because CycloneDX has a broad supply-chain transparency object model and registered JSON media type; allow SPDX because it is an ISO standard and common in procurement workflows.",
+      "description": "Optional SBOM reference. Prefer CycloneDX JSON for first implementation; SPDX is also allowed for interoperability and procurement contexts.",
+      "required": ["format", "uri"],
+      "additionalProperties": false,
+      "properties": {
+        "format": {
+          "type": "string",
+          "enum": ["CycloneDX", "SPDX"]
+        },
+        "version": {
+          "type": "string",
+          "description": "SBOM format version, e.g. CycloneDX 1.7 or SPDX 3.0."
+        },
+        "uri": {
+          "type": "string",
+          "format": "uri-reference",
+          "description": "Relative or absolute URI to the SBOM document."
+        },
+        "media_type": {
+          "type": "string",
+          "enum": [
+            "application/vnd.cyclonedx+json",
+            "application/vnd.cyclonedx+xml",
+            "application/spdx+json",
+            "text/spdx",
+            "application/json"
+          ]
+        },
+        "digest": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Digest map such as { \"sha256\": \"...\" }."
+        }
+      }
+    },
+    "signature": {
+      "type": "object",
+      "$comment": "EU AI Act Article 12 relevance: supports integrity of the log/evidence record. RFC 8037 alignment: JWS protected header alg=EdDSA; verification key is JWK kty=OKP, crv=Ed25519.",
+      "description": "JWS compact serialization using JOSE EdDSA over Ed25519 per RFC 8037. Signing input is the canonical bundle with this signature field excluded. Verifiable using the principal public JWK.",
+      "additionalProperties": false,
+      "required": ["protected_header", "value", "signed_at", "key"],
+      "properties": {
+        "algorithm": {
+          "type": "string",
+          "enum": ["EdDSA"],
+          "default": "EdDSA"
+        },
+        "protected_header": {
+          "type": "object",
+          "required": ["alg"],
+          "additionalProperties": true,
+          "properties": {
+            "alg": { "type": "string", "const": "EdDSA" },
+            "kid": { "type": "string" },
+            "typ": { "type": "string", "const": "JWS" }
+          }
+        },
+        "value": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]*\\.[A-Za-z0-9_-]+$",
+          "description": "JWS compact serialization"
+        },
+        "key": { "$ref": "#/$defs/ed25519PublicJwk" },
+        "signed_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "resourceDescriptor": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "uri": { "type": "string", "format": "uri-reference" },
+        "digest": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "name": { "type": "string" },
+        "downloadLocation": { "type": "string", "format": "uri-reference" },
+        "mediaType": { "type": "string" },
+        "content": { "type": "string", "contentEncoding": "base64" },
+        "annotations": { "type": "object" }
+      }
+    },
+    "ed25519PublicJwk": {
+      "type": "object",
+      "required": ["kty", "crv", "x"],
+      "additionalProperties": false,
+      "properties": {
+        "kty": { "type": "string", "const": "OKP" },
+        "crv": { "type": "string", "const": "Ed25519" },
+        "x": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{43}$",
+          "description": "Base64urlUInt-encoded Ed25519 public key."
+        },
+        "kid": { "type": "string" }
+      }
+    }
+  }
+}

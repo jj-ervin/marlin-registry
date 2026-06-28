@@ -1,0 +1,156 @@
+/**
+ * Evidence bundle generation and signing.
+ * Schema: schemas/gc-evidence-bundle.schema.json
+ * Aligns with gc-compliance-evidence.schema.json (GC) and SLSA provenance v1.0.
+ * TODO INIT.27 (bundle), INIT.28 (signing), INIT.06 (full PASS)
+ */
+import { randomUUID } from 'crypto';
+
+export type AuditOperation =
+  | 'install' | 'install-dry-run'
+  | 'audit-validate' | 'audit-normalize' | 'audit-verify'
+  | 'audit-adversarial' | 'audit-meta' | 'audit-trace'
+  | 'audit-authority' | 'audit-registry' | 'audit-close-loop'
+  | 'audit-destale' | 'status';
+
+export type FindingSeverity = 'error' | 'warning' | 'info' | 'pass';
+
+export interface Finding {
+  id: string;
+  severity: FindingSeverity;
+  file?: string;
+  line?: number;
+  description: string;
+  rule?: string;
+  standard_ref?: string;
+  remediation?: string;
+}
+
+export interface EvidenceSummary {
+  total: number;
+  errors: number;
+  warnings: number;
+  info: number;
+  passed: number;
+  conformant: boolean;
+  closure_state?: 'open' | 'spec-complete' | 'release-complete' | 'runtime-complete';
+}
+
+export interface EvidenceBundle {
+  version: '1.0.0';
+  bundle_id: string;
+  operation: AuditOperation;
+  principal_ref: string;
+  principal_snapshot?: {
+    principal_id: string;
+    name: string;
+    role: string;
+    public_key?: string;
+  };
+  timestamp: {
+    iso: string;
+    time_loc?: string;
+    epoch_ms: number;
+  };
+  validator: {
+    name: string;
+    version: string;
+    standard: string;
+    standard_version?: string;
+  };
+  scope: {
+    project: string;
+    root?: string;
+    files_scanned?: string[];
+    preset?: string;
+  };
+  findings: Finding[];
+  summary: EvidenceSummary;
+  gee_envelope?: Record<string, unknown>;
+  slsa_provenance?: Record<string, unknown>;
+  sbom_ref?: {
+    format: 'CycloneDX' | 'SPDX';
+    version?: string;
+    uri: string;
+    media_type?:
+      | 'application/vnd.cyclonedx+json'
+      | 'application/vnd.cyclonedx+xml'
+      | 'application/spdx+json'
+      | 'text/spdx'
+      | 'application/json';
+    digest?: Record<string, string>;
+  };
+  signature?: {
+    algorithm: 'EdDSA';
+    protected_header: {
+      alg: 'EdDSA';
+      kid?: string;
+      typ?: 'JWS';
+    };
+    value: string;
+    key: {
+      kty: 'OKP';
+      crv: 'Ed25519';
+      x: string;
+      kid?: string;
+    };
+    signed_at: string;
+  };
+}
+
+/** Build an unsigned evidence bundle from audit findings. */
+export function buildBundle(
+  operation: AuditOperation,
+  principalId: string,
+  findings: Finding[],
+  scope: EvidenceBundle['scope']
+): EvidenceBundle {
+  const now = new Date();
+  const errors = findings.filter((f) => f.severity === 'error').length;
+  const warnings = findings.filter((f) => f.severity === 'warning').length;
+  const info = findings.filter((f) => f.severity === 'info').length;
+  const passed = findings.filter((f) => f.severity === 'pass').length;
+
+  return {
+    version: '1.0.0',
+    bundle_id: randomUUID(),
+    operation,
+    principal_ref: principalId,
+    timestamp: {
+      iso: now.toISOString(),
+      epoch_ms: now.getTime(),
+    },
+    validator: {
+      name: 'dxp-init',
+      version: '0.1.0',
+      standard: 'GC:2008',
+      standard_version: 'DEV-ACCORD.00',
+    },
+    scope,
+    findings,
+    summary: {
+      total: findings.length,
+      errors,
+      warnings,
+      info,
+      passed,
+      conformant: errors === 0,
+      closure_state: errors === 0 ? 'spec-complete' : 'open',
+    },
+  };
+}
+
+/** Sign a bundle with the principal's Ed25519 private key. Returns signed bundle. */
+export async function signBundle(
+  _bundle: EvidenceBundle,
+  _privateKeyBase64url: string
+): Promise<EvidenceBundle> {
+  // TODO INIT.28
+  throw new Error('signBundle() not yet implemented — see INIT.28');
+}
+
+/** Write a bundle to disk as JSON. */
+export async function writeBundle(_bundle: EvidenceBundle, _outputDir: string): Promise<string> {
+  // TODO INIT.27
+  throw new Error('writeBundle() not yet implemented — see INIT.27');
+}

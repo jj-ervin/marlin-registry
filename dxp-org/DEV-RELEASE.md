@@ -1,6 +1,7 @@
 # DEV-RELEASE — dxp-org
 
-Status: **Active — Phase 1 (Planning Coverage) in progress**  
+**AUTHORITY LEVEL: AL:1**
+**Status:** Active — Phase 1 (Planning Coverage) in progress  
 Created: 2026-06-09  
 Authority: Owned by this repo. Sequencing and cross-repo dependencies defer to [`docs/DEV-RELEASE.md`](../docs/DEV-RELEASE.md).  
 Relationship to DEV-PLAN: `DEV-PLAN.md` owns current execution state, active milestones, and project disposition. This file owns release contracts — what ships publicly, under what conditions, and what each release unlocks downstream.

@@ -1,0 +1,32 @@
+name: GC Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    name: DEV-ACCORD Conformance (GC:2008)
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dxp-init
+        run: npm install -g dxp-init@{{validatorVersion}}
+
+      - name: Validate governance scaffold
+        run: dxp-init audit validate --evidence evidence/
+
+      - name: Upload evidence bundle
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: governance-evidence-${{"{{"}} github.run_id {{"}}"}}
+          path: evidence/
+          retention-days: 90

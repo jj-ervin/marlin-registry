@@ -1,0 +1,207 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://governancecommons.org/schemas/gc-principal.schema.json",
+  "title": "GC Principal Identity Record",
+  "description": "Canonical identity record for the principal who installed or authorized governance on this project. Authority anchor for all emitted governance files. Every by: field in passchangelog, registrar in ONS, principal in GEE, and Authority: line in DEV-PATH.md traces back to this record.",
+  "type": "object",
+  "required": ["version", "principal_id", "name", "role", "entity", "attestation", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "principal_id": {
+      "type": "string",
+      "description": "Unique identifier — handle, GitHub username, or future DID. Must be stable across re-runs. Phase 2 MAY use a DID URI here."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "github_handle": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}$"
+    },
+    "role": {
+      "type": "string",
+      "enum": ["owner", "maintainer", "installer", "auditor"],
+      "description": "owner: full authority, permanent. maintainer: audit/normalize/close-loop, no foundational changes. installer: one-time bootstrap, expires after first validated run. auditor: read-only."
+    },
+    "entity": {
+      "type": "object",
+      "required": ["type"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["individual", "llc", "corporation"]
+        },
+        "name": {
+          "type": "string",
+          "description": "Legal entity name if type is llc or corporation"
+        },
+        "jurisdiction": {
+          "type": "string",
+          "description": "Human-readable registration jurisdiction, e.g. 'Wyoming, USA'. Phase 1 keeps this as plain text; Phase 2 can map it into DID service metadata or verifiable credential claims without changing the current field."
+        },
+        "jurisdiction_ref": {
+          "type": "object",
+          "description": "Optional structured jurisdiction reference for smooth Phase 2 DID/VC migration. This is not a DID Core field; it is local metadata that can later become a verifiable credential claim or DID service endpoint payload.",
+          "additionalProperties": false,
+          "properties": {
+            "country": {
+              "type": "string",
+              "pattern": "^[A-Z]{2}$",
+              "description": "ISO 3166-1 alpha-2 country code."
+            },
+            "region": {
+              "type": "string",
+              "description": "State, province, or subdivision code/name."
+            },
+            "registry": {
+              "type": "string",
+              "description": "Name of the corporate/entity registry, if applicable."
+            },
+            "registration_id": {
+              "type": "string",
+              "description": "Entity registration number or registry identifier, if applicable."
+            },
+            "uri": {
+              "type": "string",
+              "format": "uri",
+              "description": "Resolver URI for the jurisdiction or registry record, if available."
+            }
+          }
+        },
+        "did": {
+          "type": "string",
+          "pattern": "^did:[a-z0-9]+:[A-Za-z0-9._:%-]+$",
+          "description": "Optional Phase 2 DID URI for this legal entity or principal. DID Core-compatible identifier only; DID document resolution is out of scope for Phase 1."
+        }
+      }
+    },
+    "succession": {
+      "type": "object",
+      "description": "Optional backup authority if owner is unavailable",
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "handle": { "type": "string" },
+        "email": { "type": "string", "format": "email" }
+      }
+    },
+    "attestation": {
+      "type": "object",
+      "required": ["confirmed", "timestamp"],
+      "additionalProperties": false,
+      "properties": {
+        "confirmed": {
+          "type": "boolean",
+          "description": "Principal confirmed they have authority to install governance on this repo"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "statement": {
+          "type": "string",
+          "description": "Optional: the exact attestation statement shown to the principal"
+        }
+      }
+    },
+    "installer_expiry": {
+      "type": "object",
+      "description": "Present only when the principal's original role was installer. Records the expiry event and transition.",
+      "additionalProperties": false,
+      "properties": {
+        "expired_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "transitioned_to": {
+          "type": "string",
+          "enum": ["owner", "maintainer"]
+        }
+      }
+    },
+    "signing": {
+      "type": "object",
+      "description": "Phase 1: local JOSE EdDSA signing with an Ed25519 public JWK per RFC 8037. Phase 2: W3C DID/VC can reference this key material through DID verification methods.",
+      "additionalProperties": false,
+      "required": ["public_key_jwk", "algorithm"],
+      "properties": {
+        "public_key": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{43}$",
+          "description": "Deprecated compatibility field: base64urlUInt-encoded Ed25519 public key. Prefer public_key_jwk.x."
+        },
+        "algorithm": {
+          "type": "string",
+          "enum": ["EdDSA"],
+          "default": "EdDSA",
+          "description": "JOSE alg value for Ed25519 signatures per RFC 8037."
+        },
+        "curve": {
+          "type": "string",
+          "const": "Ed25519"
+        },
+        "public_key_jwk": {
+          "type": "object",
+          "description": "Public JWK for verifying JWS signatures. RFC 8037 defines Ed25519 keys as kty=OKP, crv=Ed25519, x=<base64urlUInt public key>.",
+          "required": ["kty", "crv", "x"],
+          "additionalProperties": false,
+          "properties": {
+            "kty": { "type": "string", "const": "OKP" },
+            "crv": { "type": "string", "const": "Ed25519" },
+            "x": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{43}$",
+              "description": "Base64urlUInt-encoded Ed25519 public key."
+            },
+            "kid": { "type": "string" }
+          }
+        },
+        "key_id": {
+          "type": "string",
+          "description": "Key identifier for rotation tracking. In Phase 2 this can become or align with a DID verificationMethod id."
+        },
+        "did_verification_method": {
+          "type": "string",
+          "pattern": "^did:[a-z0-9]+:[A-Za-z0-9._:%-]+#.+$",
+          "description": "Optional Phase 2 DID Core verification method URI, e.g. did:example:123#key-1."
+        },
+        "signature": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]*\\.[A-Za-z0-9_-]+$",
+          "description": "JWS compact serialization signing the canonical attestation fields"
+        }
+      }
+    },
+    "ci_mode": {
+      "type": "object",
+      "description": "Present when dxp-init ran headless (no TTY). Principal is a service account or bot.",
+      "additionalProperties": false,
+      "properties": {
+        "service_account": { "type": "string" },
+        "platform": {
+          "type": "string",
+          "enum": ["github-actions", "gitlab-ci", "azure-devops", "bitbucket-pipelines", "other"]
+        },
+        "triggered_by": { "type": "string", "description": "Human actor who triggered the CI run" }
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

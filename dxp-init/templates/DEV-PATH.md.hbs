@@ -1,0 +1,31 @@
+# DEV-PATH — {{projectName}}
+
+**AUTHORITY LEVEL: {{authorityLevel}}**
+**Status:** active
+**Updated:** {{date}}
+**Authority:** This file. Founding charter for {{projectName}}.
+**Provisioned by:** dxp-init v{{validatorVersion}} — {{principal.name}} ({{principal.role}})
+
+---
+
+## Role
+
+{{#if projectDescription}}{{projectDescription}}{{else}}Project description not yet written.{{/if}}
+
+---
+
+## Phase History
+
+### Phase 0 — Governance Bootstrap
+
+**Status:** ACTIVE
+**Period:** {{date}} —
+
+- Governance scaffold installed by dxp-init v{{validatorVersion}}
+- ONS conformance profile: {{onsValidationTier}}
+- GC conformance level: {{gcConformanceLevel}}
+- Authority level: {{authorityLevel}}
+- Principal: {{principal.name}} ({{principal.role}})
+{{#if agenticGovernance}}- Agentic governance: enabled (GEE namespace configured)
+{{/if}}{{#if preset}}- Evidence preset applied: {{preset}}
+{{/if}}
