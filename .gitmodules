@@ -7,3 +7,9 @@
 [submodule "dxp-org/doc-vault-plane"]
 	path = dxp-org/doc-vault-plane
 	url = https://github.com/dxp-org/doc-vault-plane.git
+[submodule "governed-event"]
+	path = governed-event
+	url = https://github.com/governancecommons/governed-event.git
+[submodule "time-loc"]
+	path = time-loc
+	url = https://github.com/governancecommons/time-loc.git
