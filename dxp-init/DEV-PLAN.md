@@ -28,11 +28,14 @@ produces the evidence that an auditor or automated compliance platform can trust
 
 ## Current Phase
 
-Phase 1 — Active build. Waves 1 and 2 complete. Wave 3 (MVP operations) is next.
+Phase 1 — Waves 1–4 complete. Wave 5 scope TBD.
 
-**Wave 1 (CLOSED):** TypeScript scaffold, schema pair (gc-principal + gc-evidence-bundle)
+**Wave 0 (CLOSED):** Charter, TypeScript scaffold, project registered
+**Wave 1 (CLOSED):** Schema pair (gc-principal + gc-conformance + gc-evidence-bundle)
 **Wave 2 (CLOSED):** Template library (7 templates), core provisioner, buildBundle()
-**Wave 3 (OPEN):** MVP CLI operations — `audit validate`, `status`, `install --dry-run`
+**Wave 3 (CLOSED):** MVP CLI — `audit validate`, `status`, `install` (Marlin wizard)
+**Wave 4 (CLOSED):** Ed25519 signed evidence bundles — signBundle(), verifyBundle(), keystore, `audit verify-bundle`
+**Wave 5 (PLANNING):** Scope TBD — candidates: `--reconfigure` brownfield install, compliance presets, remaining audit operations
 
 ---
 
@@ -40,14 +43,14 @@ Phase 1 — Active build. Waves 1 and 2 complete. Wave 3 (MVP operations) is nex
 
 | Track | Name | Goal | Status |
 | --- | --- | --- | --- |
-| A | Core provisioning library | TypeScript library — wizard answers → governance files | planned |
-| B | CLI wizard | `dxp-init` command with Inquirer/Clack interactive prompts | planned |
+| A | Core provisioning library | TypeScript library — wizard answers → governance files | shipped (Wave 2) |
+| B | CLI wizard | `dxp-init` command with Clack interactive prompts (Marlin) | shipped (Wave 3) |
 | C | GUI frontend | Electron window wrapper over Track A library | planned |
-| D | Template library | All governance file templates with variable substitution | planned |
+| D | Template library | All governance file templates with variable substitution | shipped (Wave 2) |
 | E | Cockpit integration | dxp-init core as a Cockpit first-run module | planned |
-| F | AUDIT module | Full review grammar suite — validate, normalize, verify, adversarial, meta-audit, trace, authority audit, registry audit, close-the-loop, de-stale | planned |
-| G | STATUS module | Portfolio health report — gap table, per-project detail, blocked items (ports dev-report.ps1) | planned |
-| H | Evidence profiles | Signed machine-readable evidence bundles per audit run — the killer feature | planned |
+| F | AUDIT module | Full review grammar suite — validate shipped; normalize/verify/trace/adversarial/meta/authority/registry/close/destale pending | partial (Wave 3) |
+| G | STATUS module | Portfolio health report — gap table, per-project detail, blocked items | shipped (Wave 3) |
+| H | Evidence profiles | Signed machine-readable evidence bundles per audit run | shipped (Wave 4) |
 | I | Compliance mapping | Evidence profiles mapped to SOC 2, ISO 27001, EU AI Act, NIST AI RMF, ISO 42001, HIPAA, PCI-DSS, FedRAMP | planned |
 | J | Supply chain | SLSA provenance + SBOM (SPDX / CycloneDX) scaffolding | planned |
 | K | Zero Trust architecture | ZTA design principle throughout — every action authenticated, least privilege, no implicit trust, short-lived credentials | planned |
@@ -59,43 +62,25 @@ Phase 1 — Active build. Waves 1 and 2 complete. Wave 3 (MVP operations) is nex
 
 | ID | Track | Work | Priority | Status |
 | --- | --- | --- | --- | --- |
-| INIT.01 | D | Define wizard question schema — YAML/JSON structure mapping answers to artifacts | P0 | planned |
-| INIT.02 | D | Write governance file templates: ons-profile.yaml, gc-conformance.yaml, GEE config | P0 | planned |
-| INIT.03 | D | Write planning doc templates: DEV-PATH.md and DEV-PLAN.md with correct H1s and AUTHORITY LEVEL | P0 | planned |
-| INIT.04 | A | Core provisioning library — accepts answer object, renders templates, writes files | P0 | planned |
-| INIT.05 | A | Dry-run mode — show diff of what would be written without touching the filesystem | P1 | planned |
-| INIT.06 | A | Reconfigure mode — re-run wizard against existing project, diff-only overwrites | P1 | planned |
-| INIT.07 | A | Validation step — run validate-planning.ps1 and gc-validate after emission | P1 | planned |
-| INIT.08 | B | CLI wizard — Inquirer/Clack prompts covering all decision surfaces | P1 | planned |
-| INIT.09 | B | Named presets: gc-standard, gc-strict, solo-dev, enterprise, gc-only | P1 | planned |
-| INIT.10 | B | `--preset` flag, `--dry-run` flag, `--reconfigure` flag | P1 | planned |
-| INIT.11 | C | Electron window wrapper — web UI shell calling Track A library | P2 | planned |
-| INIT.12 | C | Tauri packaging evaluation — lighter binary, same web UI | P2 | planned |
-| INIT.13 | E | Define Cockpit module interface — how Cockpit calls dxp-init core | P3 | planned |
-| INIT.14 | A | Mode detection — auto-detect INSTALL vs AUDIT from repo state; surface mode choice on first run | P0 | planned |
-| INIT.15 | F | AUDIT module — validate operation (ports validate-planning.ps1 logic) | P1 | planned |
-| INIT.16 | F | AUDIT module — normalize operation (align names, scope, status, paths, registry pointers) | P1 | planned |
-| INIT.17 | F | AUDIT module — verify, trace, authority audit, registry audit operations | P2 | planned |
-| INIT.18 | F | AUDIT module — adversarial audit and meta-audit operations | P2 | planned |
-| INIT.19 | F | AUDIT module — close-the-loop and de-stale operations | P2 | planned |
-| INIT.20 | G | STATUS module — portfolio health report (ports dev-report.ps1 logic) | P1 | planned |
-| INIT.21 | C | GUI three-tab layout — Install / Audit / Status as first-class panels | P2 | planned |
-| INIT.22 | A | Principal identity collection — name, handle, email, role, entity type, succession, attestation | P0 | planned |
-| INIT.23 | D | `gc-principal.yaml` template — canonical identity record; authority anchor for all emitted files | P0 | planned |
-| INIT.24 | A | CI/headless principal detection — no-TTY mode prompts for service account / bot config | P1 | planned |
-| INIT.25 | A | Installer role expiry — flag `installer` role as one-time in `gc-principal.yaml`; prompt for ongoing role after first validated run | P1 | planned |
-| INIT.26 | D | `gc-principal.yaml` schema — define schema with validation, sample records, and redaction rules before adding more identity theory | P0 | planned |
-| INIT.27 | H | Evidence bundle format — `dxp-init audit --evidence out/` emits JSON/YAML with validator version, input files, findings, principal, time.loc, optional GEE envelope | P1 | planned |
-| INIT.28 | H | Signed evidence bundle — sign evidence bundle with principal's key (Ed25519 / JWS); GC already has gc-compliance-evidence.schema.json | P1 | planned |
-| INIT.29 | I | Evidence profiles for SOC 2, ISO 27001, NIST AI RMF, ISO 42001 — emit controls/evidence scaffolding only, never claim compliance | P2 | planned |
-| INIT.30 | I | Evidence profiles for EU AI Act readiness, HIPAA, PCI-DSS, FedRAMP | P2 | planned |
-| INIT.31 | I | --preset flag maps to evidence profile: gc-standard, soc2, iso27001, eu-ai-act-readiness, nist-ai-rmf, hipaa, pci, fedramp | P2 | planned |
-| INIT.32 | J | SBOM scaffolding — CycloneDX and SPDX output; scaffold generation pipeline in CI | P2 | planned |
-| INIT.33 | J | SLSA provenance — scaffold Sigstore/cosign signing; emit SLSA provenance attestation for dxp-init runs themselves | P2 | planned |
-| INIT.34 | K | Zero Trust design audit — review every identity, trust, and permission decision in dxp-init against NIST SP 800-207 | P1 | planned |
-| INIT.35 | K | ZTA principal hardening — short-lived session tokens, no long-lived implicit trust, role scope boundaries enforced at runtime | P1 | planned |
-| INIT.36 | L | Signed local principal record (Phase 1) — Ed25519 key pair, local signing, before any DID/VC work | P1 | planned |
-| INIT.37 | L | W3C DID/VC for principal identity (Phase 2) — deferred; ship signed local record first | P3 | planned |
+| INIT.00 | A | Charter — TypeScript scaffold, tsconfig, package.json, CLI entry | P0 | closed (Wave 0) |
+| INIT.01 | A | Schema pair — gc-principal.schema.json + gc-evidence-bundle.schema.json | P0 | closed (Wave 1) |
+| INIT.02 | H+L | gc-conformance.schema.json; scope + does_not_certify fields in principal schema | P0 | closed (Wave 1) |
+| INIT.03 | D | Template library — 7 governance file templates with variable substitution | P0 | closed (Wave 2) |
+| INIT.04 | A | Core provisioning library — provision(), principal, evidence, detector, validator, templates | P0 | closed (Wave 2) |
+| INIT.05 | B+F+G | MVP CLI — `audit validate`, `status`, `install` (Marlin wizard); validator.ts, reporter.ts, marlin.ts | P0 | closed (Wave 3) |
+| INIT.06 | H | Signed evidence bundles — Ed25519 keystore, signBundle(), verifyBundle(), `audit verify-bundle` | P0 | closed (Wave 4) |
+| INIT.07 | B | `--reconfigure` brownfield install — re-run wizard against existing repo, diff-only overwrites | P1 | queued (Wave 5) |
+| INIT.08 | B | Named presets: `--preset gc-standard`, `solo-dev`, `enterprise`, `gc-strict` | P1 | queued (Wave 5) |
+| INIT.09 | F | AUDIT normalize — align names, scope, status, paths, registry pointers | P1 | queued |
+| INIT.10 | F | AUDIT verify, trace, authority audit, registry audit | P2 | queued |
+| INIT.11 | F | AUDIT adversarial, meta-audit, close-the-loop, de-stale | P2 | queued |
+| INIT.12 | I | Compliance presets — SOC 2, ISO 27001, EU AI Act, NIST AI RMF (emit scaffolding only, never claim compliance) | P2 | queued |
+| INIT.13 | I | Compliance presets — HIPAA, PCI-DSS, FedRAMP, ISO 42001 | P2 | queued |
+| INIT.14 | C | GUI — Electron window wrapper; three-tab layout (Install / Audit / Status) | P2 | queued |
+| INIT.15 | J | SBOM scaffolding — CycloneDX and SPDX; SLSA provenance via Sigstore/cosign | P2 | queued |
+| INIT.16 | K | ZTA audit — review every identity/trust/permission decision against NIST SP 800-207 | P1 | queued |
+| INIT.17 | L | W3C DID/VC for principal identity (Phase 2) — deferred; signed local record already shipped | P3 | queued |
+| INIT.18 | E | Cockpit module interface — how Cockpit calls dxp-init core as first-run module | P3 | queued |
 
 ---
 
