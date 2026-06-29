@@ -1,20 +1,70 @@
 import { Command } from 'commander';
+import chalk from 'chalk';
+import { validatePlanningDocs } from '../core/validator.js';
+import { buildBundle, writeBundle } from '../core/evidence.js';
 
-const auditOpts = (cmd: Command) =>
-  cmd.option('--evidence <dir>', 'Emit signed evidence bundle to directory');
+const ANON_PRINCIPAL = 'dxp-init-cli';
+
+function renderValidationResults(result: ReturnType<typeof validatePlanningDocs>, root: string): void {
+  console.log('');
+  console.log('  DEV-ACCORD CONFORMANCE CHECK — dxp-init audit validate');
+  console.log('  Standard: GC:2008 / DEV-ACCORD.00');
+  console.log(`  ${new Date().toISOString().replace('T', ' ').substring(0, 16)}  ${root}`);
+  console.log('');
+
+  for (const f of result.findings) {
+    if (f.severity === 'pass') {
+      console.log(chalk.green('  [PASS     ]') + chalk.gray(` ${f.description}`));
+    } else if (f.severity === 'error') {
+      console.log(chalk.red(`  [ERROR ${f.id}]`) + chalk.white(` ${f.file}`) + chalk.redBright(` — ${f.description}`));
+      if (f.remediation) console.log(chalk.gray(`             Remediation: ${f.remediation}`));
+    } else if (f.severity === 'warning') {
+      console.log(chalk.yellow(`  [WARN  ${f.id}]`) + chalk.white(` ${f.file}`) + chalk.yellow(` — ${f.description}`));
+      if (f.remediation) console.log(chalk.gray(`             Remediation: ${f.remediation}`));
+    }
+  }
+
+  console.log('');
+  const { errors, warnings, filesChecked } = result;
+  if (errors === 0 && warnings === 0) {
+    console.log(`  ── ${filesChecked} docs checked  │  ` + chalk.green('all conformant') + `  │  DEV-ACCORD.00 ──`);
+  } else if (errors === 0) {
+    console.log(`  ── ${filesChecked} docs checked  │  ` + chalk.green('0 errors') + `  ` + chalk.yellow(`${warnings} warnings`) + `  │  DEV-ACCORD.00 ──`);
+  } else {
+    console.log(`  ── ${filesChecked} docs checked  │  ` + chalk.red(`${errors} errors`) + `  ` + chalk.yellow(`${warnings} warnings`) + `  │  DEV-ACCORD.00 ──`);
+  }
+  console.log('');
+}
 
 export const auditCommand = new Command('audit')
   .description('Run governance audit operations against the current project');
 
 auditCommand
   .command('validate')
-  .description('DEV-ACCORD + ONS conformance check (ports validate-planning.ps1)')
+  .description('DEV-ACCORD + ONS conformance check (GC:2008 / DEV-ACCORD.00)')
   .addHelpText('after', '\n  Standard: GC:2008 / DEV-ACCORD.00')
-  .option('--evidence <dir>', 'Emit signed evidence bundle to directory')
-  .action(async (opts: { evidence?: string }) => {
-    // TODO INIT.15 — port validate-planning.ps1 to TypeScript
-    // TODO INIT.27 — emit evidence bundle
-    console.log('[dxp-init audit validate] not yet implemented', opts);
+  .option('--evidence <dir>', 'Write signed evidence bundle to directory')
+  .option('--project <name>', 'Scope to a single project subdirectory')
+  .option('--strict', 'Treat warnings as errors (exit 1 if any warnings)')
+  .action(async (opts: { evidence?: string; project?: string; strict?: boolean }) => {
+    const root = process.cwd();
+    const result = validatePlanningDocs(root, { project: opts.project, strict: opts.strict });
+    renderValidationResults(result, root);
+
+    if (opts.evidence) {
+      const bundle = buildBundle(
+        'audit-validate',
+        ANON_PRINCIPAL,
+        result.findings,
+        { project: opts.project ?? '(portfolio)', root, files_scanned: [] }
+      );
+      const filePath = await writeBundle(bundle, opts.evidence);
+      console.log(chalk.cyan(`  Evidence bundle written: ${filePath}`));
+      console.log('');
+    }
+
+    if (result.errors > 0) process.exit(1);
+    if (opts.strict && result.warnings > 0) process.exit(1);
   });
 
 auditCommand

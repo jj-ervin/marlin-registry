@@ -149,8 +149,14 @@ export async function signBundle(
   throw new Error('signBundle() not yet implemented — see INIT.28');
 }
 
-/** Write a bundle to disk as JSON. */
-export async function writeBundle(_bundle: EvidenceBundle, _outputDir: string): Promise<string> {
-  // TODO INIT.27
-  throw new Error('writeBundle() not yet implemented — see INIT.27');
+/** Write a bundle to disk as JSON. Returns the written file path. */
+export async function writeBundle(bundle: EvidenceBundle, outputDir: string): Promise<string> {
+  const { mkdirSync, writeFileSync } = await import('fs');
+  const { join } = await import('path');
+  mkdirSync(outputDir, { recursive: true });
+  const ts = bundle.timestamp.iso.replace(/[:.]/g, '-').replace('T', '_').substring(0, 19);
+  const fileName = `evidence-${bundle.operation}-${ts}.json`;
+  const filePath = join(outputDir, fileName);
+  writeFileSync(filePath, JSON.stringify(bundle, null, 2), 'utf8');
+  return filePath;
 }
