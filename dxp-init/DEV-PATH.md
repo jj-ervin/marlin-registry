@@ -130,6 +130,21 @@ Cockpit integration is not a blocker — it uses the same core when it ships.
 
 ---
 
+## Standing Quality Gates
+
+These apply to every PASS from Wave 4 onward and cannot be waived:
+
+**Self-validation gate:** any PASS that produces audit output must run
+`dxp-init audit validate` on its own source and pass before the PASS can be
+closed. A governance tool must pass its own checks on its own source before
+shipping. This was established after the Wave 3 dogfood run (2026-06-28)
+which found the UTF-8 BOM bug on the first real-data run.
+
+**Schema-validation gate:** any evidence bundle emitted must validate against
+`gc-evidence-bundle.schema.json` before the PASS can be closed.
+
+---
+
 ## Design Decisions
 
 **INIT-D15 — dxp-init is the install-time bootstrapper; compliance operations is a separate runtime product.**

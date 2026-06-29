@@ -24,6 +24,21 @@ auditors and automated compliance platforms can trust without accessing the repo
   time.loc timestamp, optional GEE envelope
 - Public key embedded in `gc-principal.yaml` for independent verification
 
+## Done when
+
+- `signBundle()` implemented and produces a valid JWS compact serialization
+- `verifyBundle()` confirms integrity and signer identity from public key alone
+- `dxp-init audit validate --evidence out/` emits a signed bundle on the dxp-init
+  repo itself and the bundle passes `verifyBundle()` — **self-validation gate**
+- The signed bundle schema-validates against `gc-evidence-bundle.schema.json`
+- A stranger (third party with only the bundle + public key) can verify without
+  repo access (see Stranger test below)
+
+**Standing Wave 4 acceptance criterion:** any PASS in Wave 4 or later that
+produces audit output must pass `dxp-init audit validate` on its own source
+before the PASS can be closed. A governance tool must pass its own checks on
+its own source before shipping.
+
 ## Stranger test
 
 A third party with only the evidence bundle file and the public key from
