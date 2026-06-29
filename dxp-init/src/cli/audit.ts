@@ -1,9 +1,32 @@
 import { Command } from 'commander';
 import chalk from 'chalk';
+import { readFileSync, existsSync } from 'fs';
+import { join } from 'path';
+import { load as yamlLoad } from 'js-yaml';
 import { validatePlanningDocs } from '../core/validator.js';
-import { buildBundle, writeBundle } from '../core/evidence.js';
+import { buildBundle, signBundle, verifyBundle, writeBundle } from '../core/evidence.js';
+import type { EvidenceBundle } from '../core/evidence.js';
+import { loadPrivateKey, hasPrivateKey } from '../core/keystore.js';
 
 const ANON_PRINCIPAL = 'dxp-init-cli';
+
+function loadLocalPrincipalId(cwd: string): string | null {
+  const p = join(cwd, 'gc-principal.yaml');
+  if (!existsSync(p)) return null;
+  try {
+    const doc = yamlLoad(readFileSync(p, 'utf8')) as { principal_id?: string };
+    return doc?.principal_id ?? null;
+  } catch {
+    return null;
+  }
+}
+
+function trySign(bundle: EvidenceBundle, principalId: string): EvidenceBundle {
+  if (!hasPrivateKey(principalId)) return bundle;
+  const privateKey = loadPrivateKey(principalId);
+  if (!privateKey) return bundle;
+  return signBundle(bundle, privateKey);
+}
 
 function renderValidationResults(result: ReturnType<typeof validatePlanningDocs>, root: string): void {
   console.log('');
@@ -52,19 +75,48 @@ auditCommand
     renderValidationResults(result, root);
 
     if (opts.evidence) {
-      const bundle = buildBundle(
+      const principalId = loadLocalPrincipalId(root) ?? ANON_PRINCIPAL;
+      let bundle = buildBundle(
         'audit-validate',
-        ANON_PRINCIPAL,
+        principalId,
         result.findings,
         { project: opts.project ?? '(portfolio)', root, files_scanned: [] }
       );
+      bundle = trySign(bundle, principalId);
       const filePath = await writeBundle(bundle, opts.evidence);
-      console.log(chalk.cyan(`  Evidence bundle written: ${filePath}`));
+      const signed = !!bundle.signature;
+      console.log(chalk.cyan(`  Evidence bundle written: ${filePath}`) + (signed ? chalk.green(' (signed)') : chalk.yellow(' (unsigned — no key found)')));
       console.log('');
     }
 
     if (result.errors > 0) process.exit(1);
     if (opts.strict && result.warnings > 0) process.exit(1);
+  });
+
+auditCommand
+  .command('verify-bundle')
+  .description('Verify the Ed25519 signature on a signed evidence bundle')
+  .argument('<bundle>', 'Path to evidence bundle JSON file')
+  .action((bundlePath: string) => {
+    let bundle: EvidenceBundle;
+    try {
+      bundle = JSON.parse(readFileSync(bundlePath, 'utf8')) as EvidenceBundle;
+    } catch (e) {
+      console.error(chalk.red(`Cannot read bundle: ${e instanceof Error ? e.message : String(e)}`));
+      process.exit(1);
+    }
+    const result = verifyBundle(bundle);
+    if (result.valid) {
+      console.log(chalk.green('  [VERIFIED]') + ` ${bundlePath}`);
+      console.log(chalk.gray(`  Signer:    ${bundle.signature?.key?.kid ?? '—'}`));
+      console.log(chalk.gray(`  Signed at: ${bundle.signature?.signed_at ?? '—'}`));
+      console.log(chalk.gray(`  Operation: ${bundle.operation}`));
+      console.log(chalk.gray(`  Conformant: ${bundle.summary.conformant}`));
+    } else {
+      console.log(chalk.red('  [INVALID] ') + ` ${bundlePath}`);
+      console.log(chalk.red(`  Reason: ${result.reason}`));
+      process.exit(1);
+    }
   });
 
 auditCommand

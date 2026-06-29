@@ -10,6 +10,7 @@ import { intro, outro, text, select, confirm, spinner, isCancel, cancel, note } 
 import { randomUUID } from 'crypto';
 import type { WizardAnswers } from './provisioner.js';
 import type { GcPrincipal } from './principal.js';
+import { generateAndStoreKeypair } from './keystore.js';
 
 const DOES_NOT_CERTIFY = [
   'regulatory_compliance',
@@ -142,12 +143,31 @@ export async function runMarlin(opts: {
     initialValue: true,
   }));
 
+  // ── Screen 5: Signing key ─────────────────────────────────────────────────
+
+  const generateKey = await ask(confirm({
+    message: 'Generate Ed25519 signing key? (Recommended — enables signed evidence bundles)',
+    initialValue: true,
+  }));
+
   // ── Build principal record ────────────────────────────────────────────────
 
   const now = new Date().toISOString();
+  const principalId = randomUUID();
+
+  // Generate signing key before building principal record
+  let signingJwk: { kty: 'OKP'; crv: 'Ed25519'; x: string; kid: string } | undefined;
+  if (generateKey as boolean) {
+    const s = spinner();
+    s.start('Generating Ed25519 signing key…');
+    const kp = generateAndStoreKeypair(principalId);
+    signingJwk = kp.publicKeyJwk;
+    s.stop(`Signing key stored: ${kp.privateKeyPath}`);
+  }
+
   const principal: GcPrincipal = {
     version: '1.0.0',
-    principal_id: randomUUID(),
+    principal_id: principalId,
     name: name as string,
     ...(email ? { email: email as string } : {}),
     role,
@@ -160,6 +180,12 @@ export async function runMarlin(opts: {
       timestamp: now,
       statement: ATTESTATION_STATEMENT,
     },
+    ...(signingJwk ? {
+      signing: {
+        algorithm: 'EdDSA' as const,
+        public_key_jwk: signingJwk,
+      },
+    } : {}),
     scope: 'governance-scaffold-install',
     does_not_certify: DOES_NOT_CERTIFY,
     created_at: now,
