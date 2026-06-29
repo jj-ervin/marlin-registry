@@ -191,9 +191,23 @@ declare both a wave and a primary track.
 | --- | --- | --- |
 | Track | A permanent workstream lane (A–L) | structural |
 | Wave | A sequenced delivery batch | temporal |
-| PASS | The atomic unit of tracked work | execution |
-| Sub-PASS (.01–.09) | Parallel sub-tasks under one parent that can fail independently | decomposition |
-| Compound PASS (.10–.99) | Parent PASS that closes when all its children close | aggregation |
+| PASS (NNNN.00) | Header PASS — defines the goal and scope of the effort | execution |
+| Sub-PASS (NNNN.01–09) | Individual task under a header PASS; runs as needed | decomposition |
+| Compound PASS (NNNN.10–99) | Parallel batch of tasks from the header PASS grouped because they can run simultaneously | parallel execution |
+
+**The numbering hierarchy:**
+
+```text
+NNNN.00   header PASS — owns the goal
+NNNN.01   sub-PASS — individual task
+NNNN.02   sub-PASS — individual task
+NNNN.10   compound PASS — parallel batch A (tasks that can run at the same time)
+NNNN.20   compound PASS — parallel batch B (another parallel group)
+```
+
+A compound PASS is the **batch itself**, not a container above it. It groups tasks
+from the header that can execute in parallel. Multiple compound PASSes under one
+header represent separate parallel waves of grouped work.
 
 **Rules:**
 
@@ -201,15 +215,13 @@ declare both a wave and a primary track.
   when a PASS genuinely spans two concerns (e.g. INIT.02: H primary, L secondary).
 - Every PASS declares exactly one **wave**. Wave 0 is reserved for charter PASSes.
 - A wave may contain PASSes from multiple tracks. A track spans multiple waves.
-- Use **sub-PASSes** when: the work has parallel sub-tasks, the sub-tasks could ship
-  or fail independently, or Done-when criteria differ per sub-task. Example: if
-  INIT.05's three CLI operations had different dependencies they would be
-  INIT.05.01 (B), INIT.05.02 (F), INIT.05.03 (G).
-- Use **compound PASSes** when: multiple related PASSes need a shared parent closer.
-  The compound PASS (.10+) closes when all its sub-PASSes close.
-- A single PASS that spans multiple tracks (like INIT.05) is acceptable when all the
-  work ships together in one wave. It is a signal, not an error — future similar
-  work should be split at design time.
+- Use **sub-PASSes (.01–.09)** for individual tasks under a header that have distinct
+  Done-when criteria or could fail independently.
+- Use **compound PASSes (.10–.99)** when multiple tasks from the header can run in
+  parallel and belong together as a group. Each compound PASS is one parallel batch.
+- A single PASS spanning multiple tracks (like INIT.05) is acceptable when all the
+  work ships in one wave. It is a signal, not an error — if the operations had
+  different dependencies, they would be sub-PASSes.
 
 **INIT cluster track map (INIT.00–INIT.06):**
 
