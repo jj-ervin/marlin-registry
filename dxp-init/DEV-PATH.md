@@ -181,6 +181,48 @@ bodies, or accredited certifiers. The runtime product's honest claim ceiling is
 "controls monitored, evidence collected, exceptions tracked, audit package
 generated" — never "SOC 2 certified" or "EU AI Act compliant."
 
+**INIT-D17 — Planning doctrine: waves, tracks, PASSes, sub-PASSes, compound PASSes.**
+These four concepts are distinct and operate at different levels. Each PASS must
+declare both a wave and a primary track.
+
+**Definitions:**
+
+| Concept | What it is | Dimension |
+| --- | --- | --- |
+| Track | A permanent workstream lane (A–L) | structural |
+| Wave | A sequenced delivery batch | temporal |
+| PASS | The atomic unit of tracked work | execution |
+| Sub-PASS (.01–.09) | Parallel sub-tasks under one parent that can fail independently | decomposition |
+| Compound PASS (.10–.99) | Parent PASS that closes when all its children close | aggregation |
+
+**Rules:**
+
+- Every PASS declares exactly one **primary track**. A secondary track may be noted
+  when a PASS genuinely spans two concerns (e.g. INIT.02: H primary, L secondary).
+- Every PASS declares exactly one **wave**. Wave 0 is reserved for charter PASSes.
+- A wave may contain PASSes from multiple tracks. A track spans multiple waves.
+- Use **sub-PASSes** when: the work has parallel sub-tasks, the sub-tasks could ship
+  or fail independently, or Done-when criteria differ per sub-task. Example: if
+  INIT.05's three CLI operations had different dependencies they would be
+  INIT.05.01 (B), INIT.05.02 (F), INIT.05.03 (G).
+- Use **compound PASSes** when: multiple related PASSes need a shared parent closer.
+  The compound PASS (.10+) closes when all its sub-PASSes close.
+- A single PASS that spans multiple tracks (like INIT.05) is acceptable when all the
+  work ships together in one wave. It is a signal, not an error — future similar
+  work should be split at design time.
+
+**INIT cluster track map (INIT.00–INIT.06):**
+
+| PASS | Track | Wave |
+| --- | --- | --- |
+| INIT.00 | A — Core provisioning library | 0 |
+| INIT.01 | A — Core provisioning library | 1 |
+| INIT.02 | H — Evidence profiles (primary); L — Identity (secondary) | 1 |
+| INIT.03 | D — Template library | 2 |
+| INIT.04 | A — Core provisioning library | 2 |
+| INIT.05 | B — CLI (primary); F — AUDIT; G — STATUS | 3 |
+| INIT.06 | H — Evidence profiles | 4 |
+
 **INIT-D16 — Marlin product positioning.**
 Marlin is the name of the first-run governance installer experience inside
 dxp-init. It is the wizard/onboarding UX, not the whole product.

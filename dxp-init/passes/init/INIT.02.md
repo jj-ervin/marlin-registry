@@ -2,10 +2,11 @@
 
 **PASS ID:** INIT.02
 **Status:** CLOSED
+**Track:** H — Evidence profiles (primary); L — Identity (secondary: gc-principal schema)
+**Wave:** 1 — no dependencies
 **Timestamp:** 2026-06-28T00:00:00Z
 **Authority:** AL:1
 **Author:** jj-ervin
-**Wave:** 1 — no dependencies
 
 ---
 

@@ -2,10 +2,11 @@
 
 **PASS ID:** INIT.03
 **Status:** CLOSED
+**Track:** D — Template library
+**Wave:** 2 — depends on INIT.01 + INIT.02
 **Timestamp:** 2026-06-28T00:00:00Z
 **Authority:** AL:1
 **Author:** jj-ervin
-**Wave:** 2 — depends on INIT.01 + INIT.02
 
 ---
 

@@ -2,10 +2,11 @@
 
 **PASS ID:** INIT.01
 **Status:** CLOSED
+**Track:** A — Core provisioning library
+**Wave:** 1 — no dependencies
 **Timestamp:** 2026-06-28T00:00:00Z
 **Authority:** AL:1
 **Author:** jj-ervin
-**Wave:** 1 — no dependencies
 
 ---
 

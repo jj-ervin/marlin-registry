@@ -2,11 +2,15 @@
 
 **PASS ID:** INIT.05
 **Status:** CLOSED
+**Track:** B — CLI wizard (primary); F — AUDIT module; G — STATUS module
+**Wave:** 3 — depends on INIT.04
 **Timestamp:** 2026-06-28T00:00:00Z
 **Closed:** 2026-06-28T18:30:00Z
 **Authority:** AL:1
 **Author:** jj-ervin
-**Wave:** 3 — depends on INIT.04
+**Note:** Spans B+F+G because all three CLI operations shipped in one wave. Per INIT-D17
+  doctrine this would be sub-PASSes (INIT.05.01=B, INIT.05.02=F, INIT.05.03=G)
+  if the operations had different dependencies or needed to ship independently.
 
 ---
 

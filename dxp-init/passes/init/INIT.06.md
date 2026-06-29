@@ -2,11 +2,12 @@
 
 **PASS ID:** INIT.06
 **Status:** CLOSED
+**Track:** H — Evidence profiles
+**Wave:** 4 — depends on INIT.05
 **Timestamp:** 2026-06-28T00:00:00Z
 **Closed:** 2026-06-29T02:30:00Z
 **Authority:** AL:1
 **Author:** jj-ervin
-**Wave:** 4 — depends on INIT.05
 
 ---
 
