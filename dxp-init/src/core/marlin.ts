@@ -1,9 +1,9 @@
 /**
- * Marlin — the dxp-init governance installer.
+ * Marlin — the Marlin-DXP governance installer and workbench.
  * "Scaffold governance in five minutes."
  *
- * Marlin is the wizard/installer experience inside dxp-init.
- * The CLI command is `dxp-init install`; the experience says "Welcome to Marlin."
+ * Marlin is the wizard/installer experience at the heart of Marlin-DXP.
+ * The CLI command is `marlin install`; the experience says "Welcome to Marlin."
  * Marlin owns first-run only. Long-running control monitoring is a Cockpit module.
  */
 import { intro, outro, text, select, confirm, spinner, isCancel, cancel, note } from '@clack/prompts';
@@ -22,7 +22,7 @@ const DOES_NOT_CERTIFY = [
 ];
 
 const ATTESTATION_STATEMENT =
-  'I confirm that I am authorized to install dxp-init governance scaffolding on this repository. ' +
+  'I confirm that I am authorized to install Marlin governance scaffolding on this repository. ' +
   'This attestation does not certify regulatory compliance or operational control effectiveness.';
 
 async function ask<T>(prompt: Promise<T | symbol>): Promise<T> {
@@ -42,7 +42,7 @@ export async function runMarlin(opts: {
   intro('  Welcome to Marlin.  ');
 
   note(
-    'The dxp-init governance installer.\n' +
+    'The Marlin governance installer.\n' +
     'Let\'s scaffold your governance baseline.\n\n' +
     'Marlin makes your project audit-ready, evidence-ready,\n' +
     'and control-mapped — it does not certify compliance.',

@@ -47,7 +47,7 @@ export const installCommand = new Command('install')
     if (!opts.dryRun) {
       console.log('');
       console.log(chalk.gray('  Next steps:'));
-      console.log(chalk.gray('    dxp-init audit validate    — validate scaffold conformance'));
-      console.log(chalk.gray('    dxp-init status            — view portfolio health report'));
+      console.log(chalk.gray('    marlin audit validate    — validate scaffold conformance'));
+      console.log(chalk.gray('    marlin status            — view portfolio health report'));
     }
   });

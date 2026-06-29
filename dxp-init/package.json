@@ -1,10 +1,11 @@
 {
-  "name": "dxp-init",
+  "name": "marlin-dxp",
   "version": "0.1.0",
-  "description": "Five-minute governance adoption kit — install, audit, emit evidence, show status",
+  "description": "Marlin-DXP — five-minute governance adoption kit: install, audit, emit evidence, show status",
   "type": "module",
   "bin": {
-    "dxp-init": "./dist/index.js"
+    "marlin": "./dist/index.js",
+    "marlin-dxp": "./dist/index.js"
   },
   "scripts": {
     "build": "tsc",

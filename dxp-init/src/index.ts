@@ -8,7 +8,7 @@ import { detectMode } from './core/detector.js';
 const program = new Command();
 
 program
-  .name('dxp-init')
+  .name('marlin')
   .description('Five-minute governance adoption kit\n\n  Install governance → Audit the repo → Emit evidence → Show status')
   .version('0.1.0');
 
@@ -20,9 +20,9 @@ program.addCommand(statusCommand);
 program.action(async () => {
   const mode = await detectMode(process.cwd());
   if (mode === 'install') {
-    console.log('No governance scaffold found. Run: dxp-init install');
+    console.log('No governance scaffold found. Run: marlin install');
   } else {
-    console.log('Governance scaffold detected. Run: dxp-init audit  or  dxp-init status');
+    console.log('Governance scaffold detected. Run: marlin audit  or  marlin status');
   }
   program.outputHelp();
 });

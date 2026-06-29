@@ -1,15 +1,15 @@
-# DEV-PATH — dxp-init
+# DEV-PATH — Marlin-DXP
 
 **AUTHORITY LEVEL: AL:1**
 **Status:** active
-**Updated:** 2026-06-27
-**Authority:** This file. Founding charter for the dxp-init project.
+**Updated:** 2026-06-28
+**Authority:** This file. Founding charter for the Marlin-DXP project.
 
 ---
 
 ## Role
 
-`dxp-init` is a developer onboarding wizard that provisions a full governance
+**Marlin** is a developer onboarding wizard that provisions a full governance
 baseline for a new project in one session. It is the missing entry point between
 "the specs exist" and "a developer can adopt them in 5 minutes."
 
@@ -17,14 +17,14 @@ It surfaces every consequential style and governance decision upfront — naming
 conventions, authority levels, CI targets, package targets, framework preferences,
 business entity type — and emits a complete, conformant governance scaffold.
 
-`dxp-init` is a **DXP (Developer Experience)** product and the **first concrete
+**Marlin-DXP** is a **DXP (Developer Experience)** product and the **first concrete
 adoption surface** for GC, DCP, ONS, GEE, and DEV-ACCORD standards.
 
 ---
 
 ## Mode Map
 
-`dxp-init` is not just an installer. It is a **governance workbench** with three
+**Marlin-DXP** is not just an installer. It is a **governance workbench** with three
 modes, each a distinct surface over the same core library.
 
 | Mode | Trigger | What it does |
@@ -33,7 +33,7 @@ modes, each a distinct surface over the same core library.
 | AUDIT | Existing repo, or `--audit` | Full review grammar suite: validate, normalize, verify, adversarial, meta-audit, trace, authority audit, registry audit, close-the-loop, de-stale |
 | STATUS | Any repo, or `--status` | Portfolio health report — gap table, per-project detail, blocked items |
 
-**Mode detection:** on first run, `dxp-init` auto-detects mode by checking whether
+**Mode detection:** on first run, Marlin auto-detects mode by checking whether
 planning docs already exist in the target repo. If no `DEV-PATH.md` is found,
 default to INSTALL. If planning docs are found, offer AUDIT as the default with
 INSTALL as a reconfigure option.
@@ -47,10 +47,10 @@ branches are full first-class modes, not afterthoughts.
 
 | Layer | Owned by | Notes |
 | --- | --- | --- |
-| Core provisioning library | dxp-init | TypeScript — takes wizard answers, emits governance files |
-| CLI frontend | dxp-init | `dxp-init` command — Inquirer/Clack interactive wizard |
-| GUI frontend (Electron/Tauri) | dxp-init | Thin window shell over the same core library |
-| Cockpit first-run module | Cockpit | Future — Cockpit calls dxp-init core as a module |
+| Core provisioning library | Marlin-DXP | TypeScript — takes wizard answers, emits governance files |
+| CLI frontend | Marlin-DXP | `marlin` command — Inquirer/Clack interactive wizard |
+| GUI frontend (Electron/Tauri) | Marlin-DXP | Thin window shell over the same core library |
+| Cockpit first-run module | Cockpit | Future — Cockpit calls Marlin-DXP core as a module |
 
 The core library is the product. CLI and GUI are shells.
 Cockpit integration is not a blocker — it uses the same core when it ships.
@@ -135,7 +135,7 @@ Cockpit integration is not a blocker — it uses the same core when it ships.
 These apply to every PASS from Wave 4 onward and cannot be waived:
 
 **Self-validation gate:** any PASS that produces audit output must run
-`dxp-init audit validate` on its own source and pass before the PASS can be
+`marlin audit validate` on its own source and pass before the PASS can be
 closed. A governance tool must pass its own checks on its own source before
 shipping. This was established after the Wave 3 dogfood run (2026-06-28)
 which found the UTF-8 BOM bug on the first real-data run.
@@ -147,16 +147,16 @@ which found the UTF-8 BOM bug on the first real-data run.
 
 ## Design Decisions
 
-**INIT-D15 — dxp-init is the install-time bootstrapper; compliance operations is a separate runtime product.**
-The boundary between dxp-init and full compliance tooling is architectural, not
-branding: dxp-init runs and exits (stateless — reads/writes files, then done),
+**INIT-D15 — Marlin-DXP is the install-time bootstrapper; compliance operations is a separate runtime product.**
+The boundary between Marlin-DXP and full compliance tooling is architectural, not
+branding: Marlin-DXP runs and exits (stateless — reads/writes files, then done),
 while compliance operations is a continuously running stateful service (scheduled
 control tests, evidence vault with retention and chain-of-custody, exception
 tracking, drift detection, a risk register that persists over time). You do not
 bolt a persistent service onto a stateless CLI.
 
 The two products share a contract layer: the `gc-principal`, `gc-conformance`,
-and `gc-evidence-bundle` schemas are the API between them. dxp-init writes those
+and `gc-evidence-bundle` schemas are the API between them. Marlin-DXP writes those
 artifacts; the compliance platform reads them, tests against them, and tracks
 them over time.
 
@@ -169,13 +169,13 @@ Product tiers (the dividing line is between Tier 2 and Tier 3):
 
 | Tier | Capability | Product |
 | --- | --- | --- |
-| 1 | Scaffold / install / audit / status | dxp-init |
-| 2 | Signed evidence bundles, CI validation, mapping presets | dxp-init |
+| 1 | Scaffold / install / audit / status | Marlin-DXP |
+| 2 | Signed evidence bundles, CI validation, mapping presets | Marlin-DXP |
 | 3 | Framework control catalog, control tests, owners, exceptions, review cadence | Cockpit compliance module |
 | 4 | Audit workflows, approvals, risk register, retention, dashboards, export packages | Cockpit compliance module |
 | 5 | Certification support — auditor / notified-body / Vanta/Drata/Secureframe evidence sync | Cockpit compliance module |
 
-dxp-init's scope ceiling is Tier 2. Even at Tier 5, the product never claims a
+Marlin-DXP's scope ceiling is Tier 2. Even at Tier 5, the product never claims a
 project "is compliant" — certification comes from external auditors, notified
 bodies, or accredited certifiers. The runtime product's honest claim ceiling is
 "controls monitored, evidence collected, exceptions tracked, audit package
@@ -264,26 +264,27 @@ PASS.00  (contract: what we agreed to build)
 
 Governing standard: DEV-ACCORD.02 (GC:2010).
 
-**INIT-D16 — Marlin product positioning.**
-Marlin is the name of the first-run governance installer experience inside
-dxp-init. It is the wizard/onboarding UX, not the whole product.
+**INIT-D16 — Marlin / Marlin-DXP product positioning.**
+Two names, one package. Marlin is the user-facing brand and the simple bin users
+run day to day. Marlin-DXP is the npm package name and the full governance workbench
+that ships both bins.
 
 Positioning:
 
 | Name | Role |
 | --- | --- |
-| Marlin | installer / onboarding wizard experience |
-| dxp-init | CLI package and technical command name |
-| Cockpit | eventual GUI home |
+| Marlin | user-facing brand; simple installer wizard; the bin most users run |
+| Marlin-DXP | npm package name (`marlin-dxp`); full governance workbench; `marlin-dxp` bin |
+| Cockpit | eventual GUI home for install, audit, and status surfaces |
 | GC / ONS | standards underneath |
 
-Users run `dxp-init install`. The experience says "Welcome to Marlin." and
-"Scaffold governance in five minutes." The intro/outro voice belongs to Marlin.
+Users run `marlin install` for the wizard experience. The intro voice says "Welcome
+to Marlin." `marlin audit` and `marlin status` are the ongoing governance surfaces.
+`marlin-dxp` exposes the full workbench for power users.
 
-Scope boundary: Marlin is sharp and directional — a first-run guide. It does
-not own long-running control monitoring; that belongs to a Cockpit compliance
-module (see INIT-D15). "Marlin" should never appear on a dashboard, status
-page, or recurring job — only at install time.
+Scope boundary: Marlin-DXP does not own long-running control monitoring — that belongs
+to a Cockpit compliance module (see INIT-D15). The `marlin` bin is stateless (runs
+and exits). Cockpit is stateful (persistent dashboard, scheduled jobs, risk register).
 
 **INIT-D1 — Core library architecture.**
 The provisioning logic lives in a TypeScript library that is independent of any
@@ -298,8 +299,7 @@ a follow-on shell over the same logic, not a separate product phase.
 
 **INIT-D3 — Cockpit is the eventual GUI home, not a blocker.**
 Cockpit's founding scope is "eco's personal developer hub" and a first-run
-experience fits exactly there. But Cockpit is at scaffold with no code. `dxp-init`
-ships standalone and becomes a Cockpit module when Cockpit is ready.
+experience fits exactly there. But Cockpit is at scaffold with no code. Marlin-DXP ships standalone and becomes a Cockpit module when Cockpit is ready.
 
 **INIT-D4 — Presets reduce wizard length for common cases.**
 Not every developer needs every question. Named presets collapse the wizard for
@@ -307,7 +307,7 @@ common configurations: `--preset gc-standard`, `--preset solo-dev`,
 `--preset enterprise`, `--preset gc-strict`. Expert mode shows all questions.
 
 **INIT-D5 — All decisions are reversible via re-run.**
-`dxp-init --reconfigure` re-runs the wizard against an existing project, shows
+`marlin --reconfigure` re-runs the wizard against an existing project, shows
 current values as defaults, and only overwrites files that change. This makes it
 safe to run after the initial scaffold.
 
@@ -315,13 +315,13 @@ safe to run after the initial scaffold.
 `--preset soc2` means "emit controls and evidence scaffolding aligned to SOC 2
 Trust Service Criteria." It does not mean "this repo is SOC 2 compliant."
 Compliance requires operations, security controls, legal scope, and often external
-audit. dxp-init produces audit-ready, evidence-ready, control-mapped artifacts
+audit. Marlin-DXP produces audit-ready, evidence-ready, control-mapped artifacts
 that an auditor or automated compliance platform (Vanta, Drata, Secureframe) can
 consume. The distinction is not a hedge — it is the honest and legally defensible
 claim, and it makes the tool more credible, not less.
 
 **INIT-D11 — Zero Trust Architecture (ZTA) is a design principle, not a feature.**
-Every identity, permission, and trust decision in dxp-init is designed against
+Every identity, permission, and trust decision in Marlin-DXP is designed against
 NIST SP 800-207 (Zero Trust Architecture). Key rules: never trust the file — verify
 the claim; no implicit trust between modes; every audit action is authenticated
 against the principal record; least privilege by default (auditor role cannot write;
@@ -336,13 +336,12 @@ certify compliance. The same principle applies to all regulatory presets: the to
 emits evidence scaffolding, not compliance certificates.
 
 **INIT-D13 — Evidence bundle is the killer feature; ship it in Phase 1.**
-`dxp-init audit --evidence out/` emits a signed JSON/YAML bundle containing:
+`marlin audit --evidence out/` emits a signed JSON/YAML bundle containing:
 validator version, input files, findings, principal identity, time.loc timestamp,
 and an optional GEE envelope. This is what makes governance claims portable and
 auditor-trusted — not the docs, but the signed machine-readable record that the
 docs were validated at timestamp T by principal P using validator V. GC already
-has `gc-compliance-evidence.schema.json` with JWS/EdDSA signing; dxp-init is the
-runtime that produces records in that format.
+has `gc-compliance-evidence.schema.json` with JWS/EdDSA signing; Marlin-DXP is the runtime that produces records in that format.
 
 **INIT-D14 — W3C DID/VC for principal identity is Phase 2. Sign locally first.**
 Phase 1: Ed25519 key pair, local signing, `gc-principal.yaml` with a signed
@@ -358,7 +357,7 @@ governance file references `gc-principal.yaml` for its authority attribution.
 The `by:` field in passchangelog entries, the `registrar` field in ONS registries,
 the `principal` block in GEE config, and the `**Authority:**` line in DEV-PATH.md
 all trace back to this single record. If the principal changes (role transfer,
-ownership handoff), re-running `dxp-init install --reconfigure` updates only
+ownership handoff), re-running `marlin install --reconfigure` updates only
 `gc-principal.yaml` and the files that reference it.
 
 Installer role expiry is a security hygiene measure: the `installer` role is
@@ -367,7 +366,7 @@ wizard prompts the principal to confirm their ongoing role (usually `owner` or
 `maintainer`). The expired installer token is logged in the principal record.
 
 **INIT-D7 — Mode selection is the first and most important question.**
-On first run, `dxp-init` auto-detects mode: no planning docs found → INSTALL;
+On first run, Marlin auto-detects mode: no planning docs found → INSTALL;
 docs exist → AUDIT offered as default with INSTALL available as reconfigure.
 The three modes (INSTALL / AUDIT / STATUS) are all first-class surfaces, not
 an installer with an afterthought cleanup flag. The underlying core library is
@@ -378,7 +377,7 @@ REVIEW-GRAMMAR.md defines 10 command verbs: normalize, validate, verify,
 adversarial audit, meta-audit, trace, authority audit, registry audit,
 close-the-loop, and de-stale. The AUDIT module exposes all 10 as discrete
 one-click actions in the GUI, and as subcommands in the CLI
-(`dxp-init audit validate`, `dxp-init audit normalize`, etc.). The existing
+(`marlin audit validate`, `marlin audit normalize`, etc.). The existing
 validate-planning.ps1 and dev-report.ps1 are the reference implementations
 for the validate and status operations respectively.
 

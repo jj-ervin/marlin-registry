@@ -122,7 +122,7 @@ export function buildBundle(
       epoch_ms: now.getTime(),
     },
     validator: {
-      name: 'dxp-init',
+      name: 'marlin-dxp',
       version: '0.1.0',
       standard: 'GC:2008',
       standard_version: 'DEV-ACCORD.00',

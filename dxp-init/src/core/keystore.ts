@@ -1,5 +1,5 @@
 /**
- * Ed25519 key pair generation and storage for dxp-init principals.
+ * Ed25519 key pair generation and storage for marlin-dxp principals.
  * Keys are stored in the user's OS config directory — never in the repo.
  * Private key: PKCS#8 PEM, mode 0o600.
  * Public key: JWK (OKP / Ed25519) embedded in gc-principal.yaml.
@@ -12,12 +12,12 @@ import { homedir } from 'os';
 
 export function dxpConfigDir(): string {
   if (process.platform === 'win32') {
-    return join(process.env['APPDATA'] ?? join(homedir(), 'AppData', 'Roaming'), 'dxp-init');
+    return join(process.env['APPDATA'] ?? join(homedir(), 'AppData', 'Roaming'), 'marlin-dxp');
   }
   if (process.platform === 'darwin') {
-    return join(homedir(), 'Library', 'Application Support', 'dxp-init');
+    return join(homedir(), 'Library', 'Application Support', 'marlin-dxp');
   }
-  return join(process.env['XDG_CONFIG_HOME'] ?? join(homedir(), '.config'), 'dxp-init');
+  return join(process.env['XDG_CONFIG_HOME'] ?? join(homedir(), '.config'), 'marlin-dxp');
 }
 
 function keysDir(): string {

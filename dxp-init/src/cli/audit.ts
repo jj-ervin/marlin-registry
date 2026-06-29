@@ -8,7 +8,7 @@ import { buildBundle, signBundle, verifyBundle, writeBundle } from '../core/evid
 import type { EvidenceBundle } from '../core/evidence.js';
 import { loadPrivateKey, hasPrivateKey } from '../core/keystore.js';
 
-const ANON_PRINCIPAL = 'dxp-init-cli';
+const ANON_PRINCIPAL = 'marlin-cli';
 
 function loadLocalPrincipalId(cwd: string): string | null {
   const p = join(cwd, 'gc-principal.yaml');
@@ -30,7 +30,7 @@ function trySign(bundle: EvidenceBundle, principalId: string): EvidenceBundle {
 
 function renderValidationResults(result: ReturnType<typeof validatePlanningDocs>, root: string): void {
   console.log('');
-  console.log('  DEV-ACCORD CONFORMANCE CHECK — dxp-init audit validate');
+  console.log('  DEV-ACCORD CONFORMANCE CHECK — marlin audit validate');
   console.log('  Standard: GC:2008 / DEV-ACCORD.00');
   console.log(`  ${new Date().toISOString().replace('T', ' ').substring(0, 16)}  ${root}`);
   console.log('');
@@ -125,7 +125,7 @@ auditCommand
   .option('--evidence <dir>', 'Emit signed evidence bundle to directory')
   .action(async (opts: { evidence?: string }) => {
     // TODO INIT.16
-    console.log('[dxp-init audit normalize] not yet implemented', opts);
+    console.log('[marlin audit normalize] not yet implemented', opts);
   });
 
 auditCommand
@@ -134,7 +134,7 @@ auditCommand
   .option('--evidence <dir>', 'Emit signed evidence bundle to directory')
   .action(async (opts: { evidence?: string }) => {
     // TODO INIT.17
-    console.log('[dxp-init audit verify] not yet implemented', opts);
+    console.log('[marlin audit verify] not yet implemented', opts);
   });
 
 auditCommand
@@ -143,7 +143,7 @@ auditCommand
   .option('--evidence <dir>', 'Emit signed evidence bundle to directory')
   .action(async (opts: { evidence?: string }) => {
     // TODO INIT.17
-    console.log('[dxp-init audit trace] not yet implemented', opts);
+    console.log('[marlin audit trace] not yet implemented', opts);
   });
 
 auditCommand
@@ -152,7 +152,7 @@ auditCommand
   .option('--evidence <dir>', 'Emit signed evidence bundle to directory')
   .action(async (opts: { evidence?: string }) => {
     // TODO INIT.18
-    console.log('[dxp-init audit adversarial] not yet implemented', opts);
+    console.log('[marlin audit adversarial] not yet implemented', opts);
   });
 
 auditCommand
@@ -161,7 +161,7 @@ auditCommand
   .option('--evidence <dir>', 'Emit signed evidence bundle to directory')
   .action(async (opts: { evidence?: string }) => {
     // TODO INIT.18
-    console.log('[dxp-init audit meta] not yet implemented', opts);
+    console.log('[marlin audit meta] not yet implemented', opts);
   });
 
 auditCommand
@@ -170,7 +170,7 @@ auditCommand
   .option('--evidence <dir>', 'Emit signed evidence bundle to directory')
   .action(async (opts: { evidence?: string }) => {
     // TODO INIT.17
-    console.log('[dxp-init audit authority] not yet implemented', opts);
+    console.log('[marlin audit authority] not yet implemented', opts);
   });
 
 auditCommand
@@ -179,7 +179,7 @@ auditCommand
   .option('--evidence <dir>', 'Emit signed evidence bundle to directory')
   .action(async (opts: { evidence?: string }) => {
     // TODO INIT.17
-    console.log('[dxp-init audit registry] not yet implemented', opts);
+    console.log('[marlin audit registry] not yet implemented', opts);
   });
 
 auditCommand
@@ -188,7 +188,7 @@ auditCommand
   .option('--evidence <dir>', 'Emit signed evidence bundle to directory')
   .action(async (opts: { evidence?: string }) => {
     // TODO INIT.19
-    console.log('[dxp-init audit close] not yet implemented', opts);
+    console.log('[marlin audit close] not yet implemented', opts);
   });
 
 auditCommand
@@ -197,5 +197,5 @@ auditCommand
   .option('--evidence <dir>', 'Emit signed evidence bundle to directory')
   .action(async (opts: { evidence?: string }) => {
     // TODO INIT.19
-    console.log('[dxp-init audit destale] not yet implemented', opts);
+    console.log('[marlin audit destale] not yet implemented', opts);
   });

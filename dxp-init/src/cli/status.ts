@@ -31,7 +31,7 @@ export const statusCommand = new Command('status')
       }));
       const bundle = buildBundle(
         'status',
-        'dxp-init-cli',
+        'marlin-cli',
         findings,
         { project: opts.project ?? '(portfolio)', root }
       );

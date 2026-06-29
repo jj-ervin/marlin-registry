@@ -1,27 +1,27 @@
-# DEV-PLAN — dxp-init
+# DEV-PLAN — Marlin-DXP
 
 **AUTHORITY LEVEL: AL:1**
 **Status:** active
-**Updated:** 2026-06-27
+**Updated:** 2026-06-28
 
 ---
 
 ## Purpose
 
-`dxp-init` is the **five-minute governance adoption kit**.
+**Marlin-DXP** is the **five-minute governance adoption kit**.
 
 ```text
 Install governance → Audit the repo → Emit evidence → Show status
 ```
 
-A developer downloads it, runs the wizard, and gets a fully conformant governance
-scaffold in under 5 minutes. Then it stays: the same tool audits the repo,
-normalizes drift, emits signed machine-readable evidence bundles, and reports
+A developer runs `marlin install`, answers the wizard, and gets a fully conformant
+governance scaffold in under 5 minutes. Then it stays: the same tool audits the
+repo, normalizes drift, emits signed machine-readable evidence bundles, and reports
 portfolio health — for the entire life of the project.
 
-**Honest claim:** dxp-init makes a project audit-ready, evidence-ready, and
+**Honest claim:** Marlin-DXP makes a project audit-ready, evidence-ready, and
 control-mapped. It does not make a project compliant. Compliance depends on
-operations, controls, legal scope, and sometimes external audit. dxp-init
+operations, controls, legal scope, and sometimes external audit. Marlin-DXP
 produces the evidence that an auditor or automated compliance platform can trust.
 
 ---
@@ -44,10 +44,10 @@ Phase 1 — Waves 1–4 complete. Wave 5 scope TBD.
 | Track | Name | Goal | Status |
 | --- | --- | --- | --- |
 | A | Core provisioning library | TypeScript library — wizard answers → governance files | shipped (Wave 2) |
-| B | CLI wizard | `dxp-init` command with Clack interactive prompts (Marlin) | shipped (Wave 3) |
+| B | CLI wizard | `marlin` / `marlin-dxp` commands with Clack interactive prompts | shipped (Wave 3) |
 | C | GUI frontend | Electron window wrapper over Track A library | planned |
 | D | Template library | All governance file templates with variable substitution | shipped (Wave 2) |
-| E | Cockpit integration | dxp-init core as a Cockpit first-run module | planned |
+| E | Cockpit integration | Marlin-DXP core as a Cockpit first-run module | planned |
 | F | AUDIT module | Full review grammar suite — validate shipped; normalize/verify/trace/adversarial/meta/authority/registry/close/destale pending | partial (Wave 3) |
 | G | STATUS module | Portfolio health report — gap table, per-project detail, blocked items | shipped (Wave 3) |
 | H | Evidence profiles | Signed machine-readable evidence bundles per audit run | shipped (Wave 4) |
@@ -80,7 +80,7 @@ Phase 1 — Waves 1–4 complete. Wave 5 scope TBD.
 | INIT.15 | J | SBOM scaffolding — CycloneDX and SPDX; SLSA provenance via Sigstore/cosign | P2 | queued |
 | INIT.16 | K | ZTA audit — review every identity/trust/permission decision against NIST SP 800-207 | P1 | queued |
 | INIT.17 | L | W3C DID/VC for principal identity (Phase 2) — deferred; signed local record already shipped | P3 | queued |
-| INIT.18 | E | Cockpit module interface — how Cockpit calls dxp-init core as first-run module | P3 | queued |
+| INIT.18 | E | Cockpit module interface — how Cockpit calls Marlin-DXP core as first-run module | P3 | queued |
 
 ---
 
@@ -141,26 +141,26 @@ Phase 1 — Waves 1–4 complete. Wave 5 scope TBD.
 ## CLI Command Surface
 
 ```text
-dxp-init                        auto-detect mode; new repo → install, existing → audit
-dxp-init install                forced install wizard (new or reconfigure)
-dxp-init install --reconfigure  re-run wizard against existing repo, diff-only overwrites
-dxp-init install --preset <name> skip wizard; apply named preset (gc-standard, solo-dev, enterprise, gc-strict)
-dxp-init install --dry-run      show what would be written without touching the filesystem
+marlin                          auto-detect mode; new repo → install, existing → audit
+marlin install                  forced install wizard (new or reconfigure)
+marlin install --reconfigure    re-run wizard against existing repo, diff-only overwrites
+marlin install --preset <name>  skip wizard; apply named preset (gc-standard, solo-dev, enterprise, gc-strict)
+marlin install --dry-run        show what would be written without touching the filesystem
 
-dxp-init audit                  full audit menu — shows all 10 review grammar operations
-dxp-init audit validate         DEV-ACCORD + ONS conformance check
-dxp-init audit normalize        align names, scope, status, paths, registry entries
-dxp-init audit verify           inspect code/tests to confirm contracts are implemented
-dxp-init audit trace            lineage chain from origin → authority → plan → implementation
-dxp-init audit adversarial      try to disprove claims; find contradictions and drift paths
-dxp-init audit meta             audit the tracker/registry/gap list, not just the thing itself
-dxp-init audit authority        identify which document has the right to define each claim
-dxp-init audit registry         check projects.yaml and indexes for truth
-dxp-init audit close            fix issue, validate fix, update trackers
-dxp-init audit destale          remove outdated claims after corrections land
+marlin audit                    full audit menu — shows all 10 review grammar operations
+marlin audit validate           DEV-ACCORD + ONS conformance check
+marlin audit normalize          align names, scope, status, paths, registry entries
+marlin audit verify             inspect code/tests to confirm contracts are implemented
+marlin audit trace              lineage chain from origin → authority → plan → implementation
+marlin audit adversarial        try to disprove claims; find contradictions and drift paths
+marlin audit meta               audit the tracker/registry/gap list, not just the thing itself
+marlin audit authority          identify which document has the right to define each claim
+marlin audit registry           check projects.yaml and indexes for truth
+marlin audit close              fix issue, validate fix, update trackers
+marlin audit destale            remove outdated claims after corrections land
 
-dxp-init status                 portfolio health report — gap table, per-project detail, blocked items
-dxp-init status --project <name> single-project status
+marlin status                   portfolio health report — gap table, per-project detail, blocked items
+marlin status --project <name>  single-project status
 ```
 
 ---
@@ -171,7 +171,7 @@ dxp-init status --project <name> single-project status
 | --- | --- |
 | What's the right question order for minimal cognitive load? | Preset-then-customize vs linear wizard vs category grouping |
 | Should VS Code extension naming be one choice or per-repo? | An org might have one style; a solo dev might want to choose per project |
-| Does dxp-init provision the GEE namespace or just the config? | Namespace registration may require a live service later |
+| Does Marlin-DXP provision the GEE namespace or just the config? | Namespace registration may require a live service later |
 | Electron vs Tauri vs browser-based (local server + open browser)? | Browser-based is zero-install for the GUI shell |
 | Should presets be community-extensible? | A GC "official" preset vs org-defined presets vs personal presets |
 
@@ -179,16 +179,16 @@ dxp-init status --project <name> single-project status
 
 ## Non-Goals
 
-- `dxp-init` does not build or scaffold application code — only governance and developer experience artifacts.
-- `dxp-init` does not require the developer to have eco installed.
-- `dxp-init` does not replace Cockpit — it becomes Cockpit's first-run module when Cockpit ships.
-- `dxp-init` does not define GC standards — it adopts and applies them.
-- `dxp-init` does not own the control lifecycle. Its scope ceiling is Tier 2 (signed
+- Marlin-DXP does not build or scaffold application code — only governance and developer experience artifacts.
+- Marlin-DXP does not require the developer to have eco installed.
+- Marlin-DXP does not replace Cockpit — it becomes Cockpit's first-run module when Cockpit ships.
+- Marlin-DXP does not define GC standards — it adopts and applies them.
+- Marlin-DXP does not own the control lifecycle. Its scope ceiling is Tier 2 (signed
   evidence bundles, CI validation, mapping presets). Continuous control monitoring,
   evidence vaults with retention, exception tracking, risk registers, audit
   workflows, and certification-support integrations (Tiers 3–5) belong to a separate
-  runtime product — a Cockpit compliance module that consumes dxp-init's schemas and
+  runtime product — a Cockpit compliance module that consumes Marlin-DXP's schemas and
   core library. See INIT-D15 in DEV-PATH.md.
-- `dxp-init` never claims a project "is compliant." It produces audit-ready,
+- Marlin-DXP never claims a project "is compliant." It produces audit-ready,
   evidence-ready, control-mapped artifacts. Certification comes from external
   auditors, notified bodies, or accredited certifiers.
