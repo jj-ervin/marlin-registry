@@ -1,8 +1,10 @@
 /**
- * Marlin — the dxp-init governance installation wizard.
- * Name: one-off of Merlin the Wizard.
- * Collects principal identity, project shape, and scaffold options
- * before handing off to provisioner.provision().
+ * Marlin — the dxp-init governance installer.
+ * "Scaffold governance in five minutes."
+ *
+ * Marlin is the wizard/installer experience inside dxp-init.
+ * The CLI command is `dxp-init install`; the experience says "Welcome to Marlin."
+ * Marlin owns first-run only. Long-running control monitoring is a Cockpit module.
  */
 import { intro, outro, text, select, confirm, spinner, isCancel, cancel, note } from '@clack/prompts';
 import { randomUUID } from 'crypto';
@@ -36,13 +38,14 @@ export async function runMarlin(opts: {
   reconfigure?: boolean;
   dryRun?: boolean;
 }): Promise<WizardAnswers> {
-  intro('  Marlin — dxp-init governance wizard  ');
+  intro('  Welcome to Marlin.  ');
 
   note(
-    'Marlin installs governance scaffolding for your project.\n' +
-    'This makes your project audit-ready, evidence-ready, and\n' +
-    'control-mapped — it does not certify compliance.',
-    'What this wizard does'
+    'The dxp-init governance installer.\n' +
+    'Let\'s scaffold your governance baseline.\n\n' +
+    'Marlin makes your project audit-ready, evidence-ready,\n' +
+    'and control-mapped — it does not certify compliance.',
+    'Scaffold governance in five minutes'
   );
 
   // ── Screen 1: Principal identity ──────────────────────────────────────────
@@ -174,7 +177,7 @@ export async function runMarlin(opts: {
   await new Promise(r => setTimeout(r, 300));
   s.stop('Scaffold plan ready');
 
-  outro(`  Marlin: plan prepared for "${namespaceRoot}"  `);
+  outro(`  Governance baseline ready for "${namespaceRoot}".  `);
 
   return {
     principal,

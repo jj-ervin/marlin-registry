@@ -166,6 +166,27 @@ bodies, or accredited certifiers. The runtime product's honest claim ceiling is
 "controls monitored, evidence collected, exceptions tracked, audit package
 generated" — never "SOC 2 certified" or "EU AI Act compliant."
 
+**INIT-D16 — Marlin product positioning.**
+Marlin is the name of the first-run governance installer experience inside
+dxp-init. It is the wizard/onboarding UX, not the whole product.
+
+Positioning:
+
+| Name | Role |
+| --- | --- |
+| Marlin | installer / onboarding wizard experience |
+| dxp-init | CLI package and technical command name |
+| Cockpit | eventual GUI home |
+| GC / ONS | standards underneath |
+
+Users run `dxp-init install`. The experience says "Welcome to Marlin." and
+"Scaffold governance in five minutes." The intro/outro voice belongs to Marlin.
+
+Scope boundary: Marlin is sharp and directional — a first-run guide. It does
+not own long-running control monitoring; that belongs to a Cockpit compliance
+module (see INIT-D15). "Marlin" should never appear on a dashboard, status
+page, or recurring job — only at install time.
+
 **INIT-D1 — Core library architecture.**
 The provisioning logic lives in a TypeScript library that is independent of any
 UI layer. The CLI and GUI are thin shells that call the same library. This means
