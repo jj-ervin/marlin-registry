@@ -1,3 +1,8 @@
+# This workflow validates scaffold conformance only.
+# It does not certify compliance with any regulation or standard.
+# Evidence artifacts may contain repo metadata and findings.
+# Review retention period and artifact access policy before enabling in regulated contexts.
+
 name: GC Validate
 
 on:
@@ -5,10 +10,18 @@ on:
     branches: [main]
   pull_request:
 
+# Least-privilege token — read-only for scaffold validation.
+permissions:
+  contents: read
+
+concurrency:
+  group: gc-validate-${{"{{"}} github.ref {{"}}"}}
+  cancel-in-progress: true
+
 jobs:
   validate:
     runs-on: ubuntu-latest
-    name: DEV-ACCORD Conformance (GC:2008)
+    name: DEV-ACCORD Conformance (GC:2008) — scaffold only
 
     steps:
       - uses: actions/checkout@v4
@@ -20,13 +33,17 @@ jobs:
       - name: Install dxp-init
         run: npm install -g dxp-init@{{validatorVersion}}
 
-      - name: Validate governance scaffold
+      # Validates scaffold conformance against GC:2008 (DEV-ACCORD.00).
+      # Does not validate operational controls or regulatory compliance.
+      - name: Validate governance scaffold only
         run: dxp-init audit validate --evidence evidence/
 
+      # Artifacts may contain repo paths, principal metadata, and findings.
+      # Adjust retention-days based on your evidence retention policy.
       - name: Upload evidence bundle
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: governance-evidence-${{"{{"}} github.run_id {{"}}"}}
           path: evidence/
-          retention-days: 90
+          retention-days: {{evidenceRetentionDays}}

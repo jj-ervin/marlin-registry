@@ -83,6 +83,7 @@ function buildContext(answers: WizardAnswers): Record<string, unknown> {
     emitPlanningDocs: answers.emitPlanningDocs,
     preset: answers.preset,
     principal: answers.principal,
+    evidenceRetentionDays: 90,
   };
 }
 

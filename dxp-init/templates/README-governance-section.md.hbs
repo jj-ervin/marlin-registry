@@ -1,16 +1,22 @@
 ## Governance
 
-This project is governed by [Governance Commons](https://governancecommons.org) standards.
+This repository includes a governance scaffold installed by
+[dxp-init](https://github.com/governancecommons/dxp-init) v{{validatorVersion}},
+based on [Governance Commons](https://governancecommons.org) standards.
 
-| Standard | Level | Status |
+This scaffold makes the project audit-ready, evidence-ready, and control-mapped.
+It does not certify regulatory compliance, SOC 2 readiness, EU AI Act conformity,
+NIST AI RMF completion, or operational control effectiveness.
+
+| Standard | Configuration | Status |
 | --- | --- | --- |
-| DEV-ACCORD.00 (GC:2008) | Planning document standard | adopted |
-| ONS v1.3.0 | Namespace conformance | {{onsValidationTier}} |
-| GC conformance | {{gcConformanceLevel}} | active |
-{{#if agenticGovernance}}| GEE v0.1 | Governed Event Envelope | enabled |
+| DEV-ACCORD.00 (GC:2008) | Planning document standard | scaffolded |
+| ONS v1.3.0 | Namespace configuration | {{onsValidationTier}} |
+| GC scaffold level | {{gcConformanceLevel}} | declared |
+{{#if agenticGovernance}}| GEE v0.1 | Governed Event Envelope | scaffolded |
 {{/if}}
 **Principal:** {{principal.name}}{{#if principal.entity.name}} / {{principal.entity.name}}{{/if}}
-**Provisioned:** {{date}} with [dxp-init](https://github.com/governancecommons/dxp-init) v{{validatorVersion}}
+**Installed:** {{date}}
 
-To audit this project: `dxp-init audit validate`
-To view portfolio status: `dxp-init status`
+To validate the scaffold: `dxp-init audit validate`
+To generate evidence for review: `dxp-init audit validate --evidence evidence/`
