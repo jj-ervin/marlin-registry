@@ -50,6 +50,8 @@ export interface GcPrincipal {
     platform: 'github-actions' | 'gitlab-ci' | 'azure-devops' | 'bitbucket-pipelines' | 'other';
     triggered_by?: string;
   };
+  scope?: 'governance-scaffold-install';
+  does_not_certify?: string[];
   created_at: string;
   updated_at?: string;
 }

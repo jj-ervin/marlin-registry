@@ -195,6 +195,17 @@
         "triggered_by": { "type": "string", "description": "Human actor who triggered the CI run" }
       }
     },
+    "scope": {
+      "type": "string",
+      "const": "governance-scaffold-install",
+      "description": "Scope of this principal record. Constrained to 'governance-scaffold-install' for dxp-init generated records — signals this is an identity anchor for scaffold installation, not a compliance or approval record."
+    },
+    "does_not_certify": {
+      "type": "array",
+      "description": "Explicit enumeration of claims this principal record does not make. Present in every dxp-init generated record to prevent overclaiming.",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
     "created_at": {
       "type": "string",
       "format": "date-time"
