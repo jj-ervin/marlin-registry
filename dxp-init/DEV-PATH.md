@@ -181,8 +181,8 @@ bodies, or accredited certifiers. The runtime product's honest claim ceiling is
 "controls monitored, evidence collected, exceptions tracked, audit package
 generated" — never "SOC 2 certified" or "EU AI Act compliant."
 
-**INIT-D17 — Planning doctrine: waves, tracks, PASSes, sub-PASSes, compound PASSes.**
-These four concepts are distinct and operate at different levels. Each PASS must
+**INIT-D17 — Planning doctrine: waves, tracks, PASSes, and sub-PASSes.**
+These concepts are distinct and operate at different levels. Each PASS must
 declare both a wave and a primary track.
 
 **Definitions:**
@@ -192,36 +192,41 @@ declare both a wave and a primary track.
 | Track | A permanent workstream lane (A–L) | structural |
 | Wave | A sequenced delivery batch | temporal |
 | PASS (NNNN.00) | Header PASS — defines the goal and scope of the effort | execution |
-| Sub-PASS (NNNN.01–09) | Individual task under a header PASS; runs as needed | decomposition |
-| Compound PASS (NNNN.10–99) | Parallel batch of tasks from the header PASS grouped because they can run simultaneously | parallel execution |
+| Sub-PASS (NNNN.01, .02 …) | Task under a header; sequential numbering, no capacity limit | decomposition |
 
 **The numbering hierarchy:**
 
 ```text
 NNNN.00   header PASS — owns the goal
-NNNN.01   sub-PASS — individual task
-NNNN.02   sub-PASS — individual task
-NNNN.10   compound PASS — parallel batch A (tasks that can run at the same time)
-NNNN.20   compound PASS — parallel batch B (another parallel group)
+NNNN.01   sub-task
+NNNN.02   sub-task
+NNNN.03   sub-task  ← no limit; just keep counting
 ```
 
-A compound PASS is the **batch itself**, not a container above it. It groups tasks
-from the header that can execute in parallel. Multiple compound PASSes under one
-header represent separate parallel waves of grouped work.
+Sub-task IDs just count. They do not encode parallelism or grouping.
+Parallelism is declared as metadata on the PASS record:
+
+```text
+**Parallel with:** NNNN.02, NNNN.03
+**Batch:** schema-work
+```
+
+This keeps IDs as identifiers and puts behavior where it belongs — in
+readable metadata that any agent or human can see at a glance. The old
+.10–.99 "compound" range is dropped: encoding parallel vs sequential into
+the number is the wrong layer.
 
 **Rules:**
 
-- Every PASS declares exactly one **primary track**. A secondary track may be noted
-  when a PASS genuinely spans two concerns (e.g. INIT.02: H primary, L secondary).
+- Every PASS declares exactly one **primary track**. A secondary track may be
+  noted when a PASS genuinely spans two concerns (e.g. INIT.02: H + L).
 - Every PASS declares exactly one **wave**. Wave 0 is reserved for charter PASSes.
 - A wave may contain PASSes from multiple tracks. A track spans multiple waves.
-- Use **sub-PASSes (.01–.09)** for individual tasks under a header that have distinct
-  Done-when criteria or could fail independently.
-- Use **compound PASSes (.10–.99)** when multiple tasks from the header can run in
-  parallel and belong together as a group. Each compound PASS is one parallel batch.
-- A single PASS spanning multiple tracks (like INIT.05) is acceptable when all the
-  work ships in one wave. It is a signal, not an error — if the operations had
-  different dependencies, they would be sub-PASSes.
+- Use **sub-PASSes** when work under a header has distinct Done-when criteria or
+  could fail independently. Declare `Parallel with:` when sub-tasks can run at
+  the same time. Declare `Batch:` to name a group of related parallel tasks.
+- A single PASS spanning multiple tracks is acceptable when everything ships in
+  one wave. It is a signal, not an error.
 
 **INIT cluster track map (INIT.00–INIT.06):**
 
