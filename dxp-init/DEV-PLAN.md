@@ -198,3 +198,12 @@ dxp-init status --project <name> single-project status
 - `dxp-init` does not require the developer to have eco installed.
 - `dxp-init` does not replace Cockpit — it becomes Cockpit's first-run module when Cockpit ships.
 - `dxp-init` does not define GC standards — it adopts and applies them.
+- `dxp-init` does not own the control lifecycle. Its scope ceiling is Tier 2 (signed
+  evidence bundles, CI validation, mapping presets). Continuous control monitoring,
+  evidence vaults with retention, exception tracking, risk registers, audit
+  workflows, and certification-support integrations (Tiers 3–5) belong to a separate
+  runtime product — a Cockpit compliance module that consumes dxp-init's schemas and
+  core library. See INIT-D15 in DEV-PATH.md.
+- `dxp-init` never claims a project "is compliant." It produces audit-ready,
+  evidence-ready, control-mapped artifacts. Certification comes from external
+  auditors, notified bodies, or accredited certifiers.

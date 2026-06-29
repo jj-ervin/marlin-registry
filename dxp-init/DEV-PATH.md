@@ -132,6 +132,40 @@ Cockpit integration is not a blocker — it uses the same core when it ships.
 
 ## Design Decisions
 
+**INIT-D15 — dxp-init is the install-time bootstrapper; compliance operations is a separate runtime product.**
+The boundary between dxp-init and full compliance tooling is architectural, not
+branding: dxp-init runs and exits (stateless — reads/writes files, then done),
+while compliance operations is a continuously running stateful service (scheduled
+control tests, evidence vault with retention and chain-of-custody, exception
+tracking, drift detection, a risk register that persists over time). You do not
+bolt a persistent service onto a stateless CLI.
+
+The two products share a contract layer: the `gc-principal`, `gc-conformance`,
+and `gc-evidence-bundle` schemas are the API between them. dxp-init writes those
+artifacts; the compliance platform reads them, tests against them, and tracks
+them over time.
+
+Portfolio placement: the runtime compliance product is a **Cockpit compliance
+module**, not a new standalone repo. Cockpit is already the runtime operator
+surface; continuous compliance operations is a runtime operator surface. This
+keeps the portfolio from sprawling and gives Cockpit a concrete first job.
+
+Product tiers (the dividing line is between Tier 2 and Tier 3):
+
+| Tier | Capability | Product |
+| --- | --- | --- |
+| 1 | Scaffold / install / audit / status | dxp-init |
+| 2 | Signed evidence bundles, CI validation, mapping presets | dxp-init |
+| 3 | Framework control catalog, control tests, owners, exceptions, review cadence | Cockpit compliance module |
+| 4 | Audit workflows, approvals, risk register, retention, dashboards, export packages | Cockpit compliance module |
+| 5 | Certification support — auditor / notified-body / Vanta/Drata/Secureframe evidence sync | Cockpit compliance module |
+
+dxp-init's scope ceiling is Tier 2. Even at Tier 5, the product never claims a
+project "is compliant" — certification comes from external auditors, notified
+bodies, or accredited certifiers. The runtime product's honest claim ceiling is
+"controls monitored, evidence collected, exceptions tracked, audit package
+generated" — never "SOC 2 certified" or "EU AI Act compliant."
+
 **INIT-D1 — Core library architecture.**
 The provisioning logic lives in a TypeScript library that is independent of any
 UI layer. The CLI and GUI are thin shells that call the same library. This means
