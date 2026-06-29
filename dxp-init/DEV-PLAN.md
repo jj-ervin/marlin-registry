@@ -45,7 +45,7 @@ Phase 1 — Waves 1–4 complete. Wave 5 scope TBD.
 | --- | --- | --- | --- |
 | A | Core provisioning library | TypeScript library — wizard answers → governance files | shipped (Wave 2) |
 | B | CLI wizard | `marlin` / `marlin-dxp` commands with Clack interactive prompts | shipped (Wave 3) |
-| C | GUI frontend | Electron window wrapper over Track A library | planned |
+| C | Cockpit governance panel | Marlin install/audit/status surfaces hosted in Cockpit; Cockpit calls Marlin-DXP core as a module; no standalone Marlin GUI | planned |
 | D | Template library | All governance file templates with variable substitution | shipped (Wave 2) |
 | E | Cockpit integration | Marlin-DXP core as a Cockpit first-run module | planned |
 | F | AUDIT module | Full review grammar suite — validate shipped; normalize/verify/trace/adversarial/meta/authority/registry/close/destale pending | partial (Wave 3) |
@@ -76,7 +76,7 @@ Phase 1 — Waves 1–4 complete. Wave 5 scope TBD.
 | INIT.11 | F | AUDIT adversarial, meta-audit, close-the-loop, de-stale | P2 | queued |
 | INIT.12 | I | Compliance presets — SOC 2, ISO 27001, EU AI Act, NIST AI RMF (emit scaffolding only, never claim compliance) | P2 | queued |
 | INIT.13 | I | Compliance presets — HIPAA, PCI-DSS, FedRAMP, ISO 42001 | P2 | queued |
-| INIT.14 | C | GUI — Electron window wrapper; three-tab layout (Install / Audit / Status) | P2 | queued |
+| INIT.14 | C+E | Cockpit governance panel — define Marlin-DXP module API contract; implement install/audit/status panel in Cockpit repo | P2 | queued |
 | INIT.15 | J | SBOM scaffolding — CycloneDX and SPDX; SLSA provenance via Sigstore/cosign | P2 | queued |
 | INIT.16 | K | ZTA audit — review every identity/trust/permission decision against NIST SP 800-207 | P1 | queued |
 | INIT.17 | L | W3C DID/VC for principal identity (Phase 2) — deferred; signed local record already shipped | P3 | queued |
@@ -179,6 +179,7 @@ marlin status --project <name>  single-project status
 
 ## Non-Goals
 
+- Marlin-DXP does not ship a standalone GUI. The GUI surface is a Cockpit governance panel. Marlin-DXP exports a core module; Cockpit calls it.
 - Marlin-DXP does not build or scaffold application code — only governance and developer experience artifacts.
 - Marlin-DXP does not require the developer to have eco installed.
 - Marlin-DXP does not replace Cockpit — it becomes Cockpit's first-run module when Cockpit ships.
