@@ -240,6 +240,30 @@ the number is the wrong layer.
 | INIT.05 | B — CLI (primary); F — AUDIT; G — STATUS | 3 |
 | INIT.06 | H — Evidence profiles | 4 |
 
+**INIT-D18 — RUN: the execution unit for all code changes.**
+Every code change — including a one-line fix — is a RUN. A PASS is the
+governance contract; a RUN is the execution event that advances or closes it.
+
+| Unit | Layer | Produces |
+| --- | --- | --- |
+| PASS | governance | contract with Done-when criteria |
+| RUN | execution | git commit ± signed evidence bundle |
+| Evidence Bundle | audit | machine-verifiable signed record of the RUN |
+
+A RUN always produces a git commit. Significant RUNs (closing a PASS,
+implementing a security control, producing audit output) must also produce a
+signed evidence bundle. Trivial fixes are still RUNs — they just do not need
+a governance PASS or an evidence bundle.
+
+```text
+PASS.00  (contract: what we agreed to build)
+  └── RUN  agent: Claude,  output: keystore.ts,  commit: 0c2c7d8
+  └── RUN  agent: Claude,  output: evidence.ts,  commit: 0c2c7d8
+  └── RUN  agent: Codex,   output: BOM fix,      commit: 8106518
+```
+
+Governing standard: DEV-ACCORD.02 (GC:2010).
+
 **INIT-D16 — Marlin product positioning.**
 Marlin is the name of the first-run governance installer experience inside
 dxp-init. It is the wizard/onboarding UX, not the whole product.
