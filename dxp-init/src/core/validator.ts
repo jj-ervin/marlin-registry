@@ -76,7 +76,7 @@ function checkDoc(
 
   let lines: string[];
   try {
-    lines = readFileSync(filePath, 'utf8').split(/\r?\n/);
+    lines = readFileSync(filePath, 'utf8').replace(/^﻿/, '').split(/\r?\n/);
   } catch (e) {
     addFinding('E1', 'error', `Cannot read file: ${e instanceof Error ? e.message : String(e)}`);
     return findings;
