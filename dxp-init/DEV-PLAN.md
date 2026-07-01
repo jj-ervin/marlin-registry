@@ -28,14 +28,14 @@ produces the evidence that an auditor or automated compliance platform can trust
 
 ## Current Phase
 
-Phase 1 — Waves 1–4 complete. Wave 5 scope TBD.
+Phase 1 — Waves 1–4 complete. Archived; active Marlin work has moved to `../marlin/`.
 
 **Wave 0 (CLOSED):** Charter, TypeScript scaffold, project registered
 **Wave 1 (CLOSED):** Schema pair (gc-principal + gc-conformance + gc-evidence-bundle)
 **Wave 2 (CLOSED):** Template library (7 templates), core provisioner, buildBundle()
 **Wave 3 (CLOSED):** MVP CLI — `audit validate`, `status`, `install` (Marlin wizard)
 **Wave 4 (CLOSED):** Ed25519 signed evidence bundles — signBundle(), verifyBundle(), keystore, `audit verify-bundle`
-**Wave 5 (PLANNING):** Scope TBD — candidates: `--reconfigure` brownfield install, compliance presets, remaining audit operations
+**Wave 5+:** Canonical planning lives in `../marlin/DEV-PLAN.md`. Do not start new feature work in this repo.
 
 ---
 
