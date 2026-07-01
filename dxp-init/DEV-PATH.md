@@ -1,9 +1,12 @@
 # DEV-PATH — Marlin-DXP
 
 **AUTHORITY LEVEL: AL:1**
-**Status:** active
-**Updated:** 2026-06-28
-**Authority:** This file. Founding charter for the Marlin-DXP project.
+**Status:** ARCHIVED — redirect-only legacy planning surface
+**Updated:** 2026-07-01
+**Authority:** Historical founding charter for the Marlin-DXP project.
+
+> Active Marlin-DXP planning has moved to `../marlin/DEV-PATH.md` and `../marlin/DEV-PLAN.md`.
+> This file preserves historical Waves 0-4 context and earlier Wave 5 decisions; do not use it as the active work queue.
 
 ---
 
@@ -419,13 +422,13 @@ once the UI is stable.
 
 ---
 
-### Phase 2 — Wave 5 (Active 2026-06-30)
+### Phase 2 — Wave 5 (Moved to Marlin 2026-06-30)
 
-**Status:** ACTIVE
-**Period:** 2026-06-30 —
+**Status:** ARCHIVED — canonical work now lives in `../marlin/`
+**Period:** 2026-06-30
 **Pass entries:** INIT.07–INIT.19.xx
 
-Wave 5 has two lanes running in parallel:
+Wave 5 planning moved into the Marlin monorepo:
 
 - **Governance completions** (INIT.07–18): `--reconfigure` brownfield install, named presets, full AUDIT grammar surface, compliance presets, Cockpit governance panel, SBOM, ZTA audit, DID/VC identity
 - **App installer lane** (INIT.19.xx): `marlin install <app>` — installs portfolio apps and external devs' apps; package manifest, registry, platform support, publish tooling. See INIT-D19.
@@ -445,7 +448,7 @@ Both lanes share the Marlin brand. Both get GUI surfaces in Cockpit (CKP.6). The
 
 The vision: Marlin is to the eco ecosystem what Homebrew is to macOS — a universal installer that any developer can use to distribute their apps, built on top of the same governed infrastructure that marlin-dxp uses. External developers publish a `marlin.pkg.yaml` manifest; users run `marlin install <their-app>`.
 
-Governance lane (Waves 0–4): complete. App installer lane (Wave 5, INIT.19.xx): active.
+Governance lane (Waves 0–4): complete. App installer lane (Wave 5, INIT.19.xx): migrated to `../marlin/`; do not continue it in `dxp-init`.
 
 ---
 

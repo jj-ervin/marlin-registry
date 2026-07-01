@@ -1,12 +1,15 @@
 # DEV-PLAN — Marlin-DXP
 
 **AUTHORITY LEVEL: AL:1**
-**Status:** active
-**Updated:** 2026-06-28
+**Status:** ARCHIVED — redirect-only legacy planning surface
+**Updated:** 2026-07-01
 
 ---
 
 ## Purpose
+
+> Active Marlin-DXP planning has moved to `../marlin/DEV-PLAN.md`.
+> This file preserves Waves 0-4 history only; do not start new feature work here.
 
 **Marlin-DXP** is the **five-minute governance adoption kit**.
 
