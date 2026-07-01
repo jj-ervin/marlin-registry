@@ -1,0 +1,13 @@
+apiVersion: marlin/v1
+kind: Registry
+
+packages:
+  - name: niji
+    version: 1.0.0
+    description: Deterministic color palette engine — harmony schemes, Atlas naming, tint/shade/tone ladders, perceptual ramps
+    manifest: manifests/niji/1.0.0.yaml
+    tags:
+      - color
+      - design
+      - palette
+      - ui

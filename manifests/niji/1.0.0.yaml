@@ -1,0 +1,37 @@
+apiVersion: marlin/v1
+kind: Package
+
+metadata:
+  name: niji
+  version: 1.0.0
+  description: Deterministic color palette engine — harmony schemes, Atlas naming, tint/shade/tone ladders, perceptual ramps
+  author: jj-ervin
+  homepage: https://github.com/jj-ervin/niji
+  license: MIT
+  tags:
+    - color
+    - design
+    - palette
+    - ui
+
+platforms:
+  windows:
+    artifact:
+      type: github-release
+      repo: jj-ervin/niji
+      asset: niji-{version}-win-x64.zip
+      checksum:
+        algorithm: sha256
+        value: 71c8fdb5cf4c894f27bdd8d4aaa4f18a5bb16abe66b26ee240836b26fd2eb83e
+    install:
+      - step: command
+        shell: powershell
+        run: Expand-Archive -Path "{artifact}" -DestinationPath "{install_dir}" -Force
+      - step: register_bin
+        path: "{install_dir}\\niji.exe"
+        as: niji
+    uninstall:
+      - step: deregister_bin
+        as: niji
+      - step: remove_dir
+        path: "{install_dir}"
