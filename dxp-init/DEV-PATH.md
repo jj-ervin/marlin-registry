@@ -401,3 +401,81 @@ once the UI is stable.
 - Architecture decision: core library + CLI + GUI shells
 - Full wizard question surface defined (governance tier, naming, stack, tooling)
 - Cockpit relationship defined: future module, not blocker
+
+---
+
+### Phase 1 — Waves 1–4 (Closed 2026-06-28)
+
+**Status:** CLOSED
+**Period:** 2026-06-27 — 2026-06-28
+**Pass entries:** INIT.01 through INIT.06
+
+- Wave 1: Schema pair — gc-principal, gc-conformance, gc-evidence-bundle
+- Wave 2: Template library (7 templates), core provisioner, buildBundle()
+- Wave 3: MVP CLI — `audit validate`, `status`, `install` (Marlin wizard); dogfood run found UTF-8 BOM bug, fixed same session
+- Wave 4: Ed25519 signed evidence bundles — signBundle(), verifyBundle(), keystore, `audit verify-bundle`
+- Rename: dxp-init → Marlin-DXP; bins: `marlin` + `marlin-dxp` (INIT-D16)
+- Track C redirected: no standalone Marlin GUI; Cockpit is the GUI home (commit f378032)
+
+---
+
+### Phase 2 — Wave 5 (Active 2026-06-30)
+
+**Status:** ACTIVE
+**Period:** 2026-06-30 —
+**Pass entries:** INIT.07–INIT.19.xx
+
+Wave 5 has two lanes running in parallel:
+
+- **Governance completions** (INIT.07–18): `--reconfigure` brownfield install, named presets, full AUDIT grammar surface, compliance presets, Cockpit governance panel, SBOM, ZTA audit, DID/VC identity
+- **App installer lane** (INIT.19.xx): `marlin install <app>` — installs portfolio apps and external devs' apps; package manifest, registry, platform support, publish tooling. See INIT-D19.
+
+---
+
+**INIT-D19 — Two-lane Marlin architecture: app installer + governance installer.**
+
+Marlin is a product family, not a single tool. Two lanes ship under the Marlin brand:
+
+| Lane | Bin | What it installs | Target users |
+| --- | --- | --- | --- |
+| App installer | `marlin` | Portfolio apps (niji, cockpit, eco) + any developer's app | End users installing apps; devs distributing apps |
+| Governance installer | `marlin-dxp` | GC/DCP governance scaffolding for codebases and orgs | Developers and orgs adopting GC/DCP standards |
+
+Both lanes share the Marlin brand. Both get GUI surfaces in Cockpit (CKP.6). The `marlin` bin currently serves as the governance wizard entry point; Wave 5 (INIT.19.xx) extends it with app installation mode. Mode detection: a named app target (`marlin install niji`) → app installer lane; no target → governance wizard lane.
+
+The vision: Marlin is to the eco ecosystem what Homebrew is to macOS — a universal installer that any developer can use to distribute their apps, built on top of the same governed infrastructure that marlin-dxp uses. External developers publish a `marlin.pkg.yaml` manifest; users run `marlin install <their-app>`.
+
+Governance lane (Waves 0–4): complete. App installer lane (Wave 5, INIT.19.xx): active.
+
+---
+
+**INIT-D20 — Four-lane Marlin architecture (extends INIT-D19).**
+
+Marlin has four lanes. INIT-D19 defined two; this decision adds the third and names the fourth:
+
+| Lane | Bin / surface | Scope | What it manages |
+| --- | --- | --- | --- |
+| 1 — Package manager | `marlin` | Machine | Apps installed on a user's machine |
+| 2 — Governance | `marlin-dxp` | Repo / project | GC/DCP governance scaffolding on one codebase |
+| 3 — Workspace | `marlin-dcp` | Portfolio / org | DCP installation and health across all repos in a workspace |
+| 4 — GUI | marlin-ux (Cockpit) | All lanes | Cockpit panels for app management, governance status, workspace health |
+
+**Lane 3 boundary (marlin-dcp):** marlin-dxp runs inside a single repo. marlin-dcp runs above repos — it installs the DevX Control Plane into a workspace, manages the repo registry, syncs state, and reports portfolio health. A developer uses marlin-dxp once per repo and marlin-dcp once per workspace.
+
+**Lane 4 boundary (marlin-ux):** marlin-ux is not a standalone product. It is the collective name for all Marlin GUI panels hosted in Cockpit. No separate GUI is built; Cockpit is the GUI.
+
+All four lanes share: the Marlin brand, the `marlin` bin entrypoint, the gc-principal identity model, and evidence bundle format for audit trails.
+
+---
+
+**INIT-D21 — marlin-dxp scope clarification (supersedes "one codebase" language in INIT-D20).**
+
+marlin-dxp installs and conforms **repo(s)** to GC and DXP standards. It is not scoped to a single repo — it can operate on one repo or many. The "Repo / project" scope in INIT-D20 described the primary unit of operation (a single invocation targets a repo), not a hard limit on how many repos marlin-dxp can govern.
+
+Corrected lane 2 definition:
+
+| Lane | Scope | What it manages |
+| --- | --- | --- |
+| 2 — Governance | Repo(s) | Installs and conforms repos to GC and DXP standards |
+
+marlin-dcp remains distinct: it manages the workspace itself — the DCP lifecycle, repo registry, and portfolio sync — not governance conformance of the repos within it.
