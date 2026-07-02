@@ -1,0 +1,9 @@
+{
+  "name": "marlin-registry",
+  "private": true,
+  "description": "Marlin package registry — index.yaml + manifests/. See scripts/validate-submission.mjs (INIT.19.13) for the CI submission gate.",
+  "type": "module",
+  "devDependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}
