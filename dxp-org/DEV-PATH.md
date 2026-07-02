@@ -1,4 +1,4 @@
-# DEV-PATH — dxp-org
+# DEV-PATH — Marlin Registry dxp-org Snapshot
 
 **AUTHORITY LEVEL: AL:1**
 **Status:** ACTIVE

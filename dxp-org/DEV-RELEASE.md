@@ -1,4 +1,4 @@
-# DEV-RELEASE — dxp-org
+# DEV-RELEASE — Marlin Registry dxp-org Snapshot
 
 **AUTHORITY LEVEL: AL:1**
 **Status:** Active — Phase 1 (Planning Coverage) in progress  

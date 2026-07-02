@@ -1,4 +1,4 @@
-# DEV-PLAN — dxp-org
+# DEV-PLAN — Marlin Registry dxp-org Snapshot
 
 **AUTHORITY LEVEL: AL:1**
 **Status:** ACTIVE
