@@ -28,6 +28,8 @@ lasso-mvp_archive/
 marlin/
 marlin-registry/
 niji/
+!manifests/niji/
+!manifests/niji/*.yaml
 powershell/
 tools/
 

@@ -3,9 +3,9 @@ kind: Registry
 
 packages:
   - name: niji
-    version: 1.0.0
-    description: Deterministic color palette engine — harmony schemes, Atlas naming, tint/shade/tone ladders, perceptual ramps
-    manifest: manifests/niji/1.0.0.yaml
+    version: 1.1.1
+    description: Deterministic color palette engine — web-safe and archived Atlas naming, Cockpit provider runtime, harmony schemes, and perceptual ramps
+    manifest: manifests/niji/1.1.1.yaml
     tags:
       - color
       - design

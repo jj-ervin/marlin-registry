@@ -78,6 +78,26 @@ function parseManifest(raw, source) {
     }
   }
 
+  for (const [platform, entry] of Object.entries(platforms)) {
+    if (!entry || typeof entry !== 'object' || entry.provider === undefined) continue;
+    const provider = entry.provider;
+    if (!provider || typeof provider !== 'object') {
+      throw new Error(`${source}: platforms.${platform}.provider must be an object`);
+    }
+    for (const field of ['id', 'manifest', 'executable']) {
+      if (typeof provider[field] !== 'string' || !provider[field]) {
+        throw new Error(`${source}: platforms.${platform}.provider.${field} is required`);
+      }
+    }
+    if (!/^[a-z0-9][a-z0-9._-]*$/.test(provider.id)) {
+      throw new Error(`${source}: platforms.${platform}.provider.id has an invalid format`);
+    }
+    if (provider.args !== undefined &&
+        (!Array.isArray(provider.args) || !provider.args.every((arg) => typeof arg === 'string'))) {
+      throw new Error(`${source}: platforms.${platform}.provider.args must be an array of strings`);
+    }
+  }
+
   return m;
 }
 
