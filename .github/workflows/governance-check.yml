@@ -33,6 +33,15 @@ jobs:
         run: |
           $null = [System.Management.Automation.PSParser]::Tokenize((Get-Content dev-status.ps1 -Raw), [ref]$null)
 
-      - name: Run status script
+      - name: Validate centralized status adapter contract
         shell: pwsh
-        run: ./dev-status.ps1
+        run: |
+          $wrapper = Get-Content dev-status.ps1 -Raw
+          $expectedTool = 'governance-commons\gc-audit\tools\dev-status.ps1'
+          if ($wrapper -notmatch [regex]::Escape($expectedTool)) {
+            throw "dev-status.ps1 must delegate to $expectedTool"
+          }
+          if ($wrapper -notmatch '&\s+pwsh\s+-NoProfile\s+-File\s+\$tool') {
+            throw 'dev-status.ps1 must invoke the centralized tool through pwsh -NoProfile -File'
+          }
+          Write-Host 'Centralized dev-status adapter contract is valid.'

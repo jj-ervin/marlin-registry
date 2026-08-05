@@ -8,7 +8,7 @@
 
 DCP is the governance and operational layer that sits above a collection of project repos. It is not a monorepo. It is not an application project. It is the root from which projects are indexed, navigated, validated, and operated.
 
-This repo is the portable Core template. Clone it into a portfolio root, edit `projects.yaml`, and run the dashboard.
+This repo is the public Core template shell. Its root PowerShell commands are compatibility adapters; a runnable DCP installation must also include the centralized `governance-commons/gc-audit` payload. In a complete distribution, edit `projects.yaml` and run the dashboard.
 
 ---
 
@@ -71,6 +71,10 @@ If it describes this portfolio's registry, tooling, or operating convention, it 
 ---
 
 ## Quick Start
+
+These commands require a complete DCP distribution containing
+`governance-commons/gc-audit`. The public repository's CI validates the adapter
+contracts without checking out or executing that private runtime dependency.
 
 ```powershell
 # Portfolio status
