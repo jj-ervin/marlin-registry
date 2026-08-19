@@ -1,0 +1,34 @@
+apiVersion: marlin/v1
+kind: Package
+
+metadata:
+  name: cairn
+  version: 0.1.0
+  description: Local-first operational registry for assets, releases, deployments, and secret-store references (KeePassXC by default)
+  author: jj-ervin
+  homepage: https://github.com/jj-ervin/cairn
+  license: LicenseRef-Proprietary
+  tags: [cairn, registry, secrets-reference, sqlite]
+
+platforms:
+  windows:
+    x64:
+      artifact:
+        type: github-release
+        repo: jj-ervin/cairn
+        asset: cairn-{version}-windows-x64.zip
+        checksum:
+          algorithm: sha256
+          value: 9f4c32cddc575e15d8fe43794d777693c8f49ff6f02b5a9c8c263af89136ca8d
+      install:
+        - step: command
+          run: "Expand-Archive -Path \"{artifact}\" -DestinationPath \"{install_dir}\" -Force"
+          shell: powershell
+        - step: register_bin
+          path: "{install_dir}\\cairn.cmd"
+          as: cairn
+      uninstall:
+        - step: deregister_bin
+          as: cairn
+        - step: remove_dir
+          path: "{install_dir}"
