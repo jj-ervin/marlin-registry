@@ -78,27 +78,59 @@ function parseManifest(raw, source) {
     }
   }
 
-  for (const [platform, entry] of Object.entries(platforms)) {
-    if (!entry || typeof entry !== 'object' || entry.provider === undefined) continue;
+  for (const { path, entry } of platformEntries(platforms, source)) {
+    if (entry.provider === undefined) continue;
     const provider = entry.provider;
     if (!provider || typeof provider !== 'object') {
-      throw new Error(`${source}: platforms.${platform}.provider must be an object`);
+      throw new Error(`${source}: ${path}.provider must be an object`);
     }
     for (const field of ['id', 'manifest', 'executable']) {
       if (typeof provider[field] !== 'string' || !provider[field]) {
-        throw new Error(`${source}: platforms.${platform}.provider.${field} is required`);
+        throw new Error(`${source}: ${path}.provider.${field} is required`);
       }
     }
     if (!/^[a-z0-9][a-z0-9._-]*$/.test(provider.id)) {
-      throw new Error(`${source}: platforms.${platform}.provider.id has an invalid format`);
+      throw new Error(`${source}: ${path}.provider.id has an invalid format`);
     }
     if (provider.args !== undefined &&
         (!Array.isArray(provider.args) || !provider.args.every((arg) => typeof arg === 'string'))) {
-      throw new Error(`${source}: platforms.${platform}.provider.args must be an array of strings`);
+      throw new Error(`${source}: ${path}.provider.args must be an array of strings`);
     }
   }
 
   return m;
+}
+
+// Mirrors manifest.ts::selectTarget's shape detection: a platform entry is
+// either a legacy bare entry (has 'artifact' directly, intentionally
+// x64-only) or an arch-keyed object (x64/arm64 -> entry). Yields
+// {path, entry} for each concrete, artifact-bearing entry either way.
+function platformEntries(platforms, source) {
+  const out = [];
+  for (const [platform, target] of Object.entries(platforms)) {
+    if (!target || typeof target !== 'object') {
+      throw new Error(`${source}: platforms.${platform} must be an object`);
+    }
+    if ('artifact' in target) {
+      out.push({ path: `platforms.${platform}`, entry: target });
+      continue;
+    }
+    const arches = Object.keys(target);
+    if (arches.length === 0) {
+      throw new Error(`${source}: platforms.${platform} must have at least one architecture entry`);
+    }
+    for (const arch of arches) {
+      if (!['x64', 'arm64'].includes(arch)) {
+        throw new Error(`${source}: unknown architecture "${arch}" under platforms.${platform} — must be x64 or arm64`);
+      }
+      const entry = target[arch];
+      if (!entry || typeof entry !== 'object') {
+        throw new Error(`${source}: platforms.${platform}.${arch} must be an object`);
+      }
+      out.push({ path: `platforms.${platform}.${arch}`, entry });
+    }
+  }
+  return out;
 }
 
 // Mirrors packages/marlin/src/publisher.ts::validateManifestFile's
@@ -117,11 +149,10 @@ function validateManifestFile(filePath) {
 
   const { metadata, platforms } = manifest;
 
-  for (const [platName, entry] of Object.entries(platforms)) {
-    if (!entry) continue;
+  for (const { path, entry } of platformEntries(platforms, filePath)) {
     const cs = entry.artifact && entry.artifact.checksum;
     if (!cs || (!cs.value && !cs.file)) {
-      errors.push(`platforms.${platName}: checksum is required for published packages (use checksum.value or checksum.file)`);
+      errors.push(`${path}: checksum is required for published packages (use checksum.value or checksum.file)`);
     }
   }
 

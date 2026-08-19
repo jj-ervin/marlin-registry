@@ -12,22 +12,28 @@ metadata:
 
 platforms:
   windows:
-    artifact:
-      type: github-release
-      repo: jj-ervin/cairn
-      asset: cairn-{version}-windows-x64.zip
-      checksum:
-        algorithm: sha256
-        value: 9f4c32cddc575e15d8fe43794d777693c8f49ff6f02b5a9c8c263af89136ca8d
-    install:
-      - step: command
-        run: "Expand-Archive -Path \"{artifact}\" -DestinationPath \"{install_dir}\" -Force"
-        shell: powershell
-      - step: register_bin
-        path: "{install_dir}\\cairn.cmd"
-        as: cairn
-    uninstall:
-      - step: deregister_bin
-        as: cairn
-      - step: remove_dir
-        path: "{install_dir}"
+    # Cairn ships pure stdlib Python + a .cmd shim, no compiled binary, so
+    # the same artifact serves both architectures -- x64 and arm64 both
+    # point at the identical asset (its "-x64" filename is just the token
+    # this was first built under, not a real architecture restriction).
+    x64: &windows_target
+      artifact:
+        type: github-release
+        repo: jj-ervin/cairn
+        asset: cairn-{version}-windows-x64.zip
+        checksum:
+          algorithm: sha256
+          value: 9f4c32cddc575e15d8fe43794d777693c8f49ff6f02b5a9c8c263af89136ca8d
+      install:
+        - step: command
+          run: "Expand-Archive -Path \"{artifact}\" -DestinationPath \"{install_dir}\" -Force"
+          shell: powershell
+        - step: register_bin
+          path: "{install_dir}\\cairn.cmd"
+          as: cairn
+      uninstall:
+        - step: deregister_bin
+          as: cairn
+        - step: remove_dir
+          path: "{install_dir}"
+    arm64: *windows_target
