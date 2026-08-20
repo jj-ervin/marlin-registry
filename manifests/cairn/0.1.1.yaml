@@ -1,0 +1,39 @@
+apiVersion: marlin/v1
+kind: Package
+
+metadata:
+  name: cairn
+  version: 0.1.1
+  description: Local-first operational registry for assets, releases, deployments, and secret-store references (KeePassXC by default)
+  author: jj-ervin
+  homepage: https://github.com/jj-ervin/cairn
+  license: LicenseRef-Proprietary
+  tags: [cairn, registry, secrets-reference, sqlite]
+
+platforms:
+  windows:
+    # Cairn ships pure stdlib Python + a .cmd shim, no compiled binary, so
+    # the same artifact serves both architectures -- x64 and arm64 both
+    # point at the identical asset (its "-x64" filename is just the token
+    # this was first built under, not a real architecture restriction).
+    x64: &windows_target
+      artifact:
+        type: github-release
+        repo: jj-ervin/cairn
+        asset: cairn-{version}-windows-x64.zip
+        checksum:
+          algorithm: sha256
+          value: 8e8c62491e68793af04efd1743a619c937b18e5b6f0fc45d7ba9369a5375c4b5
+      install:
+        - step: command
+          run: "Expand-Archive -Path \"{artifact}\" -DestinationPath \"{install_dir}\" -Force"
+          shell: powershell
+        - step: register_bin
+          path: "{install_dir}\\cairn.cmd"
+          as: cairn
+      uninstall:
+        - step: deregister_bin
+          as: cairn
+        - step: remove_dir
+          path: "{install_dir}"
+    arm64: *windows_target
