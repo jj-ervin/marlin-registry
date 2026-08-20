@@ -12,9 +12,9 @@ packages:
       - palette
       - ui
   - name: cairn
-    version: 0.1.3
+    version: 0.1.4
     description: Local-first operational registry for assets, releases, deployments, and secret-store references (KeePassXC by default)
-    manifest: manifests/cairn/0.1.3.yaml
+    manifest: manifests/cairn/0.1.4.yaml
     tags:
       - cairn
       - registry

@@ -1,0 +1,63 @@
+apiVersion: marlin/v1
+kind: Package
+
+metadata:
+  name: cairn
+  version: 0.1.4
+  description: Local-first operational registry for assets, releases, deployments, and secret-store references (KeePassXC by default)
+  author: jj-ervin
+  homepage: https://github.com/jj-ervin/cairn
+  license: LicenseRef-Proprietary
+  tags: [cairn, registry, secrets-reference, sqlite]
+
+# Cairn ships pure stdlib Python + two shims (cairn.cmd for Windows,
+# cairn for macOS/Linux), no compiled binary -- one universal artifact
+# serves every platform and architecture below; only the install steps
+# (and which shim register_bin targets) differ per OS. macOS/Linux
+# entries are unverified -- built without access to either platform to
+# actually test the install (2026-08-19).
+platforms:
+  windows:
+    x64: &windows_target
+      artifact: &artifact
+        type: github-release
+        repo: jj-ervin/cairn
+        asset: cairn-{version}.zip
+        checksum:
+          algorithm: sha256
+          value: a38f49a04158396814b055e0dcd8ecff47827f4ae703e6661773253fd0e9d0e7
+      install:
+        - step: command
+          run: "Expand-Archive -Path \"{artifact}\" -DestinationPath \"{install_dir}\" -Force"
+          shell: powershell
+        - step: register_bin
+          path: "{install_dir}\\cairn.cmd"
+          as: cairn
+      uninstall:
+        - step: deregister_bin
+          as: cairn
+        - step: remove_dir
+          path: "{install_dir}"
+    arm64: *windows_target
+  darwin:
+    x64: &unix_target
+      artifact: *artifact
+      install:
+        - step: command
+          run: 'unzip -o "{artifact}" -d "{install_dir}"'
+          shell: sh
+        - step: command
+          run: 'chmod +x "{install_dir}/cairn"'
+          shell: sh
+        - step: register_bin
+          path: "{install_dir}/cairn"
+          as: cairn
+      uninstall:
+        - step: deregister_bin
+          as: cairn
+        - step: remove_dir
+          path: "{install_dir}"
+    arm64: *unix_target
+  linux:
+    x64: *unix_target
+    arm64: *unix_target
