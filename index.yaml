@@ -20,3 +20,13 @@ packages:
       - registry
       - secrets-reference
       - sqlite
+  - name: sealdex
+    version: 0.2.0
+    description: Local-first operational registry for assets, releases, deployments, and secret-store references (KeePassXC by default)
+    manifest: manifests/sealdex/0.2.0.yaml
+    tags:
+      - sealdex
+      - registry
+      - secrets-reference
+      - sqlite
+      - cockpit-provider

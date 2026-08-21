@@ -1,0 +1,85 @@
+apiVersion: marlin/v1
+kind: Package
+
+metadata:
+  name: sealdex
+  version: 0.2.0
+  description: Local-first operational registry for assets, releases, deployments, and secret-store references (KeePassXC by default)
+  author: jj-ervin
+  homepage: https://github.com/jj-ervin/sealdex
+  license: LicenseRef-Proprietary
+  tags: [sealdex, registry, secrets-reference, sqlite, cockpit-provider]
+
+# Sealdex's CLI ships pure stdlib Python + two shims (sealdex.cmd for
+# Windows, sealdex for macOS/Linux), no compiled binary -- one universal
+# artifact serves every platform and architecture below; only the
+# install steps (and which shim register_bin targets) differ per OS.
+# macOS/Linux entries are unverified -- built without access to either
+# platform to actually test the install (2026-08-19).
+#
+# The Cockpit provider entry point (`provider:` below) is the one
+# deliberate exception to "no compiled binary": Marlin's own attestation
+# step (issueProviderAttestation) requires a real, in-package, hashable
+# executable, which a bare system Python interpreter can never be since
+# it lives outside install_dir. Built via `pyinstaller
+# sealdex-provider.spec` (mirrors niji-provider.spec) into
+# provider/sealdex-provider.exe, bundled into the same universal zip
+# alongside providers/sealdex.provider.json. Windows-only for now, same
+# verification boundary as the rest of this file -- no darwin/linux
+# provider build has been produced or tested, so no `provider:` stanza
+# is claimed for those platforms.
+#
+# Sealdex was renamed from Cairn 2026-08-21 (see cairn/DEV-PLAN.md's
+# rename entries in the private source repo). This registry's own
+# manifests/cairn/0.1.0.yaml through 0.1.5.yaml remain untouched below as
+# the accurate historical record of the retired Cairn release line --
+# this entry does not supersede or replace them, it is a new package line.
+platforms:
+  windows:
+    x64: &windows_target
+      artifact: &artifact
+        type: github-release
+        repo: jj-ervin/sealdex
+        asset: sealdex-{version}.zip
+        checksum:
+          algorithm: sha256
+          value: 880f500659899d4dc4f07bca5778de2c99bb99cbb9ef881760797f77ae697912
+      install:
+        - step: command
+          run: "Expand-Archive -Path \"{artifact}\" -DestinationPath \"{install_dir}\" -Force"
+          shell: powershell
+        - step: register_bin
+          path: "{install_dir}\\sealdex.cmd"
+          as: sealdex
+      provider:
+        id: sealdex
+        manifest: "{install_dir}\\providers\\sealdex.provider.json"
+        executable: "{install_dir}\\provider\\sealdex-provider.exe"
+      uninstall:
+        - step: deregister_bin
+          as: sealdex
+        - step: remove_dir
+          path: "{install_dir}"
+    arm64: *windows_target
+  darwin:
+    x64: &unix_target
+      artifact: *artifact
+      install:
+        - step: command
+          run: 'unzip -o "{artifact}" -d "{install_dir}"'
+          shell: sh
+        - step: command
+          run: 'chmod +x "{install_dir}/sealdex"'
+          shell: sh
+        - step: register_bin
+          path: "{install_dir}/sealdex"
+          as: sealdex
+      uninstall:
+        - step: deregister_bin
+          as: sealdex
+        - step: remove_dir
+          path: "{install_dir}"
+    arm64: *unix_target
+  linux:
+    x64: *unix_target
+    arm64: *unix_target
