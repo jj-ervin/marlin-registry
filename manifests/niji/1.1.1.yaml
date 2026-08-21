@@ -15,28 +15,39 @@ metadata:
     - ui
     - cockpit-provider
 
+# Windows arm64 intentionally resolves to the same x64 artifact — there is no
+# native arm64 build of niji.exe/niji-provider.exe. Verified 2026-08-21 by
+# extracting the release's provider binary into an isolated scratch directory
+# on a real Windows arm64 machine and sending it a real cockpit-operation-
+# request-v1 over stdio directly (bypassing Marlin): exit 0, schema-valid
+# cockpit-operation-result-v1 response with real computed palette data. Runs
+# under Windows' x64 emulation. If that emulation layer is ever unavailable,
+# this entry should be replaced with a real arm64 build rather than assumed
+# to keep working.
 platforms:
   windows:
-    artifact:
-      type: github-release
-      repo: jj-ervin/niji
-      asset: niji-{version}-win-x64.zip
-      checksum:
-        algorithm: sha256
-        value: 035738ad50ccb25f1df216ad5bbdc94710b080babf7f146a177220d5fde2f423
-    install:
-      - step: command
-        shell: powershell
-        run: Expand-Archive -Path "{artifact}" -DestinationPath "{install_dir}" -Force
-      - step: register_bin
-        path: "{install_dir}\\niji.exe"
-        as: niji
-    provider:
-      id: niji
-      manifest: "{install_dir}\\providers\\niji.provider.json"
-      executable: "{install_dir}\\provider\\niji-provider.exe"
-    uninstall:
-      - step: deregister_bin
-        as: niji
-      - step: remove_dir
-        path: "{install_dir}"
+    x64: &windows_target
+      artifact:
+        type: github-release
+        repo: jj-ervin/niji
+        asset: niji-{version}-win-x64.zip
+        checksum:
+          algorithm: sha256
+          value: 035738ad50ccb25f1df216ad5bbdc94710b080babf7f146a177220d5fde2f423
+      install:
+        - step: command
+          shell: powershell
+          run: Expand-Archive -Path "{artifact}" -DestinationPath "{install_dir}" -Force
+        - step: register_bin
+          path: "{install_dir}\\niji.exe"
+          as: niji
+      provider:
+        id: niji
+        manifest: "{install_dir}\\providers\\niji.provider.json"
+        executable: "{install_dir}\\provider\\niji-provider.exe"
+      uninstall:
+        - step: deregister_bin
+          as: niji
+        - step: remove_dir
+          path: "{install_dir}"
+    arm64: *windows_target
